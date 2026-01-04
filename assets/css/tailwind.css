@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-blvd-cream text-blvd-charcoal font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .blvd-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply bg-blvd-gold text-white px-6 py-3 text-sm uppercase tracking-wider font-medium transition-all hover:bg-blvd-taupe;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .fade-in {
+    @apply opacity-0 animate-fade-in;
+  }
+}

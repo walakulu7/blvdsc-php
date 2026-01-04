@@ -1,0 +1,12 @@
+{
+    "name": "blvdsc-web-php",
+    "version": "1.0.0",
+    "description": "BLVD Coffee Co. PHP Website",
+    "scripts": {
+        "build:css": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/output.css",
+        "watch:css": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/output.css --watch"
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.4.1"
+    }
+}
