@@ -1,0 +1,325 @@
+/* BLVD Coffee Co. - Custom Styles */
+
+/* Tailwind CSS is loaded via CDN in header.php */
+
+/* Custom color variables for BLVD theme */
+:root {
+  --blvd-gold: #d4af37;
+  --blvd-taupe: #b8860b;
+  --blvd-charcoal: #2d3748;
+  --blvd-cream: #f8f7f5;
+  --blvd-sand: #f5f5dc;
+  --blvd-beige: #f5f5dc;
+}
+
+/* Font families */
+.font-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Custom utilities */
+.blvd-container {
+  @apply container mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.btn-primary {
+  @apply bg-[#d4af37] text-white px-6 py-3 text-sm uppercase tracking-wider font-medium transition-all hover:bg-[#b8860b];
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+.fade-in {
+  @apply opacity-0 animate-fade-in;
+}
+
+/* 3D Book Fold Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.transform-origin-right {
+  transform-origin: right center;
+}
+
+.transform-origin-left {
+  transform-origin: left center;
+}
+
+.rotate-y-0 {
+  transform: rotateY(0deg);
+}
+
+.rotate-y-15 {
+  transform: rotateY(15deg);
+}
+
+.-rotate-y-15 {
+  transform: rotateY(-15deg);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Corner-Based Page Fold Animation */
+.page-fold-natural {
+  transition: all 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+}
+
+.page-fold-left {
+  transform-origin: 100% 100%;
+  animation: foldFromCornerLeft 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.page-fold-right {
+  transform-origin: 0% 100%;
+  animation: foldFromCornerRight 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.page-unfold-left {
+  transform-origin: 100% 100%;
+  animation: unfoldFromCornerLeft 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.page-unfold-right {
+  transform-origin: 0% 100%;
+  animation: unfoldFromCornerRight 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes foldFromCornerLeft {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1);
+  }
+  15% {
+    transform: rotateX(-2deg) rotateY(0deg) translateZ(5px) scale(1.01);
+  }
+  30% {
+    transform: rotateX(-5deg) rotateY(15deg) translateZ(10px) scale(0.99);
+  }
+  50% {
+    transform: rotateX(-8deg) rotateY(45deg) translateZ(15px) scale(0.97);
+  }
+  70% {
+    transform: rotateX(-3deg) rotateY(90deg) translateZ(8px) scale(0.95);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(180deg) translateZ(0px) scale(0.93);
+  }
+}
+
+@keyframes foldFromCornerRight {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1);
+  }
+  15% {
+    transform: rotateX(-2deg) rotateY(0deg) translateZ(5px) scale(1.01);
+  }
+  30% {
+    transform: rotateX(-5deg) rotateY(-15deg) translateZ(10px) scale(0.99);
+  }
+  50% {
+    transform: rotateX(-8deg) rotateY(-45deg) translateZ(15px) scale(0.97);
+  }
+  70% {
+    transform: rotateX(-3deg) rotateY(-90deg) translateZ(8px) scale(0.95);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(-180deg) translateZ(0px) scale(0.93);
+  }
+}
+
+@keyframes unfoldFromCornerLeft {
+  0% {
+    transform: rotateX(0deg) rotateY(180deg) translateZ(0px) scale(0.93);
+  }
+  30% {
+    transform: rotateX(-3deg) rotateY(90deg) translateZ(8px) scale(0.95);
+  }
+  50% {
+    transform: rotateX(-8deg) rotateY(45deg) translateZ(15px) scale(0.97);
+  }
+  70% {
+    transform: rotateX(-5deg) rotateY(15deg) translateZ(10px) scale(0.99);
+  }
+  85% {
+    transform: rotateX(-2deg) rotateY(0deg) translateZ(5px) scale(1.01);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1);
+  }
+}
+
+@keyframes unfoldFromCornerRight {
+  0% {
+    transform: rotateX(0deg) rotateY(-180deg) translateZ(0px) scale(0.93);
+  }
+  30% {
+    transform: rotateX(-3deg) rotateY(-90deg) translateZ(8px) scale(0.95);
+  }
+  50% {
+    transform: rotateX(-8deg) rotateY(-45deg) translateZ(15px) scale(0.97);
+  }
+  70% {
+    transform: rotateX(-5deg) rotateY(-15deg) translateZ(10px) scale(0.99);
+  }
+  85% {
+    transform: rotateX(-2deg) rotateY(0deg) translateZ(5px) scale(1.01);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1);
+  }
+}
+
+/* Paper Texture Effect */
+.paper-texture {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(0,0,0,0.02) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 20px 20px, 15px 15px;
+  background-position: 0 0, 10px 10px;
+}
+
+/* Realistic Page Shadows */
+.page-shadow-left {
+  box-shadow:
+    inset -10px 0 20px rgba(0,0,0,0.1),
+    -5px 0 15px rgba(0,0,0,0.05);
+}
+
+.page-shadow-right {
+  box-shadow:
+    inset 10px 0 20px rgba(0,0,0,0.1),
+    5px 0 15px rgba(0,0,0,0.05);
+}
+
+.page-shadow-fold {
+  box-shadow:
+    inset 0 0 30px rgba(0,0,0,0.15),
+    0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Corner Fold Effects */
+.page-curl::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(-45deg, transparent 15px, rgba(0,0,0,0.08) 15px, rgba(0,0,0,0.08) 20px, transparent 20px);
+  transform: rotate(-90deg);
+  transform-origin: bottom right;
+  z-index: 1;
+}
+
+.corner-lift {
+  position: relative;
+}
+
+.corner-lift::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(ellipse at bottom right, rgba(0,0,0,0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.corner-lift.folding::after {
+  transform: scale(1);
+}
+
+/* Enhanced corner shadows during fold */
+.corner-shadow-left {
+  position: relative;
+}
+
+.corner-shadow-left::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(ellipse at bottom right, rgba(0,0,0,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.corner-shadow-right {
+  position: relative;
+}
+
+.corner-shadow-right::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(ellipse at bottom left, rgba(0,0,0,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.folding .corner-shadow-left::before,
+.folding .corner-shadow-right::before {
+  opacity: 1;
+}
+
+/* Enhanced Paper Texture for Mobile */
+.mobile-paper {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0,0,0,0.01) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(0,0,0,0.01) 0.5px, transparent 0.5px),
+    linear-gradient(90deg, transparent 98%, rgba(0,0,0,0.02) 100%);
+  background-size: 25px 25px, 15px 15px, 100% 100%;
+  background-position: 0 0, 12px 12px, 0 0;
+}
+
+/* Realistic Page Edge */
+.page-edge {
+  position: relative;
+}
+
+.page-edge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -2px;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.05), rgba(0,0,0,0.1));
+}
+
+/* Navbar scroll effects */
+.navbar-scrolled {
+  background-color: white !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-scrolled .navbar-logo,
+.navbar-scrolled .navbar-link {
+  color: var(--blvd-charcoal) !important;
+}
+
+.navbar-scrolled .navbar-logo-gold {
+  color: var(--blvd-gold) !important;
+}

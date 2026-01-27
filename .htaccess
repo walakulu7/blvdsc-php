@@ -1,0 +1,22 @@
+# BLVD Coffee Co. - URL Rewriting
+
+RewriteEngine On
+
+# Redirect all requests to index.php with page parameter
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?page=$1 [QSA,L]
+
+# Security headers (commented out until mod_headers enabled in Apache)
+# <FilesMatch "\.(php|html|css|js)$">
+#     Header set X-Content-Type-Options nosniff
+# </FilesMatch>
+
+# Prevent access to sensitive files (commented out due to Apache 2.4 syntax; enable mod_access_compat if needed)
+# <FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+#     Order Allow,Deny
+#     Deny from all
+# </FilesMatch>
+
+# Prevent directory listing
+Options -Indexes

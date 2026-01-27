@@ -9,10 +9,7 @@ $backgroundImage = 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4
 require_once 'includes/page-header.php';
 
 $timeSlots = [
-    '8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
-    '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM',
-    '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM',
-    '8:00 PM', '8:30 PM'
+    '8:30 AM', '9:30 AM', '10:30 AM', '11:30 AM'
 ];
 ?>
 
@@ -72,7 +69,7 @@ $timeSlots = [
                                 class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                             >
                                 <option value="">Select a location</option>
-                                <option value="main">Main Street - Melbourne CBD</option>
+                                <option value="main">96 Waratah Boulevard, Canning Vale, WA, 6155, Australia</option>
                             </select>
                         </div>
                         

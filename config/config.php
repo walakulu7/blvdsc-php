@@ -5,19 +5,19 @@ define('SITE_TAGLINE', 'Coffee Co.');
 define('SITE_DESCRIPTION', 'Specialty coffee, freshly baked goods, and a welcoming atmosphere in the heart of Melbourne');
 
 // Contact Information
-define('CONTACT_ADDRESS', '123 Main Street');
-define('CONTACT_CITY', 'Melbourne');
-define('CONTACT_STATE', 'VIC');
-define('CONTACT_ZIP', '3000');
+define('CONTACT_ADDRESS', '96 Waratah Boulevard');
+define('CONTACT_CITY', 'Canning Vale');
+define('CONTACT_STATE', 'WA');
+define('CONTACT_ZIP', '6155');
 define('CONTACT_COUNTRY', 'Australia');
-define('CONTACT_PHONE', '+61 3 9123 4567');
-define('CONTACT_EMAIL', 'hello@blvdcoffee.com.au');
+define('CONTACT_PHONE', '+61 401 201 536');
+define('CONTACT_EMAIL', 'bookingsblvd@gmail.com');
 
 // Department Emails
-define('EMAIL_CATERING', 'catering@blvdcoffee.com.au');
-define('EMAIL_EVENTS', 'events@blvdcoffee.com.au');
-define('EMAIL_CAREERS', 'careers@blvdcoffee.com.au');
-define('EMAIL_MEDIA', 'media@blvdcoffee.com.au');
+define('EMAIL_CATERING', 'bookingsblvd@gmail.com');
+define('EMAIL_EVENTS', 'bookingsblvd@gmail.com');
+define('EMAIL_CAREERS', 'bookingsblvd@gmail.com');
+define('EMAIL_MEDIA', 'bookingsblvd@gmail.com');
 
 // Social Media
 define('SOCIAL_FACEBOOK', 'https://facebook.com/blvdcoffee');
@@ -34,7 +34,7 @@ $opening_hours = [
 // Base URL (adjust for your environment)
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'];
-$base_path = '/blvdsc/blvdsc-web-php';
+$base_path = '/blvdsc-web-php';
 define('BASE_URL', $protocol . '://' . $host . $base_path);
 
 // Helper function to get current page
