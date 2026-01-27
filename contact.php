@@ -89,13 +89,15 @@ require_once 'includes/page-header.php';
                 
                 <div class="bg-blvd-cream p-8 rounded-sm">
                     <h2 class="font-display text-2xl font-light mb-6">Send Us a Message</h2>
-                    <form>
+                    <form id="contact-form">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label for="name" class="block text-sm mb-1">Name</label>
                                 <input 
                                     type="text" 
                                     id="name" 
+                                    name="name"
+                                    required
                                     class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                     placeholder="Your Name"
                                 >
@@ -105,6 +107,8 @@ require_once 'includes/page-header.php';
                                 <input 
                                     type="email" 
                                     id="email" 
+                                    name="email"
+                                    required
                                     class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                     placeholder="Your Email"
                                 >
@@ -116,6 +120,7 @@ require_once 'includes/page-header.php';
                             <input 
                                 type="text" 
                                 id="subject" 
+                                name="subject"
                                 class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                 placeholder="Subject"
                             >
@@ -125,7 +130,9 @@ require_once 'includes/page-header.php';
                             <label for="message" class="block text-sm mb-1">Message</label>
                             <textarea 
                                 id="message" 
+                                name="message"
                                 rows="5"
+                                required
                                 class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                 placeholder="Your Message"
                             ></textarea>

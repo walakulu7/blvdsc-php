@@ -1,6 +1,7 @@
 <?php
 // BLVD Coffee Co. - Contact Form Handler
 
+require_once '../config/config.php';
 require_once '../config/database.php';
 
 header('Content-Type: application/json');
@@ -50,13 +51,14 @@ try {
     ]);
 
     if ($result) {
-        // Send email notification (optional)
-        $to = 'bookingsblvd@gmail.com';
+        // Send email notification (optional - may not work on localhost)
+        $to = CONTACT_EMAIL;
         $emailSubject = 'New Contact Message: ' . ($subject ?: 'General Inquiry');
         $emailMessage = "Name: $name\nEmail: $email\n\nMessage:\n$message";
         $headers = "From: $email\r\nReply-To: $email";
 
-        mail($to, $emailSubject, $emailMessage, $headers);
+        // Suppress errors for localhost where mail server may not be configured
+        @mail($to, $emailSubject, $emailMessage, $headers);
 
         echo json_encode(['success' => true, 'message' => 'Thank you for your message! We will get back to you soon.']);
     } else {

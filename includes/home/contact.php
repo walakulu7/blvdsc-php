@@ -51,13 +51,15 @@
             
             <div class="bg-white p-8">
                 <h3 class="font-display text-2xl mb-6">Send Us a Message</h3>
-                <form>
+                <form id="contact-form">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="name" class="block text-sm mb-1">Name</label>
                             <input 
                                 type="text" 
                                 id="name" 
+                                name="name"
+                                required
                                 class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                 placeholder="Your Name"
                             >
@@ -67,6 +69,8 @@
                             <input 
                                 type="email" 
                                 id="email" 
+                                name="email"
+                                required
                                 class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                 placeholder="Your Email"
                             >
@@ -78,6 +82,7 @@
                         <input 
                             type="text" 
                             id="subject" 
+                            name="subject"
                             class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                             placeholder="Subject"
                         >
@@ -87,6 +92,8 @@
                         <label for="message" class="block text-sm mb-1">Message</label>
                         <textarea 
                             id="message" 
+                            name="message"
+                            required
                             rows="5"
                             class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                             placeholder="Your Message"

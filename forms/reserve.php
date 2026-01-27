@@ -1,6 +1,7 @@
 <?php
 // BLVD Coffee Co. - Reservation Form Handler
 
+require_once '../config/config.php';
 require_once '../config/database.php';
 
 header('Content-Type: application/json');
@@ -70,8 +71,8 @@ try {
     ]);
 
     if ($result) {
-        // Send confirmation email
-        $to = 'reservations@blvdcoffee.com.au';
+        // Send confirmation email (optional - may not work on localhost)
+        $to = CONTACT_EMAIL;
         $subject = 'New Table Reservation';
         $message = "New reservation received:\n\n" .
                   "Name: $name\n" .
@@ -84,9 +85,10 @@ try {
                   "Additional Notes: $additionalNotes\n\n" .
                   "Please confirm this reservation.";
 
-        $headers = "From: reservations@blvdcoffee.com.au\r\nReply-To: $phone";
+        $headers = "From: " . CONTACT_EMAIL . "\r\nReply-To: $phone";
 
-        mail($to, $subject, $message, $headers);
+        // Suppress errors for localhost where mail server may not be configured
+        @mail($to, $subject, $message, $headers);
 
         echo json_encode(['success' => true, 'message' => 'Reservation submitted successfully! We will contact you to confirm.']);
     } else {

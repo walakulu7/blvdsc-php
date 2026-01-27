@@ -25,13 +25,14 @@ $timeSlots = [
                 </div>
                 
                 <div class="bg-blvd-cream p-8 rounded-sm">
-                    <form>
+                    <form id="reservation-form">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium mb-2">Name *</label>
                                 <input 
                                     type="text" 
                                     id="name" 
+                                    name="name"
                                     required
                                     class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                     placeholder="Your Name"
@@ -43,6 +44,7 @@ $timeSlots = [
                                 <input 
                                     type="tel" 
                                     id="phone" 
+                                    name="phone"
                                     required
                                     class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                     placeholder="Your Phone Number"
@@ -55,6 +57,7 @@ $timeSlots = [
                             <input 
                                 type="email" 
                                 id="email" 
+                                name="email"
                                 required
                                 class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                 placeholder="Your Email"
@@ -65,6 +68,7 @@ $timeSlots = [
                             <label for="location" class="block text-sm font-medium mb-2">Location *</label>
                             <select 
                                 id="location" 
+                                name="location"
                                 required
                                 class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                             >
@@ -79,6 +83,7 @@ $timeSlots = [
                                 <input 
                                     type="date" 
                                     id="date" 
+                                    name="date"
                                     required
                                     min="<?php echo date('Y-m-d'); ?>"
                                     class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
@@ -89,6 +94,7 @@ $timeSlots = [
                                 <label for="time" class="block text-sm font-medium mb-2">Time *</label>
                                 <select 
                                     id="time" 
+                                    name="time"
                                     required
                                     class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                 >
@@ -104,6 +110,7 @@ $timeSlots = [
                             <label for="partySize" class="block text-sm font-medium mb-2">Party Size *</label>
                             <select 
                                 id="partySize" 
+                                name="people"
                                 required
                                 class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                             >
@@ -156,6 +163,7 @@ $timeSlots = [
                             <label for="notes" class="block text-sm font-medium mb-2">Additional Notes</label>
                             <textarea 
                                 id="notes" 
+                                name="additionalNotes"
                                 rows="4"
                                 class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                                 placeholder="Any additional information we should know?"

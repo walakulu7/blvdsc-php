@@ -68,7 +68,7 @@ $events = [
                 <?php foreach ($events as $event): ?>
                     <div class="bg-blvd-cream p-6 rounded-sm grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="md:col-span-1">
-                            <div class="h-48 md:h-full rounded-sm overflow-hidden">
+                            <div class="h-64 rounded-sm overflow-hidden">
                                 <img 
                                     src="<?php echo htmlspecialchars($event['image']); ?>" 
                                     alt="<?php echo htmlspecialchars($event['title']); ?>"
@@ -121,7 +121,7 @@ $events = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div>
                         <img 
-                            src="https://images.unsplash.com/photo-1522682178963-d2e96cc8d978?q=80&w=1974&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop" 
                             alt="Private event at BLVD Coffee"
                             class="w-full h-auto rounded-sm"
                         >
