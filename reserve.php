@@ -9,7 +9,7 @@ $backgroundImage = 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4
 require_once 'includes/page-header.php';
 
 $timeSlots = [
-    '8:30 AM', '9:30 AM', '10:30 AM', '11:30 AM'
+    '8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM' , '01:00 PM', '01:30 PM' 
 ];
 ?>
 
@@ -64,19 +64,6 @@ $timeSlots = [
                             >
                         </div>
                         
-                        <div class="mb-6">
-                            <label for="location" class="block text-sm font-medium mb-2">Location *</label>
-                            <select 
-                                id="location" 
-                                name="location"
-                                required
-                                class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
-                            >
-                                <option value="">Select a location</option>
-                                <option value="main">96 Waratah Boulevard, Canning Vale, WA, 6155, Australia</option>
-                            </select>
-                        </div>
-                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label for="date" class="block text-sm font-medium mb-2">Date *</label>
@@ -127,37 +114,7 @@ $timeSlots = [
                             </select>
                         </div>
                         
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium mb-2">Seating Preference</label>
-                            <div class="flex gap-4">
-                                <label class="flex items-center">
-                                    <input type="radio" name="seating" value="indoor" checked class="mr-2">
-                                    <span>Indoor</span>
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="radio" name="seating" value="outdoor" class="mr-2">
-                                    <span>Outdoor</span>
-                                </label>
-                            </div>
-                        </div>
                         
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium mb-2">Special Requests (Optional)</label>
-                            <div class="space-y-2">
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="dietary" class="mr-2">
-                                    <span class="text-sm">Dietary restrictions or allergies</span>
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="occasion" class="mr-2">
-                                    <span class="text-sm">Special occasion</span>
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="quiet" class="mr-2">
-                                    <span class="text-sm">Quiet area preferred</span>
-                                </label>
-                            </div>
-                        </div>
                         
                         <div class="mb-6">
                             <label for="notes" class="block text-sm font-medium mb-2">Additional Notes</label>

@@ -1,10 +1,9 @@
 <?php
 $current_page = get_current_page();
-$nav_links = [
+$menu_items = [
     ['name' => 'HOME', 'path' => 'index.php', 'page' => 'home'],
     ['name' => 'ABOUT', 'path' => 'about.php', 'page' => 'about'],
     ['name' => 'MENU', 'path' => 'menu.php', 'page' => 'menu'],
-    ['name' => 'LOCATION', 'path' => 'location.php', 'page' => 'location'],
     ['name' => 'EVENTS', 'path' => 'events.php', 'page' => 'events'],
     ['name' => 'RESERVE', 'path' => 'reserve.php', 'page' => 'reserve'],
     ['name' => 'CONTACT', 'path' => 'contact.php', 'page' => 'contact'],
@@ -28,13 +27,13 @@ $nav_links = [
 
             <!-- Desktop Navigation -->
             <div class="hidden lg:flex items-center space-x-8">
-                <?php foreach ($nav_links as $link): ?>
+                <?php foreach ($menu_items as $link): ?>
                     <a href="<?php echo BASE_URL . '/' . $link['path']; ?>" 
                        class="text-xs tracking-wider font-medium hover:text-blvd-gold transition-colors navbar-link <?php echo is_active($link['page']) ? 'active' : ''; ?>">
                         <?php echo $link['name']; ?>
                     </a>
                 <?php endforeach; ?>
-                <a href="<?php echo BASE_URL; ?>/order.php" class="btn-primary">
+                <a href="https://blvdsc.square.site/" class="btn-primary">
                     ORDER ONLINE
                 </a>
             </div>
@@ -54,7 +53,7 @@ $nav_links = [
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="lg:hidden bg-white hidden">
         <div class="py-4 px-6 space-y-4">
-            <?php foreach ($nav_links as $link): ?>
+            <?php foreach ($menu_items as $link): ?>
                 <a href="<?php echo BASE_URL . '/' . $link['path']; ?>" 
                    class="block py-2 text-sm tracking-wider text-blvd-charcoal hover:text-blvd-gold transition-colors">
                     <?php echo $link['name']; ?>

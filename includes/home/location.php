@@ -33,14 +33,13 @@
                             <h4 class="font-medium mb-1">Opening Hours</h4>
                             <div class="text-blvd-charcoal/80 text-sm space-y-1">
                                 <p><?php echo $opening_hours['weekday']; ?></p>
-                                <p><?php echo $opening_hours['saturday']; ?></p>
-                                <p><?php echo $opening_hours['sunday']; ?></p>
+                                <p><?php echo $opening_hours['weekend']; ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <a href="<?php echo BASE_URL; ?>/location.php" class="btn-primary">
+                <a href="<?php echo BASE_URL; ?>/contact.php" class="btn-primary">
                     GET DIRECTIONS
                 </a>
             </div>

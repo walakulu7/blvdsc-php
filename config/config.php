@@ -26,9 +26,8 @@ define('SOCIAL_TWITTER', 'https://twitter.com/blvdcoffee');
 
 // Opening Hours
 $opening_hours = [
-    'weekday' => 'Monday - Friday: 7:00 AM - 6:00 PM',
-    'saturday' => 'Saturday: 8:00 AM - 6:00 PM',
-    'sunday' => 'Sunday: 8:00 AM - 4:00 PM'
+    'weekday' => 'Monday - Friday: 7:00 AM - 1:30 PM',
+    'weekend' => 'Saturday - Sunday: 8:00 AM - 1:30 PM',
 ];
 
 // Base URL (adjust for your environment)

@@ -15,10 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Get form data
 $name = trim($_POST['name'] ?? '');
 $phone = trim($_POST['phone'] ?? '');
-$location = trim($_POST['location'] ?? '');
+$email = trim($_POST['email'] ?? '');
 $people = trim($_POST['people'] ?? '');
 $date = trim($_POST['date'] ?? '');
 $time = trim($_POST['time'] ?? '');
+$seating = trim($_POST['seating'] ?? '');
 $specialRequirements = $_POST['specialRequirements'] ?? [];
 $additionalNotes = trim($_POST['additionalNotes'] ?? '');
 
@@ -33,8 +34,8 @@ if (empty($phone)) {
     $errors[] = 'Phone number is required';
 }
 
-if (empty($location)) {
-    $errors[] = 'Location is required';
+if (empty($email)) {
+    $errors[] = 'Email is required';
 }
 
 if (empty($people)) {
@@ -62,10 +63,11 @@ try {
     $result = saveReservation([
         'name' => $name,
         'phone' => $phone,
-        'location' => $location,
+        'email' => $email,
         'people' => $people,
         'date' => $date,
         'time' => $time,
+        'seating' => $seating,
         'specialRequirements' => $specialRequirements,
         'additionalNotes' => $additionalNotes
     ]);
@@ -77,15 +79,16 @@ try {
         $message = "New reservation received:\n\n" .
                   "Name: $name\n" .
                   "Phone: $phone\n" .
-                  "Location: $location\n" .
+                  "Email: $email\n" .
                   "Guests: $people\n" .
                   "Date: $date\n" .
                   "Time: $time\n" .
+                  "Seating Preference: $seating\n" .
                   "Special Requirements: " . json_encode($specialRequirements) . "\n" .
                   "Additional Notes: $additionalNotes\n\n" .
                   "Please confirm this reservation.";
 
-        $headers = "From: " . CONTACT_EMAIL . "\r\nReply-To: $phone";
+        $headers = "From: " . CONTACT_EMAIL . "\r\nReply-To: $email";
 
         // Suppress errors for localhost where mail server may not be configured
         @mail($to, $subject, $message, $headers);

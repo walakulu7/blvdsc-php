@@ -20,7 +20,7 @@
                 <a href="<?php echo BASE_URL; ?>/menu.php" class="btn-primary">
                     OUR MENU
                 </a>
-                <a href="<?php echo BASE_URL; ?>/location.php" class="px-6 py-3 border border-white text-white text-sm uppercase tracking-wider font-medium transition-all hover:bg-white/20">
+                <a href="<?php echo BASE_URL; ?>/contact.php" class="px-6 py-3 border border-white text-white text-sm uppercase tracking-wider font-medium transition-all hover:bg-white/20">
                     FIND US
                 </a>
             </div>
