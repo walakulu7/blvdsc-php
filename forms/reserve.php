@@ -73,7 +73,7 @@ try {
     ]);
 
     if ($result) {
-        // Send confirmation email (optional - may not work on localhost)
+        // Send confirmation email (optional - may not work on localhost) .......
         $to = CONTACT_EMAIL;
         $subject = 'New Table Reservation';
         $message = "New reservation received:\n\n" .
