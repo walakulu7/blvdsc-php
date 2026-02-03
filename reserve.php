@@ -64,6 +64,11 @@ $timeSlots = [
                             >
                         </div>
                         
+                        <!-- Special Day Notice -->
+                        <div id="special-day-notice" class="hidden mb-6 p-4 bg-blvd-gold/10 border-l-4 border-blvd-gold rounded">
+                            <p class="text-sm font-medium text-blvd-charcoal" id="special-day-message"></p>
+                        </div>
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label for="date" class="block text-sm font-medium mb-2">Date *</label>

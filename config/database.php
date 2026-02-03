@@ -31,14 +31,15 @@ function getReservations() {
 
 function saveReservation($data) {
     global $pdo;
-    $stmt = $pdo->prepare("INSERT INTO reservations (name, phone, location, guests, date, time, special_requirements, additional_notes, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+    $stmt = $pdo->prepare("INSERT INTO reservations (name, phone, email, guests, date, time, seating, special_requirements, additional_notes, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
     return $stmt->execute([
         $data['name'],
         $data['phone'],
-        $data['location'],
+        $data['email'],
         $data['people'],
         $data['date'],
         $data['time'],
+        $data['seating'],
         json_encode($data['specialRequirements']),
         $data['additionalNotes']
     ]);

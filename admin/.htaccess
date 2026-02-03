@@ -1,0 +1,27 @@
+# Enable URL Rewriting
+RewriteEngine On
+
+# Set base directory (optional, comment out if causing issues)
+# RewriteBase /blvdsc-web-php/admin/
+
+# Allow access to test.php for debugging
+RewriteCond %{REQUEST_URI} test\.php$
+RewriteRule .* - [L]
+
+# Allow access to public folder
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^public/ - [L]
+
+# Redirect all other requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Prevent directory browsing
+Options -Indexes
+
+# Protect sensitive files (Apache 2.4 syntax)
+<FilesMatch "\.(sql|md|json|log)$">
+    Require all denied
+</FilesMatch>

@@ -13,16 +13,8 @@ $menu_items = [
     <div class="blvd-container">
         <nav class="flex items-center justify-between">
             <!-- Logo -->
-            <a href="<?php echo BASE_URL; ?>/index.php" class="flex items-center transition-colors text-white">
-                <svg class="mr-2 navbar-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-                    <line x1="6" y1="1" x2="6" y2="4"></line>
-                    <line x1="10" y1="1" x2="10" y2="4"></line>
-                    <line x1="14" y1="1" x2="14" y2="4"></line>
-                </svg>
-                <span class="text-2xl font-display font-light">BLVD</span>
-                <span class="ml-2 text-xs uppercase tracking-widest font-light"><?php echo SITE_TAGLINE; ?></span>
+            <a href="<?php echo BASE_URL; ?>/index.php" class="transition-opacity hover:opacity-80">
+                <img src="<?php echo BASE_URL; ?>/assets/images/blvdsc-logo.png" alt="BLVD Specialty Coffee" class="h-6" style="width: 250px; height: 30px;">
             </a>
 
             <!-- Desktop Navigation -->

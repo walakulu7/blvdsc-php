@@ -234,4 +234,75 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => messageDiv.remove(), 300);
         }, 5000);
     }
+
+    // Dynamic Time Slots for Reservation Form
+    const dateInput = document.getElementById('date');
+    const timeSelect = document.getElementById('time');
+    const specialDayNotice = document.getElementById('special-day-notice');
+    const specialDayMessage = document.getElementById('special-day-message');
+
+    if (dateInput && timeSelect) {
+        // Listen for date changes
+        dateInput.addEventListener('change', async function () {
+            const selectedDate = this.value;
+
+            if (!selectedDate) {
+                // Reset to default if no date selected
+                hideSpecialDayNotice();
+                return;
+            }
+
+            try {
+                // Fetch time slots for selected date
+                const response = await fetch(`${window.location.origin}${window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'))}/api/get-time-slots.php?date=${selectedDate}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    // Update time slots
+                    updateTimeSlots(data.timeSlots);
+
+                    // Show/hide special day notice
+                    if (data.isSpecialDay) {
+                        showSpecialDayNotice(data.message);
+                    } else {
+                        hideSpecialDayNotice();
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching time slots:', error);
+                // Fallback to default slots on error
+                updateTimeSlots([
+                    '8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM',
+                    '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM'
+                ]);
+                hideSpecialDayNotice();
+            }
+        });
+
+        function updateTimeSlots(slots) {
+            // Clear existing options
+            timeSelect.innerHTML = '<option value="">Select a time</option>';
+
+            // Add new options
+            slots.forEach(slot => {
+                const option = document.createElement('option');
+                option.value = slot;
+                option.textContent = slot;
+                timeSelect.appendChild(option);
+            });
+        }
+
+        function showSpecialDayNotice(message) {
+            if (specialDayNotice && specialDayMessage) {
+                specialDayMessage.textContent = message;
+                specialDayNotice.classList.remove('hidden');
+            }
+        }
+
+        function hideSpecialDayNotice() {
+            if (specialDayNotice) {
+                specialDayNotice.classList.add('hidden');
+            }
+        }
+    }
 });

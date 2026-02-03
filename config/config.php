@@ -30,10 +30,14 @@ $opening_hours = [
     'weekend' => 'Saturday - Sunday: 8:00 AM - 1:30 PM',
 ];
 
-// Base URL (adjust for your environment)
+// Base URL (automatically detects correct path for any domain)
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'];
-$base_path = '/blvdsc-web-php';
+
+// Automatically detect base path
+$script_name = dirname($_SERVER['SCRIPT_NAME']);
+$base_path = ($script_name === '/' || $script_name === '\\') ? '' : $script_name;
+
 define('BASE_URL', $protocol . '://' . $host . $base_path);
 
 // Helper function to get current page

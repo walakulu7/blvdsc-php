@@ -50,6 +50,14 @@ if (empty($date)) {
 
 if (empty($time)) {
     $errors[] = 'Time is required';
+} elseif (!empty($date) && strtotime($date)) {
+    // Validate time slot is appropriate for the selected date (only if date is valid)
+    require_once '../config/special-days.php';
+    $validTimeSlots = getTimeSlotsForDate($date);
+    
+    if (!in_array($time, $validTimeSlots)) {
+        $errors[] = 'Invalid time slot for the selected date';
+    }
 }
 
 if (!empty($errors)) {
@@ -95,6 +103,8 @@ try {
 
         echo json_encode(['success' => true, 'message' => 'Reservation submitted successfully! We will contact you to confirm.']);
     } else {
+        // Log detailed error for debugging
+        error_log('Database insert failed - check if email and seating columns exist in reservations table');
         throw new Exception('Failed to save reservation');
     }
 } catch (Exception $e) {
