@@ -106,7 +106,7 @@ class EventController extends Controller
             $imageUrl = $this->handleImageUpload($_FILES['image']);
             
             if (!$imageUrl) {
-                Session::flash('error', 'Failed to upload image');
+                // Error message already set by handleImageUpload
                 $this->redirect('/events/create');
                 return;
             }
@@ -202,6 +202,8 @@ class EventController extends Controller
                 }
                 $imageUrl = $newImageUrl;
             }
+            // If upload failed, error message already set by handleImageUpload
+            // Continue with existing image
         }
         
         // Prepare data
@@ -279,17 +281,22 @@ class EventController extends Controller
         $maxSize = 10 * 1024 * 1024; // 10MB
         
         if (!in_array($file['type'], $allowedTypes)) {
+            Session::flash('error', 'Invalid file type. Only JPG, PNG, and WEBP images are allowed.');
             return false;
         }
         
         if ($file['size'] > $maxSize) {
+            Session::flash('error', 'File size exceeds 10MB limit.');
             return false;
         }
         
         // Create upload directory if not exists
         $uploadDir = __DIR__ . '/../../../uploads/events/';
         if (!file_exists($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
+            if (!mkdir($uploadDir, 0755, true)) {
+                Session::flash('error', 'Failed to create upload directory.');
+                return false;
+            }
         }
         
         // Generate unique filename
@@ -300,14 +307,19 @@ class EventController extends Controller
         // Move uploaded file temporarily
         $tempPath = $file['tmp_name'];
         
-        // Optimize image
+        // Try to optimize image
         $optimized = $this->optimizeImage($tempPath, $targetPath, 720, 480, 85);
         
-        if ($optimized) {
-            return 'uploads/events/' . $filename;
+        // If optimization fails, just copy the file directly
+        if (!$optimized) {
+            if (move_uploaded_file($tempPath, $targetPath)) {
+                return 'uploads/events/' . $filename;
+            }
+            Session::flash('error', 'Failed to move uploaded file.');
+            return false;
         }
         
-        return false;
+        return 'uploads/events/' . $filename;
     }
     
     /**
@@ -318,7 +330,7 @@ class EventController extends Controller
         // Get image info
         $imageInfo = getimagesize($sourcePath);
         
-        if (!$imageInfo) {
+        if ($imageInfo === false || !is_array($imageInfo) || count($imageInfo) < 3) {
             return false;
         }
         

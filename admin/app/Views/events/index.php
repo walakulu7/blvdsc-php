@@ -1,8 +1,8 @@
 <!-- Flash Messages -->
 <?php
-$successMessage = Session::has('success') ? Session::flash('success') : null;
-$errorMessage = Session::has('error') ? Session::flash('error') : null;
-$warningMessage = Session::has('warning') ? Session::flash('warning') : null;
+$successMessage = Session::flash('success');
+$errorMessage = Session::flash('error');
+$warningMessage = Session::flash('warning');
 
 if ($successMessage || $errorMessage || $warningMessage):
 ?>
@@ -178,7 +178,7 @@ if ($successMessage || $errorMessage || $warningMessage):
                 <tr>
                     <td>
                         <?php if ($event['image_url']): ?>
-                        <img src="<?= BASE_PATH ?>/<?= htmlspecialchars($event['image_url']) ?>" 
+                        <img src="/blvdsc-web-php/uploads/image.php?file=<?= htmlspecialchars($event['image_url']) ?>" 
                              alt="<?= htmlspecialchars($event['title']) ?>" 
                              style="width: 60px; height: 40px; object-fit: cover; border-radius: var(--border-radius-sm);">
                         <?php else: ?>

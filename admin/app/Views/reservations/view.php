@@ -8,8 +8,8 @@
 
 <!-- Flash Messages -->
 <?php
-$successMessage = Session::has('success') ? Session::flash('success') : null;
-$errorMessage = Session::has('error') ? Session::flash('error') : null;
+$successMessage = Session::flash('success');
+$errorMessage = Session::flash('error');
 
 if ($successMessage || $errorMessage):
 ?>

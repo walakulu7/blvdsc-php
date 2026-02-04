@@ -8,8 +8,8 @@
 session_name('blvd_admin_session');
 session_start();
 
-// Error reporting (disable in production)
-error_reporting(E_ALL);
+// Error reporting (configured for production - shows errors but not deprecation warnings)
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
 ini_set('display_errors', 1);
 
 // Load database configuration

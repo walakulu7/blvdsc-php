@@ -2,6 +2,9 @@
 
 RewriteEngine On
 
+# Exclude uploads directory from rewriting
+RewriteCond %{REQUEST_URI} !^/blvdsc-web-php/uploads/ [NC]
+
 # Redirect all requests to index.php with page parameter
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

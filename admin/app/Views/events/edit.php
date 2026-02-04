@@ -263,7 +263,7 @@
 
 <!-- Flash Messages -->
 <?php
-$errorMessage = Session::has('error') ? Session::flash('error') : null;
+$errorMessage = Session::flash('error');
 
 if ($errorMessage):
 ?>
@@ -370,7 +370,7 @@ if ($errorMessage):
                 <?php if ($event['image_url']): ?>
                 <div class="event-current-image">
                     <span class="event-image-label">Current Image:</span>
-                    <img src="<?= BASE_PATH ?>/<?= htmlspecialchars($event['image_url']) ?>" 
+                    <img src="/blvdsc-web-php/uploads/image.php?file=<?= htmlspecialchars($event['image_url']) ?>" 
                          alt="<?= htmlspecialchars($event['title']) ?>">
                 </div>
                 <?php endif; ?>

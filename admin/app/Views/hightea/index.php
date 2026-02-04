@@ -1,8 +1,8 @@
 <!-- Flash Messages -->
 <?php
-$successMessage = Session::has('success') ? Session::flash('success') : null;
-$errorMessage = Session::has('error') ? Session::flash('error') : null;
-$warningMessage = Session::has('warning') ? Session::flash('warning') : null;
+$successMessage = Session::flash('success');
+$errorMessage = Session::flash('error');
+$warningMessage = Session::flash('warning');
 
 if ($successMessage || $errorMessage || $warningMessage):
 ?>

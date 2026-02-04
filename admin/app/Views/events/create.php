@@ -252,7 +252,7 @@
 
 <!-- Flash Messages -->
 <?php
-$errorMessage = Session::has('error') ? Session::flash('error') : null;
+$errorMessage = Session::flash('error');
 
 if ($errorMessage):
 ?>

@@ -1,0 +1,5 @@
+# Disable URL rewriting for uploads
+RewriteEngine Off
+
+# Allow all image types
+Options -Indexes
