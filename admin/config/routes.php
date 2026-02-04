@@ -14,16 +14,16 @@ $router->get('/dashboard', 'DashboardController', 'index', ['auth']);
 $router->get('/', 'DashboardController', 'index', ['auth']);
 
 // Reservations
-$router->get('/reservations', 'ReservationController', 'index', ['auth']);
-$router->get('/reservations/{id}', 'ReservationController', 'view', ['auth']);
-$router->post('/reservations/{id}/status', 'ReservationController', 'updateStatus', ['auth']);
 $router->get('/reservations/export/csv', 'ReservationController', 'exportCsv', ['auth']);
+$router->get('/reservations', 'ReservationController', 'index', ['auth']);
+$router->get('/reservations/{id}', 'ReservationController', 'show', ['auth']);
+$router->post('/reservations/{id}/status', 'ReservationController', 'updateStatus', ['auth']);
 
 // High Tea
-$router->get('/high-tea', 'HighTeaController', 'index', ['auth']);
-$router->get('/high-tea/{id}', 'HighTeaController', 'view', ['auth']);
-$router->post('/high-tea/{id}/status', 'HighTeaController', 'updateStatus', ['auth']);
-$router->get('/high-tea/packages/manage', 'HighTeaController', 'managePackages', ['auth']);
+$router->get('/hightea/export/csv', 'HighTeaController', 'export', ['auth']);
+$router->get('/hightea', 'HighTeaController', 'index', ['auth']);
+$router->get('/hightea/{id}', 'HighTeaController', 'show', ['auth']);
+$router->post('/hightea/{id}/status', 'HighTeaController', 'updateStatus', ['auth']);
 
 // Events
 $router->get('/events', 'EventController', 'index', ['auth']);

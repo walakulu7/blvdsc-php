@@ -41,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $pdo->prepare("UPDATE admin_users SET last_login = ? WHERE id = ?");
                 $stmt->execute([date('Y-m-d H:i:s'), $user['id']]);
                 
-                // Redirect to dashboard
-                header('Location: dashboard.php');
+                // Redirect to dashboard (MVC route)
+                header('Location: dashboard');
                 exit;
             } else {
                 $error = 'Account is inactive';

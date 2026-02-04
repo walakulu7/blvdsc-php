@@ -72,7 +72,19 @@ class Router {
             if ($route['method'] === $method && $this->matchPath($route['path'], $path, $params)) {
                 // Run middleware
                 foreach ($route['middleware'] as $middleware) {
-                    if (!$this->runMiddleware($middleware)) {
+                    $middlewareResult = $this->runMiddleware($middleware);
+                    
+                    // If middleware fails, redirect appropriately
+                    if (!$middlewareResult) {
+                        if ($middleware === 'auth') {
+                            // Not authenticated - redirect to login
+                            header('Location: ' . $this->basePath . '/login');
+                            exit;
+                        } elseif ($middleware === 'guest') {
+                            // Already logged in - redirect to dashboard
+                            header('Location: ' . $this->basePath . '/dashboard');
+                            exit;
+                        }
                         return;
                     }
                 }

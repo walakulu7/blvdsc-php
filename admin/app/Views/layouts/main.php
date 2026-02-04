@@ -36,8 +36,8 @@
                         <i data-lucide="calendar" class="nav-item-icon"></i>
                         <span>Reservations</span>
                     </a>
-                    <a href="<?= BASE_PATH ?>/high-tea" class="nav-item <?= $current_page === 'high-tea' ? 'active' : '' ?>">
-                        <i data-lucide="coffee" class="nav-item-icon"></i>
+                    <a href="<?= BASE_PATH ?>/hightea" class="nav-item <?= $current_page === 'hightea' ? 'active' : '' ?>">
+                        <i data-lucide="cup-soda" class="nav-item-icon"></i>
                         <span>High Tea</span>
                     </a>
                 </div>
