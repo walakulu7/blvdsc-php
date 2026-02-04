@@ -52,7 +52,7 @@ class HighTeaModel extends Model
         $offset = ($page - 1) * $perPage;
         
         // Build and execute query
-        $sql = "SELECT * FROM high_tea_bookings $whereClause ORDER BY date DESC, time DESC LIMIT :limit OFFSET :offset";
+        $sql = "SELECT * FROM high_tea_reservations $whereClause ORDER BY date DESC, time DESC LIMIT :limit OFFSET :offset";
         
         $stmt = $this->db->prepare($sql);
         
@@ -109,7 +109,7 @@ class HighTeaModel extends Model
         // Build WHERE clause
         $whereClause = count($where) > 0 ? 'WHERE ' . implode(' AND ', $where) : '';
         
-        $sql = "SELECT COUNT(*) as total FROM high_tea_bookings $whereClause";
+        $sql = "SELECT COUNT(*) as total FROM high_tea_reservations $whereClause";
         
         $stmt = $this->db->prepare($sql);
         
@@ -129,7 +129,7 @@ class HighTeaModel extends Model
      */
     public function findById($id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM high_tea_bookings WHERE id = :id");
+        $stmt = $this->db->prepare("SELECT * FROM high_tea_reservations WHERE id = :id");
         $stmt->execute([':id' => $id]);
         
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -141,7 +141,7 @@ class HighTeaModel extends Model
     public function updateStatus($id, $status)
     {
         $stmt = $this->db->prepare("
-            UPDATE high_tea_bookings 
+            UPDATE high_tea_reservations 
             SET status = :status 
             WHERE id = :id
         ");
@@ -167,7 +167,7 @@ class HighTeaModel extends Model
         // Today's bookings
         $stmt = $this->db->query("
             SELECT COUNT(*) as count 
-            FROM high_tea_bookings 
+            FROM high_tea_reservations 
             WHERE date = CURDATE()
         ");
         $stats['today'] = (int) $stmt->fetch(PDO::FETCH_ASSOC)['count'];
@@ -175,7 +175,7 @@ class HighTeaModel extends Model
         // Pending bookings
         $stmt = $this->db->query("
             SELECT COUNT(*) as count 
-            FROM high_tea_bookings 
+            FROM high_tea_reservations 
             WHERE status = 'pending' AND date >= CURDATE()
         ");
         $stats['pending'] = (int) $stmt->fetch(PDO::FETCH_ASSOC)['count'];
@@ -183,7 +183,7 @@ class HighTeaModel extends Model
         // Confirmed bookings
         $stmt = $this->db->query("
             SELECT COUNT(*) as count 
-            FROM high_tea_bookings 
+            FROM high_tea_reservations 
             WHERE status = 'confirmed' AND date >= CURDATE()
         ");
         $stats['confirmed'] = (int) $stmt->fetch(PDO::FETCH_ASSOC)['count'];
@@ -191,7 +191,7 @@ class HighTeaModel extends Model
         // Total bookings
         $stmt = $this->db->query("
             SELECT COUNT(*) as count 
-            FROM high_tea_bookings
+            FROM high_tea_reservations
         ");
         $stats['total'] = (int) $stmt->fetch(PDO::FETCH_ASSOC)['count'];
         
@@ -234,7 +234,7 @@ class HighTeaModel extends Model
         
         $whereClause = count($where) > 0 ? 'WHERE ' . implode(' AND ', $where) : '';
         
-        $sql = "SELECT * FROM high_tea_bookings $whereClause ORDER BY date DESC, time DESC";
+        $sql = "SELECT * FROM high_tea_reservations $whereClause ORDER BY date DESC, time DESC";
         
         $stmt = $this->db->prepare($sql);
         

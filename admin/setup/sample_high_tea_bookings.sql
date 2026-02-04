@@ -1,7 +1,7 @@
 -- Sample High Tea Bookings Data
 -- Insert sample bookings for testing the High Tea module
 
-INSERT INTO `high_tea_bookings` (`customer_name`, `email`, `phone`, `date`, `time`, `party_size`, `package_type`, `total_price`, `status`, `special_requests`, `created_at`) VALUES
+INSERT INTO `high_tea_reservations` (`customer_name`, `email`, `phone`, `date`, `time`, `party_size`, `package_type`, `total_price`, `status`, `special_requests`, `created_at`) VALUES
 -- Today's bookings
 ('Emma Watson', 'emma.watson@example.com', '0771234567', CURDATE(), '14:00:00', 2, 'classic', 5000.00, 'confirmed', 'Window seat preferred', NOW()),
 ('James Smith', 'james.smith@example.com', '0772345678', CURDATE(), '15:00:00', 4, 'premium', 14000.00, 'pending', 'Birthday celebration. Please include a small cake.', NOW()),

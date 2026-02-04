@@ -60,7 +60,8 @@ class HighTeaController extends Controller
             'pages' => $pages,
             'total' => $total,
             'perPage' => $perPage,
-            'queryString' => $queryString
+            'queryString' => $queryString,
+            'current_page' => 'hightea'
         ]);
     }
     
@@ -78,7 +79,8 @@ class HighTeaController extends Controller
         }
         
         $this->view('hightea/show', [
-            'booking' => $booking
+            'booking' => $booking,
+            'current_page' => 'hightea'
         ]);
     }
     
