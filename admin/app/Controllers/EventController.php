@@ -86,7 +86,7 @@ class EventController extends Controller
         
         // CSRF validation
         if (!isset($_POST['_csrf_token']) || $_POST['_csrf_token'] !== Session::get('csrf_token')) {
-            Session::setFlash('error', 'Invalid request');
+            Session::flash('error', 'Invalid request');
             $this->redirect('/events/create');
             return;
         }
@@ -95,7 +95,7 @@ class EventController extends Controller
         $errors = $this->validateEventData($_POST);
         
         if (!empty($errors)) {
-            Session::setFlash('error', implode('<br>', $errors));
+            Session::flash('error', implode('<br>', $errors));
             $this->redirect('/events/create');
             return;
         }
@@ -106,7 +106,7 @@ class EventController extends Controller
             $imageUrl = $this->handleImageUpload($_FILES['image']);
             
             if (!$imageUrl) {
-                Session::setFlash('error', 'Failed to upload image');
+                Session::flash('error', 'Failed to upload image');
                 $this->redirect('/events/create');
                 return;
             }
@@ -127,10 +127,10 @@ class EventController extends Controller
         $result = $this->eventModel->create($data);
         
         if ($result) {
-            Session::setFlash('success', 'Event created successfully');
+            Session::flash('success', 'Event created successfully');
             $this->redirect('/events');
         } else {
-            Session::setFlash('error', 'Failed to create event');
+            Session::flash('error', 'Failed to create event');
             $this->redirect('/events/create');
         }
     }
@@ -143,7 +143,7 @@ class EventController extends Controller
         $event = $this->eventModel->findById($id);
         
         if (!$event) {
-            Session::setFlash('error', 'Event not found');
+            Session::flash('error', 'Event not found');
             $this->redirect('/events');
             return;
         }
@@ -166,7 +166,7 @@ class EventController extends Controller
         
         // CSRF validation
         if (!isset($_POST['_csrf_token']) || $_POST['_csrf_token'] !== Session::get('csrf_token')) {
-            Session::setFlash('error', 'Invalid request');
+            Session::flash('error', 'Invalid request');
             $this->redirect('/events/' . $id . '/edit');
             return;
         }
@@ -175,7 +175,7 @@ class EventController extends Controller
         $event = $this->eventModel->findById($id);
         
         if (!$event) {
-            Session::setFlash('error', 'Event not found');
+            Session::flash('error', 'Event not found');
             $this->redirect('/events');
             return;
         }
@@ -184,7 +184,7 @@ class EventController extends Controller
         $errors = $this->validateEventData($_POST);
         
         if (!empty($errors)) {
-            Session::setFlash('error', implode('<br>', $errors));
+            Session::flash('error', implode('<br>', $errors));
             $this->redirect('/events/' . $id . '/edit');
             return;
         }
@@ -218,10 +218,10 @@ class EventController extends Controller
         $result = $this->eventModel->update($id, $data);
         
         if ($result) {
-            Session::setFlash('success', 'Event updated successfully');
+            Session::flash('success', 'Event updated successfully');
             $this->redirect('/events');
         } else {
-            Session::setFlash('error', 'Failed to update event');
+            Session::flash('error', 'Failed to update event');
             $this->redirect('/events/' . $id . '/edit');
         }
     }
@@ -238,7 +238,7 @@ class EventController extends Controller
         
         // CSRF validation
         if (!isset($_POST['_csrf_token']) || $_POST['_csrf_token'] !== Session::get('csrf_token')) {
-            Session::setFlash('error', 'Invalid request');
+            Session::flash('error', 'Invalid request');
             $this->redirect('/events');
             return;
         }
@@ -247,7 +247,7 @@ class EventController extends Controller
         $event = $this->eventModel->findById($id);
         
         if (!$event) {
-            Session::setFlash('error', 'Event not found');
+            Session::flash('error', 'Event not found');
             $this->redirect('/events');
             return;
         }
@@ -261,9 +261,9 @@ class EventController extends Controller
                 $this->deleteImageFile($event['image_url']);
             }
             
-            Session::setFlash('success', 'Event deleted successfully');
+            Session::flash('success', 'Event deleted successfully');
         } else {
-            Session::setFlash('error', 'Failed to delete event');
+            Session::flash('error', 'Failed to delete event');
         }
         
         $this->redirect('/events');

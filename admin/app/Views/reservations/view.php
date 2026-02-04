@@ -7,19 +7,24 @@
 </div>
 
 <!-- Flash Messages -->
-<?php if (Session::has('success') || Session::has('error')): ?>
+<?php
+$successMessage = Session::has('success') ? Session::flash('success') : null;
+$errorMessage = Session::has('error') ? Session::flash('error') : null;
+
+if ($successMessage || $errorMessage):
+?>
 <div class="flash-messages">
-    <?php if (Session::has('success')): ?>
+    <?php if ($successMessage): ?>
     <div class="flash-message flash-success">
         <i data-lucide="check-circle"></i>
-        <?= Session::flash('success') ?>
+        <?= htmlspecialchars($successMessage) ?>
     </div>
     <?php endif; ?>
     
-    <?php if (Session::has('error')): ?>
+    <?php if ($errorMessage): ?>
     <div class="flash-message flash-error">
         <i data-lucide="x-circle"></i>
-        <?= Session::flash('error') ?>
+        <?= htmlspecialchars($errorMessage) ?>
     </div>
     <?php endif; ?>
 </div>

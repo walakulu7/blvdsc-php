@@ -1,31 +1,37 @@
 <!-- Flash Messages -->
-<?php if (Session::has('success') || Session::has('error') || Session::has('warning')): ?>
+<?php
+$successMessage = Session::has('success') ? Session::flash('success') : null;
+$errorMessage = Session::has('error') ? Session::flash('error') : null;
+$warningMessage = Session::has('warning') ? Session::flash('warning') : null;
+
+if ($successMessage || $errorMessage || $warningMessage):
+?>
 <div class="flash-messages">
-    <?php if (Session::has('success')): ?>
+    <?php if ($successMessage): ?>
     <div class="flash-message flash-success">
         <i data-lucide="check-circle"></i>
-        <?= Session::flash('success') ?>
+        <?= htmlspecialchars($successMessage) ?>
     </div>
     <?php endif; ?>
     
-    <?php if (Session::has('error')): ?>
+    <?php if ($errorMessage): ?>
     <div class="flash-message flash-error">
         <i data-lucide="x-circle"></i>
-        <?= Session::flash('error') ?>
+        <?= htmlspecialchars($errorMessage) ?>
     </div>
     <?php endif; ?>
     
-    <?php if (Session::has('warning')): ?>
+    <?php if ($warningMessage): ?>
     <div class="flash-message flash-warning">
         <i data-lucide="alert-triangle"></i>
-        <?= Session::flash('warning') ?>
+        <?= htmlspecialchars($warningMessage) ?>
     </div>
     <?php endif; ?>
 </div>
 <?php endif; ?>
 
 <!-- Page Header -->
-<div class="card-header" style="margin-bottom: var(--spacing-xl); padding: var(--spacing-lg) 0; border-bottom: none;">
+<div class="card-header" style="margin-bottom: var(--spacing-xl); padding: var(--spacing-lg); border-bottom: none; background: #c9a870; border-radius: var(--border-radius-xl); box-shadow: var(--shadow-sm);">
     <h1 class="header-title">Reservations</h1>
     <a href="<?= BASE_PATH ?>/reservations/export/csv?<?= $queryString ?>" class="btn btn-primary">
         <i data-lucide="download"></i>

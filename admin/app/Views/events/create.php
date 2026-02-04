@@ -1,88 +1,378 @@
+<style>
+/* ==========================================================================
+   Event Create Form Styles
+   ========================================================================== */
+
+/* Page Container - Centered layout with max width */
+.event-create-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Page Header - Back button and action buttons */
+.event-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0;
+    margin-bottom: 24px;
+}
+
+.event-page-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.event-page-header-right {
+    display: flex;
+    gap: 12px;
+}
+
+/* Form Card - White background with shadow */
+.event-form-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+}
+
+/* Section Headers - Visual separation */
+.event-section {
+    margin-bottom: 32px;
+}
+
+.event-section:last-child {
+    margin-bottom: 0;
+}
+
+.event-section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 20px 0;
+}
+
+/* Form Fields - Proper spacing and widths */
+.event-form-field {
+    margin-bottom: 20px;
+}
+
+.event-form-field:last-child {
+    margin-bottom: 0;
+}
+
+.event-form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.event-form-label .required {
+    color: #dc2626;
+}
+
+/* Input Fields - Consistent styling with focus states */
+.event-form-input,
+.event-form-textarea,
+.event-form-select,
+.event-form-file {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 12px;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #1f2937;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.event-form-input:focus,
+.event-form-textarea:focus,
+.event-form-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Limited width for standard inputs */
+.event-form-input-limited {
+    max-width: 400px;
+}
+
+/* Textarea - Allow vertical resize only */
+.event-form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Select - Full width or limited */
+.event-form-select-limited {
+    max-width: 300px;
+}
+
+/* Help Text - Muted small text below inputs */
+.event-help-text {
+    margin-top: 6px;
+    font-size: 0.8125rem;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.event-help-text i {
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+/* Two Column Layout for Event Schedule */
+.event-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* Responsive - Single column on mobile */
+@media (max-width: 640px) {
+    .event-form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    
+    .event-page-header-right {
+        width: 100%;
+    }
+    
+    .event-form-card {
+        padding: 20px;
+    }
+}
+
+/* Image Preview */
+.event-image-preview {
+    margin-top: 12px;
+}
+
+.event-image-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.event-image-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+
+/* Buttons - Improved styling */
+.event-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.event-btn-primary {
+    color: #ffffff;
+    background-color: #3b82f6;
+}
+
+.event-btn-primary:hover {
+    background-color: #2563eb;
+}
+
+.event-btn-secondary {
+    color: #374151;
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+}
+
+.event-btn-secondary:hover {
+    background-color: #e5e7eb;
+}
+
+.event-btn i {
+    width: 16px;
+    height: 16px;
+}
+
+/* Back Link */
+.event-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    color: #374151;
+    text-decoration: none;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.event-back-link:hover {
+    background-color: #f3f4f6;
+}
+
+.event-back-link i {
+    width: 16px;
+    height: 16px;
+}
+
+/* Page Title */
+.event-page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+</style>
+
 <!-- Flash Messages -->
-<?php if (Session::has('error')): ?>
+<?php
+$errorMessage = Session::has('error') ? Session::flash('error') : null;
+
+if ($errorMessage):
+?>
 <div class="flash-messages">
     <div class="flash-message flash-error">
-        <i data-lucide="x-circle"></i>
-        <?= Session::flash('error') ?>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="x-circle"></i>
+            <span><?= htmlspecialchars($errorMessage) ?></span>
+        </div>
+        <button class="flash-close" onclick="this.parentElement.remove()">
+            <i data-lucide="x"></i>
+        </button>
     </div>
 </div>
 <?php endif; ?>
 
-<!-- Page Header -->
-<div class="page-header">
-    <div style="display: flex; align-items: center; gap: var(--spacing-md);">
-        <a href="<?= BASE_PATH ?>/events" class="btn btn-secondary">
-            <i data-lucide="arrow-left"></i>
-            Back
-        </a>
-        <h1 class="header-title">Create Event</h1>
+<div class="event-create-container">
+    <!-- Page Header -->
+    <div class="event-page-header">
+        <div class="event-page-header-left">
+            <a href="<?= BASE_PATH ?>/events" class="event-back-link">
+                <i data-lucide="arrow-left"></i>
+                Back
+            </a>
+            <h1 class="event-page-title">Create Event</h1>
+        </div>
+        
+        <div class="event-page-header-right">
+            <button type="submit" form="eventForm" class="event-btn event-btn-primary">
+                <i data-lucide="save"></i>
+                Create Event
+            </button>
+        </div>
     </div>
-</div>
 
-<!-- Create Event Form -->
-<div class="card">
-    <div class="card-header">
-        <h2 class="card-title">Event Details</h2>
-    </div>
-    <div class="card-body">
+    <!-- Create Event Form -->
+    <div class="event-form-card">
         <form method="POST" action="<?= BASE_PATH ?>/events" enctype="multipart/form-data" id="eventForm">
             <input type="hidden" name="_csrf_token" value="<?= Session::get('csrf_token') ?>">
             
-            <div class="form-group">
-                <label for="title">Event Title <span class="required">*</span></label>
-                <input type="text" id="title" name="title" class="form-control" required 
-                       placeholder="e.g., Coffee Tasting Workshop">
-            </div>
-            
-            <div class="form-group">
-                <label for="description">Description <span class="required">*</span></label>
-                <textarea id="description" name="description" class="form-control" rows="6" required
-                          placeholder="Provide details about the event..."></textarea>
-            </div>
-            
-            <div class="form-grid" style="grid-template-columns: 1fr 1fr;">
-                <div class="form-group">
-                    <label for="event_date">Event Date <span class="required">*</span></label>
-                    <input type="date" id="event_date" name="event_date" class="form-control" required>
+            <!-- Event Information Section -->
+            <div class="event-section">
+                <h3 class="event-section-title">Event Information</h3>
+                
+                <div class="event-form-field">
+                    <label for="title" class="event-form-label">
+                        Event Title <span class="required">*</span>
+                    </label>
+                    <input type="text" id="title" name="title" class="event-form-input event-form-input-limited" required 
+                           placeholder="e.g., Coffee Tasting Workshop">
                 </div>
                 
-                <div class="form-group">
-                    <label for="event_time">Event Time</label>
-                    <input type="time" id="event_time" name="event_time" class="form-control">
+                <div class="event-form-field">
+                    <label for="description" class="event-form-label">
+                        Description <span class="required">*</span>
+                    </label>
+                    <textarea id="description" name="description" class="event-form-textarea" rows="5" required
+                              placeholder="Provide details about the event..."></textarea>
+                    <p class="event-help-text">
+                        This description will be visible to visitors on the website.
+                    </p>
                 </div>
             </div>
             
-            <div class="form-group">
-                <label for="image">Event Image</label>
-                <input type="file" id="image" name="image" class="form-control" accept="image/jpeg,image/png,image/webp">
-                <div style="margin-top: 8px; font-size: var(--text-sm); color: var(--color-gray-600);">
-                    <i data-lucide="info"></i>
-                    Maximum file size: 10MB. Accepted formats: JPG, PNG, WEBP. Images will be automatically resized to 720px width.
+            <!-- Event Schedule Section -->
+            <div class="event-section">
+                <h3 class="event-section-title">Event Schedule</h3>
+                
+                <div class="event-form-row">
+                    <div class="event-form-field">
+                        <label for="event_date" class="event-form-label">
+                            Event Date <span class="required">*</span>
+                        </label>
+                        <input type="date" id="event_date" name="event_date" class="event-form-input" required>
+                    </div>
+                    
+                    <div class="event-form-field">
+                        <label for="event_time" class="event-form-label">
+                            Event Time
+                        </label>
+                        <input type="time" id="event_time" name="event_time" class="event-form-input">
+                        <p class="event-help-text">
+                            Optional - leave empty if time is not applicable
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event Image Section -->
+            <div class="event-section">
+                <h3 class="event-section-title">Event Image</h3>
+                
+                <div class="event-form-field">
+                    <input type="file" id="image" name="image" class="event-form-file" accept="image/jpeg,image/png,image/webp">
+                    <p class="event-help-text">
+                        <i data-lucide="info"></i>
+                        Maximum file size: 10MB. Accepted formats: JPG, PNG, WEBP. Images will be automatically resized to 720px width.
+                    </p>
                 </div>
                 
                 <!-- Image Preview -->
-                <div id="imagePreview" style="margin-top: var(--spacing-md); display: none;">
-                    <img id="previewImg" src="" alt="Preview" style="max-width: 400px; border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm);">
+                <div id="imagePreview" class="event-image-preview" style="display: none;">
+                    <span class="event-image-label">Image Preview:</span>
+                    <img id="previewImg" src="" alt="Preview">
                 </div>
             </div>
             
-            <div class="form-group">
-                <label for="status">Status <span class="required">*</span></label>
-                <select id="status" name="status" class="form-control" required>
-                    <option value="draft">Draft</option>
-                    <option value="published">Published</option>
-                </select>
-            </div>
-            
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">
-                    <i data-lucide="save"></i>
-                    Create Event
-                </button>
-                <a href="<?= BASE_PATH ?>/events" class="btn btn-secondary">
-                    <i data-lucide="x"></i>
-                    Cancel
-                </a>
+            <!-- Event Status Section -->
+            <div class="event-section">
+                <h3 class="event-section-title">Event Status</h3>
+                
+                <div class="event-form-field">
+                    <label for="status" class="event-form-label">
+                        Publication Status <span class="required">*</span>
+                    </label>
+                    <select id="status" name="status" class="event-form-select event-form-select-limited" required>
+                        <option value="draft">Draft</option>
+                        <option value="published">Published</option>
+                    </select>
+                </div>
             </div>
         </form>
     </div>
@@ -93,6 +383,20 @@
     setTimeout(() => {
         lucide.createIcons();
     }, 100);
+    
+    // Auto-dismiss flash messages after 5 seconds
+    document.addEventListener('DOMContentLoaded', function() {
+        const flashMessages = document.querySelectorAll('.flash-message');
+        flashMessages.forEach(function(message) {
+            setTimeout(function() {
+                message.style.transition = 'opacity 0.3s ease-out';
+                message.style.opacity = '0';
+                setTimeout(function() {
+                    message.remove();
+                }, 300);
+            }, 5000);
+        });
+    });
     
     // Image preview
     document.getElementById('image').addEventListener('change', function(e) {
@@ -125,9 +429,4 @@
             document.getElementById('imagePreview').style.display = 'none';
         }
     });
-    
-    // Set minimum date to today
-    const dateInput = document.getElementById('event_date');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.setAttribute('min', today);
 </script>
