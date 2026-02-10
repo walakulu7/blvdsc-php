@@ -4,7 +4,7 @@ require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 
 $title = 'Our Story';
-$subtitle = 'The journey of BLVD Coffee Co.';
+$subtitle = 'The journey of BLVD Specialty Coffee';
 $backgroundImage = 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop';
 require_once 'includes/page-header.php';
 ?>
@@ -17,7 +17,7 @@ require_once 'includes/page-header.php';
                 
                 <div class="prose prose-lg mx-auto">
                     <p>
-                        BLVD Coffee Co. was born from a passion for exceptional coffee and a desire to create a welcoming space for our community. Founded in 2015 by coffee enthusiasts Michael and Sarah Thompson, BLVD has grown from a small corner cafe to a beloved local institution.
+                        BLVD Specialty Coffee was born from a passion for exceptional coffee and a desire to create a welcoming space for our community. Founded in 2015 by coffee enthusiasts Michael and Sarah Thompson, BLVD has grown from a small corner cafe to a beloved local institution.
                     </p>
                     
                     <p>
@@ -26,11 +26,11 @@ require_once 'includes/page-header.php';
                     
                     <div class="my-10">
                         <img 
-                            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=2071&auto=format&fit=crop" 
+                            src="assets/images/about-1.jpg" 
                             alt="BLVD Coffee founders" 
                             class="w-full h-auto rounded-sm"
                         >
-                        <p class="text-sm text-center mt-2 text-blvd-charcoal/70">Michael and Sarah Thompson, Founders of BLVD Coffee Co.</p>
+                        <p class="text-sm text-center mt-2 text-blvd-charcoal/70">Jayangi and Harsha, Founders of BLVD Specialty Coffee</p>
                     </div>
                     
                     <h3 class="font-display text-2xl font-light mb-4">Our Philosophy</h3>
@@ -53,7 +53,7 @@ require_once 'includes/page-header.php';
                     
                     <div class="my-10">
                         <img 
-                            src="https://images.unsplash.com/photo-1518655061710-5ccf392c275a?q=80&w=2069&auto=format&fit=crop" 
+                            src="assets/images/team.jpeg" 
                             alt="BLVD Coffee Team" 
                             class="w-full h-auto rounded-sm"
                         >
@@ -66,7 +66,7 @@ require_once 'includes/page-header.php';
                     </p>
                     
                     <p>
-                        Visit us at BLVD Coffee Co. and become part of our story.
+                        Visit us at BLVD Specialty Coffee and become part of our story.
                     </p>
                 </div>
             </div>

@@ -4,8 +4,9 @@ require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 
 $title = 'Reserve a Table';
-$subtitle = 'Book your spot at BLVD Coffee';
-$backgroundImage = 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop';
+$subtitle = 'Book your spot at BLVD Specialty Coffee';
+//$backgroundImage = 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop';
+$backgroundImage = 'assets/images/reserve.jpg';
 require_once 'includes/page-header.php';
 
 $timeSlots = [
@@ -20,7 +21,7 @@ $timeSlots = [
                 <div class="text-center mb-12">
                     <h2 class="font-display text-3xl md:text-4xl font-light mb-6">Make a Reservation</h2>
                     <p class="text-blvd-charcoal/80 leading-relaxed">
-                        Reserve your table at BLVD Coffee. Whether you're planning a business meeting, catching up with friends, or enjoying a quiet moment with a book, we'll make sure you have the perfect spot.
+                        Reserve your table at BLVD Specialty Coffee. Whether you're planning a business meeting, catching up with friends, or enjoying a quiet moment with a book, we'll make sure you have the perfect spot.
                     </p>
                 </div>
                 

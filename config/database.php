@@ -1,5 +1,5 @@
 <?php
-// Database configuration for BLVD Coffee Co.
+// Database configuration for BLVD Specialty Coffee
 
 // Database credentials
 define('DB_HOST', 'localhost');

@@ -6,6 +6,7 @@ $menu_items = [
     ['name' => 'MENU', 'path' => 'menu.php', 'page' => 'menu'],
     ['name' => 'EVENTS', 'path' => 'events.php', 'page' => 'events'],
     ['name' => 'RESERVE', 'path' => 'reserve.php', 'page' => 'reserve'],
+    ['name' => 'HIGH TEA', 'path' => 'high_tea.php', 'page' => 'high_tea'],
     ['name' => 'CONTACT', 'path' => 'contact.php', 'page' => 'contact'],
 ];
 ?>

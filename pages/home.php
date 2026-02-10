@@ -35,7 +35,7 @@
         <span class="inline-block text-yellow-600 text-sm uppercase tracking-wider mb-4">Our Story</span>
         <h2 class="font-display text-3xl md:text-4xl font-light mb-6">Crafted With Passion</h2>
         <p class="text-gray-600 mb-6 leading-relaxed">
-          Since 2015, BLVD Coffee Co. has been Melbourne's premier destination for exceptional coffee experiences. We source our beans directly from sustainable farms around the world and roast them in small batches to ensure maximum freshness and flavor.
+          Since 2015, BLVD Specialty Coffee has been Melbourne's premier destination for exceptional coffee experiences. We source our beans directly from sustainable farms around the world and roast them in small batches to ensure maximum freshness and flavor.
         </p>
         <p class="text-gray-600 mb-8 leading-relaxed">
           Our commitment to quality extends beyond our coffee. We partner with local artisans for our pastries and work with nearby farms for our fresh ingredients. Every cup and every bite tells a story of dedication to craftsmanship.
@@ -43,8 +43,13 @@
         <a href="/about" class="btn-primary">LEARN MORE</a>
       </div>
       <div class="relative">
-        <img
+        <!-- <img
           src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop"
+          alt="BLVD Coffee interior"
+          class="w-full h-96 object-cover rounded-sm"
+        /> -->
+        <img
+          src="assets/images/our-story.jpeg"
           alt="BLVD Coffee interior"
           class="w-full h-96 object-cover rounded-sm"
         />

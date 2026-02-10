@@ -1,4 +1,4 @@
--- BLVD Coffee Co. Database Schema
+-- BLVD Specialty Coffee Database Schema
 -- Run this script to set up the MySQL database
 
 CREATE DATABASE IF NOT EXISTS blvd_coffee;

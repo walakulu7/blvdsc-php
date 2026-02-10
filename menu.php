@@ -5,7 +5,8 @@ require_once 'includes/navbar.php';
 
 $title = 'Our Menu';
 $subtitle = 'Discover our carefully crafted selection';
-$backgroundImage = 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=2070&auto=format&fit=crop';
+//$backgroundImage = 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=2070&auto=format&fit=crop';
+$backgroundImage = 'assets/images/menu.png';
 require_once 'includes/page-header.php';
 ?>
 

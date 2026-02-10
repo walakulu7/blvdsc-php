@@ -3,9 +3,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
                 <img 
-                    src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=2070&auto=format&fit=crop" 
+                    src="<?php echo BASE_URL; ?>/assets/images/our-story.jpeg" 
                     alt="BLVD Coffee Interior" 
-                    class="w-full h-auto object-cover rounded-sm"
+                    class="w-full h-96 object-cover rounded-sm"
                 >
             </div>
             

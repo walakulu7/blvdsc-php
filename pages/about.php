@@ -15,7 +15,7 @@
         Our Story
       </h1>
       <p class="text-lg md:text-xl font-light max-w-2xl mx-auto">
-        The journey of BLVD Coffee Co.
+        The journey of BLVD Specialty Coffee
       </p>
     </div>
   </div>
@@ -30,7 +30,7 @@
         
         <div class="prose prose-lg mx-auto">
           <p>
-            BLVD Coffee Co. was born from a passion for exceptional coffee and a desire to create a welcoming space for our community. Founded in 2015 by coffee enthusiasts Michael and Sarah Thompson, BLVD has grown from a small corner cafe to a beloved local institution.
+            BLVD Specialty Coffee was born from a passion for exceptional coffee and a desire to create a welcoming space for our community. Founded in 2015 by coffee enthusiasts Michael and Sarah Thompson, BLVD has grown from a small corner cafe to a beloved local institution.
           </p>
           
           <p>
@@ -43,7 +43,7 @@
               alt="BLVD Coffee founders" 
               class="w-full h-auto rounded-sm"
             />
-            <p class="text-sm text-center mt-2 text-gray-600">Michael and Sarah Thompson, Founders of BLVD Coffee Co.</p>
+            <p class="text-sm text-center mt-2 text-gray-600">Michael and Sarah Thompson, Founders of BLVD Specialty Coffee</p>
           </div>
           
           <h3 class="font-display text-2xl font-light mb-4">Our Philosophy</h3>
@@ -79,7 +79,7 @@
           </p>
           
           <p>
-            Visit us at BLVD Coffee Co. and become part of our story.
+            Visit us at BLVD Specialty Coffee and become part of our story.
           </p>
         </div>
       </div>

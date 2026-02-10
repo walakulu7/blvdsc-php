@@ -1,5 +1,5 @@
 <?php
-// BLVD Coffee Co. - Reservation Form Handler
+// BLVD Specialty Coffee - Reservation Form Handler
 
 require_once '../config/config.php';
 require_once '../config/database.php';

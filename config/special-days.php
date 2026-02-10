@@ -1,5 +1,5 @@
 <?php
-// Special Days Configuration for BLVD Coffee Co.
+// Special Days Configuration for BLVD Specialty Coffee
 // Determines reservation time slots based on special days
 
 /**
