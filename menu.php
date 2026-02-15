@@ -1,6 +1,8 @@
 <?php
 $page_title = 'Our Menu';
+$page_description = 'Explore our specialty coffee menu featuring gluten-free pastries, vegan milk alternatives, and vegetarian options. Browse coffee, tea, breakfast, and kids menus at BLVD Canning Vale.';
 require_once 'includes/header.php';
+require_once 'includes/menu_schema.json.php';
 require_once 'includes/navbar.php';
 
 $title = 'Our Menu';
@@ -93,7 +95,7 @@ require_once 'includes/page-header.php';
                                 <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; margin-bottom: 24px; color: #2d2d2d;">
                                     Menu <span style="color: #c9a870;">BLVD Specialty Coffee</span>
                                 </h3>
-                                <img src="assets/images/menu-coffee-tea.webp" alt="Coffee & Tea Menu" onclick="openModal(this.src)">
+                                <img src="assets/images/menu-coffee-tea.webp" alt="Coffee & Tea Menu - Vegan milk alternatives & specialty drinks available at BLVD Canning Vale" onclick="openModal(this.src)">
                             </div>
                         </div>
 
@@ -103,7 +105,7 @@ require_once 'includes/page-header.php';
                                 <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; margin-bottom: 24px; color: #2d2d2d;">
                                     Menu <span style="color: #c9a870;">BLVD Specialty Coffee</span>
                                 </h3>
-                                <img src="assets/images/menu-other-beverages.webp" alt="Other Beverages Menu" onclick="openModal(this.src)">
+                                <img src="assets/images/menu-other-beverages.webp" alt="Other Beverages Menu - Vegan smoothies, shakes & specialty drinks" onclick="openModal(this.src)">
                             </div>
                         </div>
 
@@ -113,7 +115,7 @@ require_once 'includes/page-header.php';
                                 <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; margin-bottom: 24px; color: #2d2d2d;">
                                     Menu <span style="color: #c9a870;">BLVD Specialty Coffee</span>
                                 </h3>
-                                <img src="assets/images/menu-all-daybreakfast.webp" alt="All Day Breakfast Menu" onclick="openModal(this.src)">
+                                <img src="assets/images/menu-all-daybreakfast.webp" alt="All Day Breakfast Menu - Gluten-free, vegan & vegetarian options available" onclick="openModal(this.src)">
                             </div>
                         </div>
 
@@ -123,7 +125,7 @@ require_once 'includes/page-header.php';
                                 <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; margin-bottom: 24px; color: #2d2d2d;">
                                     Menu <span style="color: #c9a870;">BLVD Specialty Coffee</span>
                                 </h3>
-                                <img src="assets/images/menu-kids-seasonal.webp" alt="Kids & Seasonal Menu" onclick="openModal(this.src)">
+                                <img src="assets/images/menu-kids-seasonal.webp" alt="Kids & Seasonal Menu - Family-friendly options with dietary accommodations" onclick="openModal(this.src)">
                             </div>
                         </div>
                     </div>

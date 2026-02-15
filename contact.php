@@ -1,6 +1,8 @@
 <?php
 $page_title = 'Contact Us';
+$page_description = 'Contact BLVD Specialty Coffee in Canning Vale Perth. Inquire about our pet-friendly alfresco, gluten-free menu, catering, and private events. Open weekdays 7AM-1:30PM, weekends 8AM-2PM.';
 require_once 'includes/header.php';
+require_once 'includes/contact_schema.json.php';
 require_once 'includes/navbar.php';
 
 $title = 'Contact Us';
@@ -198,7 +200,7 @@ require_once 'includes/page-header.php';
                     <div>
                         <img 
                             src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=2070&auto=format&fit=crop" 
-                            alt="BLVD Coffee interior"
+                            alt="BLVD Coffee interior - Cozy cafe seating in Canning Vale with WiFi"
                             class="w-full h-64 object-cover rounded-sm mb-4"
                         >
                         <h3 class="font-medium text-lg mb-2">Cozy Seating</h3>
@@ -210,7 +212,7 @@ require_once 'includes/page-header.php';
                     <div>
                         <img 
                             src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=2070&auto=format&fit=crop" 
-                            alt="BLVD Coffee barista station"
+                            alt="BLVD Coffee barista station - Specialty coffee preparation with vegan milk options"
                             class="w-full h-64 object-cover rounded-sm mb-4"
                         >
                         <h3 class="font-medium text-lg mb-2">Barista Bar</h3>
@@ -222,7 +224,7 @@ require_once 'includes/page-header.php';
                     <div>
                         <img 
                             src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop" 
-                            alt="BLVD Coffee outdoor seating"
+                            alt="BLVD Coffee outdoor seating - Pet-friendly alfresco patio in Canning Vale Perth"
                             class="w-full h-64 object-cover rounded-sm mb-4"
                         >
                         <h3 class="font-medium text-lg mb-2">Outdoor Patio</h3>

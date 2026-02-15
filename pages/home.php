@@ -15,7 +15,7 @@
         Specialty Coffee & Good Vibes
       </h1>
       <p class="text-lg mb-8 font-light">
-        Artisanal coffee, freshly baked goods, and a welcoming atmosphere in the heart of the city.
+        Artisanal coffee, freshly baked goods, and a welcoming atmosphere in the heart of Canning Vale.
       </p>
       <div class="flex space-x-4">
         <a href="/menu" class="btn-primary">OUR MENU</a>
@@ -137,7 +137,7 @@
         <span class="inline-block text-yellow-600 text-sm uppercase tracking-wider mb-4">Find Us</span>
         <h2 class="font-display text-3xl md:text-4xl font-light mb-6">Visit Our Cafe</h2>
         <p class="text-gray-600 mb-6 leading-relaxed">
-          Located in the heart of Melbourne's CBD, our cafe offers a perfect blend of urban energy and cozy atmosphere. Whether you're grabbing a quick coffee or settling in for a longer visit, our space is designed to be your home away from home.
+          Located in the heart of Canning Vale, our cafe offers a perfect blend of urban energy and cozy atmosphere. Whether you're grabbing a quick coffee or settling in for a longer visit, our space is designed to be your home away from home.
         </p>
         <div class="space-y-4 mb-8">
           <div class="flex items-center">

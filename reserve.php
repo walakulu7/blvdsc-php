@@ -1,5 +1,6 @@
 <?php
 $page_title = 'Reserve a Table';
+$page_description = 'Reserve a table at BLVD Specialty Coffee in Canning Vale. Book indoor seating or our pet-friendly shaded alfresco area. Gluten-free, vegan, and vegetarian menu available.';
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 

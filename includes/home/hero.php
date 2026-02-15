@@ -14,7 +14,7 @@
                 Specialty Coffee & Good Vibes
             </h1>
             <p class="text-lg mb-8 font-light">
-                Artisanal coffee, freshly baked goods, and a welcoming atmosphere in the heart of the city.
+                Artisanal coffee, freshly baked goods, and a welcoming pet-friendly atmosphere in the heart of Canning Vale. Gluten-free, vegan & vegetarian options available.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="<?php echo BASE_URL; ?>/high_tea.php" class="px-6 py-3 border border-white text-white text-sm uppercase tracking-wider font-medium transition-all hover:bg-white/20">

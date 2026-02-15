@@ -5,8 +5,44 @@
                 <span class="inline-block text-blvd-gold text-sm uppercase tracking-wider mb-4">Visit Us</span>
                 <h2 class="font-display text-3xl md:text-4xl font-light mb-6">Our Location</h2>
                 <p class="text-blvd-charcoal/80 mb-8 leading-relaxed">
-                    Located in the heart of the city, BLVD is more than just a coffee shop — it's a community hub where people connect, work, and relax in a welcoming environment.
+                    Located in the heart of Canning Vale, BLVD is more than just a coffee shop — it's a community hub where people connect, work, and relax in a welcoming environment.
                 </p>
+
+                <div class="mb-8">
+                    <h4 class="font-medium mb-4 text-blvd-charcoal">Our Features</h4>
+                    <ul class="space-y-2 text-blvd-charcoal/80 text-sm">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-blvd-gold mr-2 flex-shrink-0" style="max-width: 16px; max-height: 16px; min-width: 16px; min-height: 16px;" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Pet-friendly shaded alfresco
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-blvd-gold mr-2 flex-shrink-0" style="max-width: 16px; max-height: 16px; min-width: 16px; min-height: 16px;" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Gluten-free menu available
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-blvd-gold mr-2 flex-shrink-0" style="max-width: 16px; max-height: 16px; min-width: 16px; min-height: 16px;" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Vegan & vegetarian options
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-blvd-gold mr-2 flex-shrink-0" style="max-width: 16px; max-height: 16px; min-width: 16px; min-height: 16px;" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Free WiFi
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-blvd-gold mr-2 flex-shrink-0" style="max-width: 16px; max-height: 16px; min-width: 16px; min-height: 16px;" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Ample parking
+                        </li>
+                    </ul>
+                </div>
 
                 <div class="space-y-6 mb-8">
                     <div class="flex items-start">
@@ -48,7 +84,7 @@
                 <!-- This would typically be a Google Maps embed, using a placeholder image for now -->
                 <img 
                     src="https://images.unsplash.com/photo-1595867818082-083862f3d630?q=80&w=2070&auto=format&fit=crop" 
-                    alt="BLVD Coffee location map"
+                    alt="BLVD Coffee location map - Canning Vale Perth with pet-friendly outdoor seating"
                     class="w-full h-full object-cover"
                 >
             </div>

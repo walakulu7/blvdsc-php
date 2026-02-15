@@ -1,5 +1,6 @@
 <?php
 $page_title = 'Our Story';
+$page_description = 'Founded in 2019, BLVD is a pet-friendly specialty coffee cafe in Canning Vale serving gluten-free, vegan, and vegetarian options. Discover our passion for quality coffee and community.';
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 
@@ -27,7 +28,7 @@ require_once 'includes/page-header.php';
                     <div class="my-10">
                         <img 
                             src="assets/images/about-1.jpg" 
-                            alt="BLVD Coffee founders" 
+                            alt="BLVD Coffee founders - Jayangi and Harsha, creators of pet-friendly cafe in Canning Vale" 
                             class="w-full h-auto rounded-sm"
                         >
                         <p class="text-sm text-center mt-2 text-blvd-charcoal/70">Jayangi and Harsha, Founders of BLVD Specialty Coffee</p>
@@ -54,7 +55,7 @@ require_once 'includes/page-header.php';
                     <div class="my-10">
                         <img 
                             src="assets/images/team.jpeg" 
-                            alt="BLVD Coffee Team" 
+                            alt="BLVD Coffee Team - dedicated baristas serving specialty coffee in Canning Vale" 
                             class="w-full h-auto rounded-sm"
                         >
                         <p class="text-sm text-center mt-2 text-blvd-charcoal/70">Our dedicated team of coffee professionals</p>

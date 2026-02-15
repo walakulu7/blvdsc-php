@@ -1,5 +1,6 @@
 <?php
 $page_title = 'Order Online';
+$page_description = 'Order specialty coffee, gluten-free pastries, and vegan options online from BLVD Canning Vale. Skip the line with online ordering and pickup. Coffee beans and gift cards available.';
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 

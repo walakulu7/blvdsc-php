@@ -1,5 +1,6 @@
 <?php
 $page_title = 'High Tea Reservations';
+$page_description = 'Book High Tea at BLVD Specialty Coffee - $39.95pp. Weekend reservations with gluten-free and vegan options available. Pet-friendly alfresco seating in Perth. Reserve Friday-Sunday.';
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 

@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
 $page_title = isset($page_title) ? $page_title . ' | ' . SITE_NAME : SITE_NAME;
+$meta_description = isset($page_description) ? $page_description : SITE_DESCRIPTION;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,8 +9,9 @@ $page_title = isset($page_title) ? $page_title . ' | ' . SITE_NAME : SITE_NAME;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($page_title); ?></title>
-    <meta name="description" content="<?php echo htmlspecialchars(SITE_DESCRIPTION); ?>">
+    <meta name="description" content="<?php echo htmlspecialchars($meta_description); ?>">
     <meta name="author" content="BLVD">
+    <meta name="keywords" content="<?php echo SITE_KEYWORDS; ?>">
     <link rel="icon" type="image/x-icon" href="<?php echo BASE_URL; ?>/assets/images/favicon.ico">
 
     <!-- Google Fonts -->
@@ -22,7 +24,7 @@ $page_title = isset($page_title) ? $page_title . ' | ' . SITE_NAME : SITE_NAME;
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="<?php echo htmlspecialchars($page_title); ?>">
-    <meta property="og:description" content="<?php echo htmlspecialchars(SITE_DESCRIPTION); ?>">
+    <meta property="og:description" content="Pet-friendly cafe with gluten-free, vegan & vegetarian options in Canning Vale">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
 
@@ -30,5 +32,8 @@ $page_title = isset($page_title) ? $page_title . ' | ' . SITE_NAME : SITE_NAME;
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@blvdcoffee">
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+    
+    <!-- Schema.org Structured Data -->
+    <?php include __DIR__ . '/schema.json.php'; ?>
 </head>
 <body>

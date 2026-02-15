@@ -6,6 +6,7 @@ require_once 'includes/navbar.php';
 
 <main>
     <?php require_once 'includes/home/hero.php'; ?>
+    <?php require_once 'includes/home/features.php'; ?>
     <?php require_once 'includes/home/about.php'; ?>
     <?php require_once 'includes/home/menu.php'; ?>
     <?php require_once 'includes/home/location.php'; ?>

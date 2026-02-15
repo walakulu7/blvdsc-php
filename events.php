@@ -1,6 +1,8 @@
 <?php
 $page_title = 'Events & Workshops';
+$page_description = 'Join coffee workshops, cupping sessions, latte art classes, and live music events at BLVD Canning Vale. Pet-friendly venue perfect for private events in Perth.';
 require_once 'includes/header.php';
+require_once 'includes/events_schema.json.php';
 require_once 'includes/navbar.php';
 
 $title = 'Events & Workshops';
@@ -71,7 +73,7 @@ $events = [
                             <div class="h-64 rounded-sm overflow-hidden">
                                 <img 
                                     src="<?php echo htmlspecialchars($event['image']); ?>" 
-                                    alt="<?php echo htmlspecialchars($event['title']); ?>"
+                                    alt="<?php echo htmlspecialchars($event['title']); ?> at BLVD Canning Vale"
                                     class="w-full h-full object-cover"
                                 >
                             </div>
@@ -122,7 +124,7 @@ $events = [
                     <div>
                         <img 
                             src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop" 
-                            alt="Private event at BLVD Coffee"
+                            alt="Private event at BLVD Coffee - Pet-friendly venue for celebrations in Canning Vale Perth"
                             class="w-full h-auto rounded-sm"
                         >
                     </div>

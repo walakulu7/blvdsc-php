@@ -2,7 +2,8 @@
 // Site Configuration
 define('SITE_NAME', 'BLVD Specialty Coffee');
 define('SITE_TAGLINE', 'Coffee Co.');
-define('SITE_DESCRIPTION', 'Specialty coffee, freshly baked goods, and a welcoming atmosphere in the heart of Melbourne');
+define('SITE_DESCRIPTION', 'Pet-friendly specialty coffee cafe in Canning Vale with gluten-free, vegan, and vegetarian options. Shaded alfresco seating welcomes dogs.');
+define('SITE_KEYWORDS', 'pet friendly cafe, dog friendly cafe, gluten free cafe, vegan cafe, vegetarian cafe, specialty coffee, Canning Vale, Perth, alfresco dining');
 
 // Contact Information
 define('CONTACT_ADDRESS', '96 Waratah Boulevard');
