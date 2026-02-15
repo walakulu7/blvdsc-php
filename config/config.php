@@ -11,13 +11,13 @@ define('CONTACT_STATE', 'WA');
 define('CONTACT_ZIP', '6155');
 define('CONTACT_COUNTRY', 'Australia');
 define('CONTACT_PHONE', '+61 401 201 536');
-define('CONTACT_EMAIL', 'bookingsblvd@gmail.com');
+define('CONTACT_EMAIL', 'lankawebnets@gmail.com');
 
 // Department Emails
-define('EMAIL_CATERING', 'bookingsblvd@gmail.com');
-define('EMAIL_EVENTS', 'bookingsblvd@gmail.com');
-define('EMAIL_CAREERS', 'bookingsblvd@gmail.com');
-define('EMAIL_MEDIA', 'bookingsblvd@gmail.com');
+define('EMAIL_CATERING', 'lankawebnets@gmail.com');
+define('EMAIL_EVENTS', 'lankawebnets@gmail.com');
+define('EMAIL_CAREERS', 'lankawebnets@gmail.com');
+define('EMAIL_MEDIA', 'lankawebnets@gmail.com');
 
 // Social Media
 define('SOCIAL_FACEBOOK', 'https://facebook.com/blvdcoffee');

@@ -293,7 +293,7 @@ if ($errorMessage):
         
         <div class="event-page-header-right">
             <form method="POST" action="<?= BASE_PATH ?>/events/<?= $event['id'] ?>/delete" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this event? This action cannot be undone.');">
-                <input type="hidden" name="_csrf_token" value="<?= Session::get('csrf_token') ?>">
+                <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
                 <button type="submit" class="event-btn event-btn-danger">
                     <i data-lucide="trash-2"></i>
                     Delete Event
@@ -310,7 +310,7 @@ if ($errorMessage):
     <!-- Edit Event Form -->
     <div class="event-form-card">
         <form method="POST" action="<?= BASE_PATH ?>/events/<?= $event['id'] ?>" enctype="multipart/form-data" id="eventForm">
-            <input type="hidden" name="_csrf_token" value="<?= Session::get('csrf_token') ?>">
+            <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
             
             <!-- Event Information Section -->
             <div class="event-section">

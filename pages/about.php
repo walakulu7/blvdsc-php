@@ -30,7 +30,7 @@
         
         <div class="prose prose-lg mx-auto">
           <p>
-            BLVD Specialty Coffee was born from a passion for exceptional coffee and a desire to create a welcoming space for our community. Founded in 2015 by coffee enthusiasts Michael and Sarah Thompson, BLVD has grown from a small corner cafe to a beloved local institution.
+            BLVD Specialty Coffee was born from a passion for exceptional coffee and a desire to create a welcoming space for our community. Founded in 2019 by coffee enthusiasts Michael and Sarah Thompson, BLVD has grown from a small corner cafe to a beloved local institution.
           </p>
           
           <p>

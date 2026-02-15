@@ -1,11 +1,11 @@
 <?php
 $instagramPosts = [
-    ['id' => 1, 'image' => 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2070&auto=format&fit=crop', 'alt' => 'Coffee art latte'],
-    ['id' => 2, 'image' => 'https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=2067&auto=format&fit=crop', 'alt' => 'Coffee beans'],
-    ['id' => 3, 'image' => 'https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?q=80&w=1974&auto=format&fit=crop', 'alt' => 'BLVD interior'],
-    ['id' => 4, 'image' => 'https://images.unsplash.com/photo-1579888944880-d98341245702?q=80&w=2070&auto=format&fit=crop', 'alt' => 'Pastries and coffee'],
-    ['id' => 5, 'image' => 'https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?q=80&w=2069&auto=format&fit=crop', 'alt' => 'Coffee brewing'],
-    ['id' => 6, 'image' => 'https://images.unsplash.com/photo-1525193612562-0ec53b0e5d7c?q=80&w=2070&auto=format&fit=crop', 'alt' => 'Coffee shop atmosphere'],
+    ['id' => 1, 'image' => 'assets/images/social/social1.jpg', 'alt' => 'Coffee art latte'],
+    ['id' => 2, 'image' => 'assets/images/social/social2.jpg', 'alt' => 'Coffee beans'],
+    ['id' => 3, 'image' => 'assets/images/social/social3.jpg', 'alt' => 'BLVD interior'],
+    ['id' => 4, 'image' => 'assets/images/social/social4.jpg', 'alt' => 'Pastries and coffee'],
+    ['id' => 5, 'image' => 'assets/images/social/social5.jpg', 'alt' => 'Coffee brewing'],
+    ['id' => 6, 'image' => 'assets/images/social/social7.jpg', 'alt' => 'Coffee shop atmosphere'],
 ];
 ?>
 <section class="section-padding bg-blvd-beige">

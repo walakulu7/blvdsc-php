@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?? 'Dashboard' ?> - BLVD Coffee Admin</title>
+    <link rel="icon" type="image/x-icon" href="<?= BASE_PATH ?>/../assets/images/favicon.ico">
     <link rel="stylesheet" href="<?= BASE_PATH ?>/public/css/admin.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -145,14 +146,16 @@
             <!-- Page Content -->
             <div class="admin-content">
                 <?php if (Session::flash('success')): ?>
-                <div class="alert alert-success">
+                <div class="alert alert-success" id="successAlert">
                     <?= htmlspecialchars(Session::flash('success')) ?>
+                    <button onclick="this.parentElement.remove()" class="alert-close">&times;</button>
                 </div>
                 <?php endif; ?>
                 
                 <?php if (Session::flash('error')): ?>
-                <div class="alert alert-error">
+                <div class="alert alert-error" id="errorAlert">
                     <?= htmlspecialchars(Session::flash('error')) ?>
+                    <button onclick="this.parentElement.remove()" class="alert-close">&times;</button>
                 </div>
                 <?php endif; ?>
                 
@@ -185,6 +188,22 @@
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('mobile-open');
         }
+        
+        // Auto-dismiss flash messages after 5 seconds
+        setTimeout(function() {
+            const successAlert = document.getElementById('successAlert');
+            const errorAlert = document.getElementById('errorAlert');
+            
+            if (successAlert) {
+                successAlert.style.opacity = '0';
+                setTimeout(() => successAlert.remove(), 300);
+            }
+            
+            if (errorAlert) {
+                errorAlert.style.opacity = '0';
+                setTimeout(() => errorAlert.remove(), 300);
+            }
+        }, 5000);
     </script>
     
     <style>
@@ -224,10 +243,33 @@
         
         /* Alert styles */
         .alert {
-            padding: 16px 20px;
+            position: relative;
+            padding: 16px 40px 16px 20px;
             border-radius: 12px;
             margin-bottom: 24px;
             font-size: 14px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .alert-close {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .alert-close:hover {
+            opacity: 1;
         }
         
         .alert-success {
@@ -236,10 +278,18 @@
             border: 1px solid #6ee7b7;
         }
         
+        .alert-success .alert-close {
+            color: #065f46;
+        }
+        
         .alert-error {
             background: #fee2e2;
             color: #991b1b;
             border: 1px solid #fecaca;
+        }
+        
+        .alert-error .alert-close {
+            color: #991b1b;
         }
     </style>
 </body>

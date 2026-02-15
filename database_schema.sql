@@ -32,6 +32,22 @@ CREATE TABLE IF NOT EXISTS reservations (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- High Tea Reservations table
+CREATE TABLE IF NOT EXISTS high_tea_reservations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(50) NOT NULL,
+    date DATE NOT NULL,
+    time VARCHAR(20) NOT NULL,
+    party_size INT NOT NULL,
+    package_type VARCHAR(50) DEFAULT 'classic',
+    total_price DECIMAL(10, 2) NOT NULL,
+    special_requests TEXT,
+    status ENUM('pending', 'confirmed', 'cancelled') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Contact messages table
 CREATE TABLE IF NOT EXISTS contact_messages (
     id INT AUTO_INCREMENT PRIMARY KEY,

@@ -17,7 +17,7 @@
                     </a>
                 </div>
                 <p class="text-sm text-gray-400 mb-6">
-                    Crafting exceptional coffee experiences since 2015. Our mission is to serve quality coffee in a welcoming space where community thrives.
+                    Crafting exceptional coffee experiences since 2019. Our mission is to serve quality coffee in a welcoming space where community thrives.
                 </p>
                 <div class="flex space-x-4">
                     <a href="<?php echo SOCIAL_FACEBOOK; ?>" class="text-white hover:text-blvd-gold transition-colors">

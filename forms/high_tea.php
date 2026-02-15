@@ -48,8 +48,14 @@ if (empty($date)) {
     $errors[] = 'Date is required';
 } elseif (!strtotime($date)) {
     $errors[] = 'Please enter a valid date';
-} elseif (strtotime($date) < strtotime('today')) {
-    $errors[] = 'Date must be in the future';
+} elseif (strtotime($date) < strtotime('+2 days midnight')) {
+    $errors[] = 'High Tea must be booked at least 2 days in advance (preparation time)';
+} else {
+    // Check if day is Fri (5), Sat (6), or Sun (0)
+    $dayOfWeek = date('w', strtotime($date));
+    if (!in_array($dayOfWeek, [0, 5, 6])) { // 0=Sun, 5=Fri, 6=Sat
+        $errors[] = 'High Tea is only available on Fridays, Saturdays, and Sundays';
+    }
 }
 
 if (empty($time)) {
@@ -85,6 +91,9 @@ try {
     // Calculate total price
     $totalPrice = $people * 39.95;
     
+    // Convert time to 24-hour format for database (to support TIME column type)
+    $dbTime = date('H:i:s', strtotime($time));
+    
     // Save to database
     $stmt = $pdo->prepare("
         INSERT INTO high_tea_reservations 
@@ -97,7 +106,7 @@ try {
         $email,
         $phone,
         $date,
-        $time,
+        $dbTime,
         $people,
         $totalPrice,
         $additionalNotes

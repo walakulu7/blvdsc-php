@@ -41,7 +41,7 @@ if ($successMessage || $errorMessage || $warningMessage):
     </div>
     
     <form method="POST" action="<?= BASE_PATH ?>/hightea/<?= $booking['id'] ?>/status" style="display: inline-block;">
-        <input type="hidden" name="_csrf_token" value="<?= Session::get('csrf_token') ?>">
+        <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
         <select name="status" onchange="if(confirm('Update status to ' + this.value + '?')) this.form.submit();" 
                 class="badge badge-<?= $booking['status'] === 'confirmed' ? 'success' : ($booking['status'] === 'pending' ? 'warning' : ($booking['status'] === 'cancelled' ? 'error' : 'info')) ?>" 
                 style="padding: 8px 16px; cursor: pointer; border: none; font-size: var(--text-sm);">

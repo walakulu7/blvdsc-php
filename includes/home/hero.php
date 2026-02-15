@@ -17,17 +17,18 @@
                 Artisanal coffee, freshly baked goods, and a welcoming atmosphere in the heart of the city.
             </p>
             <div class="flex flex-wrap gap-4">
+                <a href="<?php echo BASE_URL; ?>/high_tea.php" class="px-6 py-3 border border-white text-white text-sm uppercase tracking-wider font-medium transition-all hover:bg-white/20">
+                    BOOK HIGH TEA
+                </a>
+                <a href="<?php echo BASE_URL; ?>/reserve.php" class="px-6 py-3 border border-white text-white text-sm uppercase tracking-wider font-medium transition-all hover:bg-white/20">
+                    <span class="md:hidden">RESERVE A TABLE</span>
+                    <span class="hidden md:inline">FIND US</span>
+                </a>
                 <a href="https://blvdsc.square.site/" class="btn-primary">
                     <span class="md:hidden">ORDER ONLINE</span>
                     <span class="hidden md:inline">OUR MENU</span>
                 </a>
-                <a href="<?php echo BASE_URL; ?>/high_tea.php" class="px-6 py-3 border border-white text-white text-sm uppercase tracking-wider font-medium transition-all hover:bg-white/20">
-                    HIGH TEA
-                </a>
-                <a href="<?php echo BASE_URL; ?>/reserve.php" class="px-6 py-3 border border-white text-white text-sm uppercase tracking-wider font-medium transition-all hover:bg-white/20">
-                    <span class="md:hidden">RESERVE</span>
-                    <span class="hidden md:inline">FIND US</span>
-                </a>
+                
             </div>
         </div>
     </div>

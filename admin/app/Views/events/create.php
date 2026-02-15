@@ -291,7 +291,7 @@ if ($errorMessage):
     <!-- Create Event Form -->
     <div class="event-form-card">
         <form method="POST" action="<?= BASE_PATH ?>/events" enctype="multipart/form-data" id="eventForm">
-            <input type="hidden" name="_csrf_token" value="<?= Session::get('csrf_token') ?>">
+            <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
             
             <!-- Event Information Section -->
             <div class="event-section">

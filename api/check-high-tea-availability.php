@@ -20,6 +20,20 @@ if (empty($date)) {
     exit;
 }
 
+// Check if day is Fri (5), Sat (6), or Sun (0)
+$dayOfWeek = date('w', strtotime($date));
+if (!in_array($dayOfWeek, [0, 5, 6])) {
+    echo json_encode([
+        'success' => true,
+        'date' => $date,
+        'booked' => 0,
+        'available' => 0,
+        'maxCapacity' => 8,
+        'message' => 'High Tea is only available on Fridays, Saturdays, and Sundays'
+    ]);
+    exit;
+}
+
 try {
     // Check current bookings for the date
     $stmt = $pdo->prepare("

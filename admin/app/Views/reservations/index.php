@@ -8,27 +8,114 @@ if ($successMessage || $errorMessage || $warningMessage):
 ?>
 <div class="flash-messages">
     <?php if ($successMessage): ?>
-    <div class="flash-message flash-success">
+    <div class="flash-message flash-success" id="successAlert">
         <i data-lucide="check-circle"></i>
         <?= htmlspecialchars($successMessage) ?>
+        <button onclick="this.parentElement.remove()" class="alert-close">&times;</button>
     </div>
     <?php endif; ?>
     
     <?php if ($errorMessage): ?>
-    <div class="flash-message flash-error">
+    <div class="flash-message flash-error" id="errorAlert">
         <i data-lucide="x-circle"></i>
         <?= htmlspecialchars($errorMessage) ?>
+        <button onclick="this.parentElement.remove()" class="alert-close">&times;</button>
     </div>
     <?php endif; ?>
     
     <?php if ($warningMessage): ?>
-    <div class="flash-message flash-warning">
+    <div class="flash-message flash-warning" id="warningAlert">
         <i data-lucide="alert-triangle"></i>
         <?= htmlspecialchars($warningMessage) ?>
+        <button onclick="this.parentElement.remove()" class="alert-close">&times;</button>
     </div>
     <?php endif; ?>
 </div>
+
+<script>
+// Auto-dismiss flash messages after 5 seconds
+setTimeout(function() {
+    const successAlert = document.getElementById('successAlert');
+    const errorAlert = document.getElementById('errorAlert');
+    const warningAlert = document.getElementById('warningAlert');
+    
+    if (successAlert) {
+        successAlert.style.opacity = '0';
+        setTimeout(() => successAlert.remove(), 300);
+    }
+    
+    if (errorAlert) {
+        errorAlert.style.opacity = '0';
+        setTimeout(() => errorAlert.remove(), 300);
+    }
+    
+    if (warningAlert) {
+        warningAlert.style.opacity = '0';
+        setTimeout(() => warningAlert.remove(), 300);
+    }
+}, 5000);
+</script>
+
+<style>
+.flash-message {
+    position: relative;
+    padding-right: 40px !important;
+    transition: opacity 0.3s ease;
+}
+
+.flash-message .alert-close {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    color: inherit;
+}
+
+.flash-message .alert-close:hover {
+    opacity: 1;
+}
+</style>
 <?php endif; ?>
+
+<style>
+.flash-message {
+    position: relative;
+    padding-right: 40px !important;
+    transition: opacity 0.3s ease;
+}
+
+.flash-message .alert-close {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    color: inherit;
+}
+
+.flash-message .alert-close:hover {
+    opacity: 1;
+}
+</style>
 
 <!-- Page Header -->
 <div class="card-header" style="margin-bottom: var(--spacing-xl); padding: var(--spacing-lg); border-bottom: none; background: #c9a870; border-radius: var(--border-radius-xl); box-shadow: var(--shadow-sm);">
@@ -193,7 +280,7 @@ if ($successMessage || $errorMessage || $warningMessage):
                     </td>
                     <td>
                         <form method="POST" action="<?= BASE_PATH ?>/reservations/<?= $reservation['id'] ?>/status" style="display: inline-block;">
-                            <input type="hidden" name="_csrf_token" value="<?= Session::get('csrf_token') ?>">
+                            <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
                             <select name="status" onchange="if(confirm('Update status to ' + this.value + '?')) this.form.submit();" 
                                     class="badge badge-<?= $reservation['status'] === 'confirmed' ? 'success' : ($reservation['status'] === 'pending' ? 'warning' : ($reservation['status'] === 'cancelled' ? 'error' : 'info')) ?>" 
                                     style="padding: 4px 12px; cursor: pointer; border: none; font-size: var(--text-xs);">

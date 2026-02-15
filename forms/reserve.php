@@ -67,21 +67,39 @@ if (!empty($errors)) {
 }
 
 try {
-    // Save to database
-    $result = saveReservation([
-        'name' => $name,
-        'phone' => $phone,
-        'email' => $email,
-        'people' => $people,
-        'date' => $date,
-        'time' => $time,
-        'seating' => $seating,
-        'specialRequirements' => $specialRequirements,
-        'additionalNotes' => $additionalNotes
+    // Format time for database
+    $dbTime = date('H:i:s', strtotime($time));
+
+    // Combine extra details into 'notes' because production DB lacks specific columns
+    $combinedNotes = "";
+    if (!empty($seating)) {
+        $combinedNotes .= "Seating Preference: $seating\n";
+    }
+    if (!empty($specialRequirements)) {
+        $reqs = is_array($specialRequirements) ? implode(', ', $specialRequirements) : $specialRequirements;
+        $combinedNotes .= "Special Requirements: $reqs\n";
+    }
+    if (!empty($additionalNotes)) {
+        $combinedNotes .= "Notes: $additionalNotes";
+    }
+    $combinedNotes = trim($combinedNotes);
+
+    // Save to database MATCHING PRODUCTION SCHEMA
+    // Schema: id, customer_name, email, phone, date, time, party_size, status, notes, created_at
+    $stmt = $pdo->prepare("INSERT INTO reservations (customer_name, email, phone, date, time, party_size, status, notes, created_at) VALUES (?, ?, ?, ?, ?, ?, 'pending', ?, NOW())");
+    
+    $result = $stmt->execute([
+        $name,
+        $email,
+        $phone,
+        $date,
+        $dbTime,
+        $people,
+        $combinedNotes
     ]);
 
     if ($result) {
-        // Send confirmation email (optional - may not work on localhost) .......
+        // Send confirmation email 
         $to = CONTACT_EMAIL;
         $subject = 'New Table Reservation';
         $message = "New reservation received:\n\n" .
@@ -97,19 +115,16 @@ try {
                   "Please confirm this reservation.";
 
         $headers = "From: " . CONTACT_EMAIL . "\r\nReply-To: $email";
-
-        // Suppress errors for localhost where mail server may not be configured
         @mail($to, $subject, $message, $headers);
 
         echo json_encode(['success' => true, 'message' => 'Reservation submitted successfully! We will contact you to confirm.']);
     } else {
-        // Log detailed error for debugging
-        error_log('Database insert failed - check if email and seating columns exist in reservations table');
         throw new Exception('Failed to save reservation');
     }
 } catch (Exception $e) {
     error_log('Reservation form error: ' . $e->getMessage());
     http_response_code(500);
+    // Return detailed error for debugging if needed, or generic
     echo json_encode(['success' => false, 'message' => 'Sorry, there was an error processing your reservation. Please try again later.']);
 }
 ?>

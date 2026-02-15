@@ -226,7 +226,7 @@ if ($successMessage || $errorMessage || $warningMessage):
                             Edit
                         </a>
                         <form method="POST" action="<?= BASE_PATH ?>/events/<?= $event['id'] ?>/delete" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this event?');">
-                            <input type="hidden" name="_csrf_token" value="<?= Session::get('csrf_token') ?>">
+                            <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
                             <button type="submit" class="btn btn-sm btn-danger">
                                 <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
                                 Delete

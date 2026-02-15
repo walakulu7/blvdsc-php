@@ -165,7 +165,7 @@ if ($successMessage || $errorMessage):
         </p>
         
         <form method="POST" action="<?= BASE_PATH ?>/reservations/<?= $reservation['id'] ?>/status" onsubmit="return confirm('Are you sure you want to update this reservation status?');">
-            <input type="hidden" name="_csrf_token" value="<?= Session::get('csrf_token') ?>">
+            <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
             
             <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
                 <?php if ($reservation['status'] !== 'pending'): ?>

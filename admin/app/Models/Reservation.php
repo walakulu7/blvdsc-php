@@ -38,8 +38,8 @@ class Reservation extends Model {
             $params[':search'] = '%' . $filters['search'] . '%';
         }
         
-        // Default: only show upcoming reservations
-        if (!isset($filters['show_all']) || !$filters['show_all']) {
+        // Optional: only show upcoming reservations if explicitly requested
+        if (isset($filters['show_upcoming_only']) && $filters['show_upcoming_only']) {
             $where[] = "date >= CURDATE()";
         }
         
@@ -198,7 +198,7 @@ class Reservation extends Model {
             $params[':search'] = '%' . $filters['search'] . '%';
         }
         
-        if (!isset($filters['show_all']) || !$filters['show_all']) {
+        if (isset($filters['show_upcoming_only']) && $filters['show_upcoming_only']) {
             $where[] = "date >= CURDATE()";
         }
         

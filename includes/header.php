@@ -10,6 +10,7 @@ $page_title = isset($page_title) ? $page_title . ' | ' . SITE_NAME : SITE_NAME;
     <title><?php echo htmlspecialchars($page_title); ?></title>
     <meta name="description" content="<?php echo htmlspecialchars(SITE_DESCRIPTION); ?>">
     <meta name="author" content="BLVD">
+    <link rel="icon" type="image/x-icon" href="<?php echo BASE_URL; ?>/assets/images/favicon.ico">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
