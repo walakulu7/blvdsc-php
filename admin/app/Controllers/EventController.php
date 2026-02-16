@@ -117,7 +117,10 @@ class EventController extends Controller
             'title' => $_POST['title'],
             'description' => $_POST['description'],
             'event_date' => $_POST['event_date'],
-            'event_time' => $_POST['event_time'] ?? null,
+            'time_from' => $_POST['time_from'] ?? null,
+            'time_to' => $_POST['time_to'] ?? null,
+            'location' => $_POST['location'] ?? 'BLVD Coffee, 123 Main Street',
+            'price_per_person' => $_POST['price_per_person'] ?? null,
             'image_url' => $imageUrl,
             'status' => $_POST['status'] ?? 'draft',
             'created_by' => Auth::user()['id'] ?? null
@@ -211,7 +214,10 @@ class EventController extends Controller
             'title' => $_POST['title'],
             'description' => $_POST['description'],
             'event_date' => $_POST['event_date'],
-            'event_time' => $_POST['event_time'] ?? null,
+            'time_from' => $_POST['time_from'] ?? null,
+            'time_to' => $_POST['time_to'] ?? null,
+            'location' => $_POST['location'] ?? 'BLVD Coffee, 123 Main Street',
+            'price_per_person' => $_POST['price_per_person'] ?? null,
             'image_url' => $imageUrl,
             'status' => $_POST['status'] ?? 'draft'
         ];
@@ -431,6 +437,18 @@ class EventController extends Controller
         
         if (empty($data['event_date'])) {
             $errors[] = 'Event date is required';
+        }
+        
+        // Validate time range
+        if (!empty($data['time_from']) && !empty($data['time_to'])) {
+            if (strtotime($data['time_from']) >= strtotime($data['time_to'])) {
+                $errors[] = 'End time must be after start time';
+            }
+        }
+        
+        // Validate location length
+        if (!empty($data['location']) && strlen($data['location']) > 255) {
+            $errors[] = 'Location must be 255 characters or less';
         }
         
         return $errors;

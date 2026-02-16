@@ -202,7 +202,15 @@ if ($successMessage || $errorMessage || $warningMessage):
                     </td>
                     <td>
                         <div style="font-size: var(--text-sm); color: var(--color-gray-600);">
-                            <?= $event['event_time'] ? date('h:i A', strtotime($event['event_time'])) : '-' ?>
+                            <?php 
+                            if (!empty($event['time_from']) && !empty($event['time_to'])) {
+                                echo date('h:i A', strtotime($event['time_from'])) . ' - ' . date('h:i A', strtotime($event['time_to']));
+                            } elseif (!empty($event['time_from'])) {
+                                echo date('h:i A', strtotime($event['time_from']));
+                            } else {
+                                echo '-';
+                            }
+                            ?>
                         </div>
                     </td>
                     <td>

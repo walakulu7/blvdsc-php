@@ -351,15 +351,58 @@ if ($errorMessage):
                     </div>
                     
                     <div class="event-form-field">
-                        <label for="event_time" class="event-form-label">
-                            Event Time
+                        <label for="time_from" class="event-form-label">
+                            Start Time
                         </label>
-                        <input type="time" id="event_time" name="event_time" class="event-form-input"
-                               value="<?= htmlspecialchars($event['event_time'] ?? '') ?>">
+                        <input type="time" id="time_from" name="time_from" class="event-form-input"
+                               value="<?= htmlspecialchars($event['time_from'] ?? '') ?>">
                         <p class="event-help-text">
-                            Optional - leave empty if time is not applicable
+                            Optional - Event start time for time range display
                         </p>
                     </div>
+                </div>
+                
+                <div class="event-form-row">
+                    <div class="event-form-field">
+                        <label for="time_to" class="event-form-label">
+                            End Time
+                        </label>
+                        <input type="time" id="time_to" name="time_to" class="event-form-input"
+                               value="<?= htmlspecialchars($event['time_to'] ?? '') ?>">
+                        <p class="event-help-text">
+                            Optional - Event end time (must be after start time)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event Details Section -->
+            <div class="event-section">
+                <h3 class="event-section-title">Event Details</h3>
+                
+                <div class="event-form-field">
+                    <label for="location" class="event-form-label">
+                        Location
+                    </label>
+                    <input type="text" id="location" name="location" class="event-form-input event-form-input-limited" 
+                           value="<?= htmlspecialchars($event['location'] ?? 'BLVD Coffee, 123 Main Street') ?>" 
+                           maxlength="255" 
+                           placeholder="e.g., BLVD Coffee, 123 Main Street">
+                    <p class="event-help-text">
+                        Event venue/location (max 255 characters)
+                    </p>
+                </div>
+                
+                <div class="event-form-field">
+                    <label for="price_per_person" class="event-form-label">
+                        Price Per Person
+                    </label>
+                    <input type="text" id="price_per_person" name="price_per_person" class="event-form-input event-form-input-limited" 
+                           value="<?= htmlspecialchars($event['price_per_person'] ?? '') ?>"
+                           placeholder="e.g., $35 per person, Free entry">
+                    <p class="event-help-text">
+                        How pricing is displayed to customers (e.g., "$35", "Free entry", "Contact for pricing")
+                    </p>
                 </div>
             </div>
             

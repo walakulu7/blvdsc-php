@@ -128,8 +128,8 @@ class EventModel extends Model
      */
     public function create($data)
     {
-        $sql = "INSERT INTO events (title, description, event_date, event_time, image_url, status, created_by, created_at) 
-                VALUES (:title, :description, :event_date, :event_time, :image_url, :status, :created_by, NOW())";
+        $sql = "INSERT INTO events (title, description, event_date, time_from, time_to, location, price_per_person, image_url, status, created_by, created_at) 
+                VALUES (:title, :description, :event_date, :time_from, :time_to, :location, :price_per_person, :image_url, :status, :created_by, NOW())";
         
         $stmt = $this->db->prepare($sql);
         
@@ -137,7 +137,10 @@ class EventModel extends Model
             ':title' => $data['title'],
             ':description' => $data['description'],
             ':event_date' => $data['event_date'],
-            ':event_time' => $data['event_time'] ?? null,
+            ':time_from' => $data['time_from'] ?? null,
+            ':time_to' => $data['time_to'] ?? null,
+            ':location' => $data['location'] ?? 'BLVD Coffee, 123 Main Street',
+            ':price_per_person' => $data['price_per_person'] ?? null,
             ':image_url' => $data['image_url'] ?? null,
             ':status' => $data['status'] ?? 'draft',
             ':created_by' => $data['created_by'] ?? null
@@ -153,7 +156,10 @@ class EventModel extends Model
                 SET title = :title, 
                     description = :description, 
                     event_date = :event_date, 
-                    event_time = :event_time, 
+                    time_from = :time_from, 
+                    time_to = :time_to, 
+                    location = :location, 
+                    price_per_person = :price_per_person, 
                     image_url = :image_url, 
                     status = :status 
                 WHERE id = :id";
@@ -164,7 +170,10 @@ class EventModel extends Model
             ':title' => $data['title'],
             ':description' => $data['description'],
             ':event_date' => $data['event_date'],
-            ':event_time' => $data['event_time'] ?? null,
+            ':time_from' => $data['time_from'] ?? null,
+            ':time_to' => $data['time_to'] ?? null,
+            ':location' => $data['location'] ?? 'BLVD Coffee, 123 Main Street',
+            ':price_per_person' => $data['price_per_person'] ?? null,
             ':image_url' => $data['image_url'],
             ':status' => $data['status'] ?? 'draft',
             ':id' => $id
@@ -232,6 +241,24 @@ class EventModel extends Model
             SELECT * FROM events 
             WHERE status = 'published' AND event_date >= CURDATE() 
             ORDER BY event_date ASC, event_time ASC 
+            LIMIT :limit
+        ");
+        
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    /**
+     * Get published events for frontend display (4 most recent, including past)
+     */
+    public function getPublishedEvents($limit = 4)
+    {
+        $stmt = $this->db->prepare("
+            SELECT * FROM events 
+            WHERE status = 'published'
+            ORDER BY event_date DESC
             LIMIT :limit
         ");
         
