@@ -40,8 +40,8 @@ if (empty($email)) {
 
 if (empty($people)) {
     $errors[] = 'Number of guests is required';
-} elseif (!is_numeric($people) || $people < 1 || $people > 8) {
-    $errors[] = 'Number of guests must be between 1 and 8';
+} elseif (!is_numeric($people) || $people < 2 || $people > 8) {
+    $errors[] = 'Number of guests must be between 2 and 8';
 }
 
 if (empty($date)) {
@@ -131,7 +131,8 @@ try {
                           CONTACT_ADDRESS . "\n" .
                           CONTACT_PHONE;
 
-        $customerHeaders = "From: " . CONTACT_EMAIL . "\r\nReply-To: " . CONTACT_EMAIL;
+        $customerHeaders = "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM_ADDRESS . ">\r\n" .
+                           "Reply-To: " . CONTACT_EMAIL;
         @mail($email, $customerSubject, $customerMessage, $customerHeaders);
 
         // Send notification email to admin
@@ -153,7 +154,8 @@ try {
                        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" .
                        "Remaining availability for {$date}: " . ($availableSpots - $people) . " spots";
 
-        $adminHeaders = "From: " . CONTACT_EMAIL . "\r\nReply-To: {$email}";
+        $adminHeaders = "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM_ADDRESS . ">\r\n" .
+                        "Reply-To: {$email}";
         @mail(CONTACT_EMAIL, $adminSubject, $adminMessage, $adminHeaders);
 
         echo json_encode([

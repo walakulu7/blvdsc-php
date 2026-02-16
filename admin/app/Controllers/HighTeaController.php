@@ -73,7 +73,7 @@ class HighTeaController extends Controller
         $booking = $this->highTeaModel->findById($id);
         
         if (!$booking) {
-            Session::setFlash('error', 'Booking not found');
+            Session::flash('error', 'Booking not found');
             $this->redirect('/hightea');
             return;
         }
@@ -96,7 +96,7 @@ class HighTeaController extends Controller
         
         // CSRF validation
         if (!isset($_POST['_csrf_token']) || $_POST['_csrf_token'] !== Session::get('csrf_token')) {
-            Session::setFlash('error', 'Invalid request');
+            Session::flash('error', 'Invalid request');
             $this->redirect('/hightea/' . $id);
             return;
         }
@@ -104,7 +104,7 @@ class HighTeaController extends Controller
         $status = $_POST['status'] ?? '';
         
         if (!in_array($status, ['pending', 'confirmed', 'completed', 'cancelled'])) {
-            Session::setFlash('error', 'Invalid status');
+            Session::flash('error', 'Invalid status');
             $this->redirect('/hightea/' . $id);
             return;
         }
@@ -112,9 +112,9 @@ class HighTeaController extends Controller
         $result = $this->highTeaModel->updateStatus($id, $status);
         
         if ($result) {
-            Session::setFlash('success', 'Booking status updated successfully');
+            Session::flash('success', 'Booking status updated successfully');
         } else {
-            Session::setFlash('error', 'Failed to update booking status');
+            Session::flash('error', 'Failed to update booking status');
         }
         
         $this->redirect('/hightea/' . $id);

@@ -14,6 +14,11 @@ define('CONTACT_COUNTRY', 'Australia');
 define('CONTACT_PHONE', '+61 401 201 536');
 define('CONTACT_EMAIL', 'lankawebnets@gmail.com');
 
+// Email Sender Configuration
+define('EMAIL_FROM_NAME', 'BLVD Specialty Coffee');
+define('EMAIL_FROM_ADDRESS', 'noreply@blvdsc.com.au');
+
+
 // Department Emails
 define('EMAIL_CATERING', 'lankawebnets@gmail.com');
 define('EMAIL_EVENTS', 'lankawebnets@gmail.com');

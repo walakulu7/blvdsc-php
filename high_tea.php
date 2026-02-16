@@ -111,7 +111,6 @@ $timeSlots = [
                                 class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
                             >
                                 <option value="">Select number of guests</option>
-                                <option value="1">1 guest</option>
                                 <option value="2">2 guests</option>
                                 <option value="3">3 guests</option>
                                 <option value="4">4 guests</option>

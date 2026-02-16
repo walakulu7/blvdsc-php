@@ -82,7 +82,7 @@ class ReservationController extends Controller {
             return;
         }
         
-        $this->view('reservations/show', [
+        $this->view('reservations/view', [
             'reservation' => $reservation,
             'current_page' => 'reservations'
         ]);

@@ -55,7 +55,7 @@ try {
         $to = CONTACT_EMAIL;
         $emailSubject = 'New Contact Message: ' . ($subject ?: 'General Inquiry');
         $emailMessage = "Name: $name\nEmail: $email\n\nMessage:\n$message";
-        $headers = "From: $email\r\nReply-To: $email";
+        $headers = "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM_ADDRESS . ">\r\n" . "Reply-To: $email";
 
         // Suppress errors for localhost where mail server may not be configured
         @mail($to, $emailSubject, $emailMessage, $headers);

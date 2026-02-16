@@ -114,7 +114,7 @@ try {
                   "Additional Notes: $additionalNotes\n\n" .
                   "Please confirm this reservation.";
 
-        $headers = "From: " . CONTACT_EMAIL . "\r\nReply-To: $email";
+        $headers = "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM_ADDRESS . ">\r\n" . "Reply-To: $email";
         @mail($to, $subject, $message, $headers);
 
         echo json_encode(['success' => true, 'message' => 'Reservation submitted successfully! We will contact you to confirm.']);

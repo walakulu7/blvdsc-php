@@ -1,11 +1,3 @@
-<!-- Back Button -->
-<div style="margin-bottom: var(--spacing-xl);">
-    <a href="<?= BASE_PATH ?>/reservations" class="btn btn-secondary">
-        <i data-lucide="arrow-left"></i>
-        Back to Reservations
-    </a>
-</div>
-
 <!-- Flash Messages -->
 <?php
 $successMessage = Session::flash('success');
@@ -31,16 +23,30 @@ if ($successMessage || $errorMessage):
 <?php endif; ?>
 
 <!-- Page Header -->
-<div class="card-header" style="margin-bottom: var(--spacing-xl); padding: var(--spacing-lg) 0; border-bottom: none;">
-    <div>
-        <h1 class="header-title">Reservation Details</h1>
-        <p style="color: var(--color-gray-500); font-size: var(--text-sm); margin-top: 4px;">
-            ID: #<?= $reservation['id'] ?> • Created: <?= date('M d, Y h:i A', strtotime($reservation['created_at'])) ?>
-        </p>
+<div class="card" style="margin-bottom: var(--spacing-lg);">
+    <div class="card-header" style="border-bottom: none;">
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                <a href="<?= BASE_PATH ?>/reservations" class="btn btn-secondary">
+                    <i data-lucide="arrow-left"></i>
+                    Back
+                </a>
+                <h1 class="header-title">Reservation Details #<?= $reservation['id'] ?></h1>
+            </div>
+            
+            <form method="POST" action="<?= BASE_PATH ?>/reservations/<?= $reservation['id'] ?>/status" style="margin-left: auto;">
+                <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
+                <select name="status" onchange="if(confirm('Update status to ' + this.value + '?')) this.form.submit();" 
+                        class="badge badge-<?= $reservation['status'] === 'confirmed' ? 'success' : ($reservation['status'] === 'pending' ? 'warning' : ($reservation['status'] === 'cancelled' ? 'error' : 'info')) ?>" 
+                        style="padding: 8px 16px; cursor: pointer; border: none; font-size: var(--text-sm);">
+                    <option value="pending" <?= $reservation['status'] === 'pending' ? 'selected' : '' ?>>Pending</option>
+                    <option value="confirmed" <?= $reservation['status'] === 'confirmed' ? 'selected' : '' ?>>Confirmed</option>
+                    <option value="completed" <?= $reservation['status'] === 'completed' ? 'selected' : '' ?>>Completed</option>
+                    <option value="cancelled" <?= $reservation['status'] === 'cancelled' ? 'selected' : '' ?>>Cancelled</option>
+                </select>
+            </form>
+        </div>
     </div>
-    <span class="badge badge-<?= $reservation['status'] === 'confirmed' ? 'success' : ($reservation['status'] === 'pending' ? 'warning' : ($reservation['status'] === 'cancelled' ? 'error' : 'info')) ?>" style="font-size: var(--text-sm); padding: 8px 16px;">
-        <?= ucfirst($reservation['status']) ?>
-    </span>
 </div>
 
 <!-- Main Content Grid -->

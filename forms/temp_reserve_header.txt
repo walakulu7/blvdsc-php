@@ -1,0 +1,2 @@
+        $headers = "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM_ADDRESS . ">\r\n" .
+                   "Reply-To: $email";

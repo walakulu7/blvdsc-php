@@ -31,26 +31,30 @@ if ($successMessage || $errorMessage || $warningMessage):
 <?php endif; ?>
 
 <!-- Page Header -->
-<div class="card-header" style="margin-bottom: var(--spacing-xl); padding: var(--spacing-lg) 0; border-bottom: none;">
-    <div style="display: flex; align-items: center; gap: var(--spacing-md);">
-        <a href="<?= BASE_PATH ?>/hightea" class="btn btn-secondary">
-            <i data-lucide="arrow-left"></i>
-            Back
-        </a>
-        <h1 class="header-title">High Tea Booking #<?= $booking['id'] ?></h1>
+<div class="card" style="margin-bottom: var(--spacing-lg);">
+    <div class="card-header" style="border-bottom: none;">
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                <a href="<?= BASE_PATH ?>/hightea" class="btn btn-secondary">
+                    <i data-lucide="arrow-left"></i>
+                    Back
+                </a>
+                <h1 class="header-title">High Tea Booking #<?= $booking['id'] ?></h1>
+            </div>
+            
+            <form method="POST" action="<?= BASE_PATH ?>/hightea/<?= $booking['id'] ?>/status" style="margin-left: auto;">
+                <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
+                <select name="status" onchange="if(confirm('Update status to ' + this.value + '?')) this.form.submit();" 
+                        class="badge badge-<?= $booking['status'] === 'confirmed' ? 'success' : ($booking['status'] === 'pending' ? 'warning' : ($booking['status'] === 'cancelled' ? 'error' : 'info')) ?>" 
+                        style="padding: 8px 16px; cursor: pointer; border: none; font-size: var(--text-sm);">
+                    <option value="pending" <?= $booking['status'] === 'pending' ? 'selected' : '' ?>>Pending</option>
+                    <option value="confirmed" <?= $booking['status'] === 'confirmed' ? 'selected' : '' ?>>Confirmed</option>
+                    <option value="completed" <?= $booking['status'] === 'completed' ? 'selected' : '' ?>>Completed</option>
+                    <option value="cancelled" <?= $booking['status'] === 'cancelled' ? 'selected' : '' ?>>Cancelled</option>
+                </select>
+            </form>
+        </div>
     </div>
-    
-    <form method="POST" action="<?= BASE_PATH ?>/hightea/<?= $booking['id'] ?>/status" style="display: inline-block;">
-        <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
-        <select name="status" onchange="if(confirm('Update status to ' + this.value + '?')) this.form.submit();" 
-                class="badge badge-<?= $booking['status'] === 'confirmed' ? 'success' : ($booking['status'] === 'pending' ? 'warning' : ($booking['status'] === 'cancelled' ? 'error' : 'info')) ?>" 
-                style="padding: 8px 16px; cursor: pointer; border: none; font-size: var(--text-sm);">
-            <option value="pending" <?= $booking['status'] === 'pending' ? 'selected' : '' ?>>Pending</option>
-            <option value="confirmed" <?= $booking['status'] === 'confirmed' ? 'selected' : '' ?>>Confirmed</option>
-            <option value="completed" <?= $booking['status'] === 'completed' ? 'selected' : '' ?>>Completed</option>
-            <option value="cancelled" <?= $booking['status'] === 'cancelled' ? 'selected' : '' ?>>Cancelled</option>
-        </select>
-    </form>
 </div>
 
 <!-- Booking Details Grid -->
@@ -211,6 +215,55 @@ if ($successMessage || $errorMessage || $warningMessage):
     </div>
 </div>
 <?php endif; ?>
+
+<!-- Status Update Actions -->
+<div class="card mt-4">
+    <div class="card-header">
+        <h2 class="card-title">
+            <i data-lucide="settings"></i>
+            Update Status
+        </h2>
+    </div>
+    <div class="card-body">
+        <p style="font-size: var(--text-sm); color: var(--color-gray-600); margin-bottom: var(--spacing-lg);">
+            Current status: <strong style="color: var(--color-gray-900);"><?= ucfirst($booking['status']) ?></strong>
+        </p>
+        
+        <form method="POST" action="<?= BASE_PATH ?>/hightea/<?= $booking['id'] ?>/status" onsubmit="return confirm('Are you sure you want to update this booking status?');">
+            <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
+            
+            <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                <?php if ($booking['status'] !== 'pending'): ?>
+                <button type="submit" name="status" value="pending" class="btn btn-secondary">
+                    <i data-lucide="clock"></i>
+                    Mark as Pending
+                </button>
+                <?php endif; ?>
+                
+                <?php if ($booking['status'] !== 'confirmed'): ?>
+                <button type="submit" name="status" value="confirmed" class="btn btn-success">
+                    <i data-lucide="check"></i>
+                    Mark as Confirmed
+                </button>
+                <?php endif; ?>
+                
+                <?php if ($booking['status'] !== 'completed'): ?>
+                <button type="submit" name="status" value="completed" class="btn btn-primary">
+                    <i data-lucide="check-circle"></i>
+                    Mark as Completed
+                </button>
+                <?php endif; ?>
+                
+                <?php if ($booking['status'] !== 'cancelled'): ?>
+                <button type="submit" name="status" value="cancelled" class="btn btn-danger">
+                    <i data-lucide="x-circle"></i>
+                    Cancel Booking
+                </button>
+                <?php endif; ?>
+            </div>
+        </form>
+    </div>
+</div>
 
 <script>
     // Initialize Lucide icons
