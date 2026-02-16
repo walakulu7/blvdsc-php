@@ -47,10 +47,11 @@ function saveReservation($data) {
 
 function saveContactMessage($data) {
     global $pdo;
-    $stmt = $pdo->prepare("INSERT INTO contact_messages (name, email, subject, message, created_at) VALUES (?, ?, ?, ?, NOW())");
+    $stmt = $pdo->prepare("INSERT INTO contact_messages (name, email, phone, subject, message, created_at) VALUES (?, ?, ?, ?, ?, NOW())");
     return $stmt->execute([
         $data['name'],
         $data['email'],
+        $data['phone'] ?? null,
         $data['subject'],
         $data['message']
     ]);

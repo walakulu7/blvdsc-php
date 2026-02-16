@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Get form data
 $name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');
+$phone = trim($_POST['phone'] ?? '');
 $subject = trim($_POST['subject'] ?? '');
 $message = trim($_POST['message'] ?? '');
 
@@ -46,6 +47,7 @@ try {
     $result = saveContactMessage([
         'name' => $name,
         'email' => $email,
+        'phone' => $phone,
         'subject' => $subject,
         'message' => $message
     ]);
@@ -54,7 +56,7 @@ try {
         // Send email notification (optional - may not work on localhost)
         $to = CONTACT_EMAIL;
         $emailSubject = 'New Contact Message: ' . ($subject ?: 'General Inquiry');
-        $emailMessage = "Name: $name\nEmail: $email\n\nMessage:\n$message";
+        $emailMessage = "Name: $name\nEmail: $email\nPhone: $phone\n\nMessage:\n$message";
         $headers = "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM_ADDRESS . ">\r\n" . "Reply-To: $email";
 
         // Suppress errors for localhost where mail server may not be configured

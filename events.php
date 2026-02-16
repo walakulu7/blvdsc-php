@@ -68,9 +68,9 @@ foreach ($dbEvents as $dbEvent) {
     <section class="section-padding bg-white">
         <div class="blvd-container">
             <div class="max-w-3xl mx-auto mb-12">
-                <h2 class="font-display text-3xl font-light mb-6 text-center">Upcoming Events</h2>
+                <h2 class="font-display text-3xl font-light mb-6 text-center">BLVD Events</h2>
                 <p class="text-blvd-charcoal/80 text-center mb-8">
-                    At BLVD Coffee, we love bringing people together. From coffee workshops to live music evenings, our events are designed to create community and share our passion for great coffee.
+                    At BLVD Specialty Coffee, we love bringing people together. From coffee workshops to live music evenings, our events are designed to create community and share our passion for great coffee.
                 </p>
                 
                 <div class="text-center mb-12">

@@ -78,6 +78,17 @@
                     </div>
                     
                     <div class="mb-4">
+                        <label for="phone" class="block text-sm mb-1">Phone</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone"
+                            class="w-full px-4 py-2 border border-blvd-beige focus:outline-none focus:ring-1 focus:ring-blvd-gold"
+                            placeholder="Your Phone Number"
+                        >
+                    </div>
+                    
+                    <div class="mb-4">
                         <label for="subject" class="block text-sm mb-1">Subject</label>
                         <input 
                             type="text" 

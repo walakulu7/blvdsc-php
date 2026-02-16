@@ -169,6 +169,7 @@ if ($successMessage || $errorMessage || $warningMessage):
                     <th>Title</th>
                     <th>Date</th>
                     <th>Time</th>
+                    <th>Price</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -211,6 +212,11 @@ if ($successMessage || $errorMessage || $warningMessage):
                                 echo '-';
                             }
                             ?>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size: var(--text-sm); color: var(--color-gray-600); font-weight: 500;">
+                            <?= !empty($event['price_per_person']) ? htmlspecialchars($event['price_per_person']) : '-' ?>
                         </div>
                     </td>
                     <td>
