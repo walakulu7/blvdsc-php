@@ -184,6 +184,17 @@
                 <div style="font-size: 18px; font-weight: 600; margin-bottom: 20px;">
                     <?= date('F Y') ?>
                 </div>
+                <?php
+                // Get reservations for current month
+                global $pdo;
+                $currentMonth = date('Y-m');
+                $reservationsInMonth = $pdo->query("
+                    SELECT DATE(date) as reservation_date, COUNT(*) as count 
+                    FROM reservations 
+                    WHERE DATE_FORMAT(date, '%Y-%m') = '$currentMonth'
+                    GROUP BY DATE(date)
+                ")->fetchAll(PDO::FETCH_KEY_PAIR);
+                ?>
                 <table style="width: 100%; border-collapse: collapse;">
                     <thead>
                         <tr>
@@ -200,7 +211,9 @@
                         <?php
                         // Generate calendar
                         $today = date('j');
-                        $firstDay = date('w', mktime(0, 0, 0, date('m'), 1, date('Y')));
+                        $currentYear = date('Y');
+                        $currentMonthNum = date('m');
+                        $firstDay = date('w', mktime(0, 0, 0, $currentMonthNum, 1, $currentYear));
                         $daysInMonth = date('t');
                         $day = 1;
                         
@@ -211,8 +224,43 @@
                                     echo '<td style="padding: 8px;"></td>';
                                 } else {
                                     $isToday = ($day == $today);
-                                    $style = $isToday ? 'background: var(--color-primary); color: white; border-radius: 50%; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;' : '';
-                                    echo '<td style="padding: 8px; text-align: center;"><div style="' . $style . '">' . $day . '</div></td>';
+                                    $dateKey = sprintf('%s-%02d', $currentMonth, $day);
+                                    $hasReservations = isset($reservationsInMonth[$dateKey]);
+                                    $reservationCount = $hasReservations ? $reservationsInMonth[$dateKey] : 0;
+                                    
+                                    // Determine color based on reservation count
+                                    $circleColor = '';
+                                    $textColor = '';
+                                    if ($hasReservations) {
+                                        if ($reservationCount >= 4) {
+                                            $circleColor = '#dc2626'; // Red for 4+ bookings
+                                            $textColor = 'white';
+                                        } elseif ($reservationCount == 3) {
+                                            $circleColor = '#f59e0b'; // Orange for 3 bookings
+                                            $textColor = 'white';
+                                        } elseif ($reservationCount == 2) {
+                                            $circleColor = '#3b82f6'; // Blue for 2 bookings
+                                            $textColor = 'white';
+                                        } else {
+                                            $circleColor = '#10b981'; // Green for 1 booking
+                                            $textColor = 'white';
+                                        }
+                                    } elseif ($isToday) {
+                                        $circleColor = 'var(--color-primary)';
+                                        $textColor = 'white';
+                                    }
+                                    
+                                    // Styling
+                                    $cellStyle = 'padding: 8px; text-align: center;';
+                                    $dayStyle = 'display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%;';
+                                    
+                                    if ($circleColor) {
+                                        $dayStyle .= ' background: ' . $circleColor . '; color: ' . $textColor . ';';
+                                    }
+                                    
+                                    echo '<td style="' . $cellStyle . '">';
+                                    echo '<div style="' . $dayStyle . '">' . $day . '</div>';
+                                    echo '</td>';
                                     $day++;
                                 }
                             }
@@ -222,6 +270,26 @@
                         ?>
                     </tbody>
                 </table>
+                
+                <!-- Legend -->
+                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-gray-600);">
+                        <div style="width: 6px; height: 6px; background: #10b981; border-radius: 50%;"></div>
+                        <span>1 booking</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-gray-600);">
+                        <div style="width: 6px; height: 6px; background: #3b82f6; border-radius: 50%;"></div>
+                        <span>2 bookings</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-gray-600);">
+                        <div style="width: 6px; height: 6px; background: #f59e0b; border-radius: 50%;"></div>
+                        <span>3 bookings</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-gray-600);">
+                        <div style="width: 6px; height: 6px; background: #dc2626; border-radius: 50%;"></div>
+                        <span>4+ bookings</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
