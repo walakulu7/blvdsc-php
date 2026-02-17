@@ -119,8 +119,8 @@
     </div>
 </div>
 
-<!-- Row 4: Recent Activity & Calendar -->
-<div class="grid grid-cols-2 mb-4">
+<!-- Row 4: Recent Activity, Calendar & High Tea Calendar -->
+<div class="grid grid-cols-3 mb-4">
     <!-- Recent Activity -->
     <div class="card">
         <div class="card-header">
@@ -173,11 +173,11 @@
         </div>
     </div>
     
-    <!-- Calendar -->
+    <!-- Calendar - Reservations -->
     <div class="card">
         <div class="card-header">
-            <h2 class="card-title">Calendar</h2>
-            <span style="font-size: 14px; color: var(--color-gray-500);">Upcoming reservations</span>
+            <h2 class="card-title">Reservations</h2>
+            <span style="font-size: 14px; color: var(--color-gray-500);">Calendar</span>
         </div>
         <div class="card-body">
             <div style="text-align: center; padding: 20px;">
@@ -186,7 +186,6 @@
                 </div>
                 <?php
                 // Get reservations for current month
-                global $pdo;
                 $currentMonth = date('Y-m');
                 $reservationsInMonth = $pdo->query("
                     SELECT DATE(date) as reservation_date, COUNT(*) as count 
@@ -272,22 +271,136 @@
                 </table>
                 
                 <!-- Legend -->
-                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-gray-600);">
+                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
                         <div style="width: 6px; height: 6px; background: #10b981; border-radius: 50%;"></div>
-                        <span>1 booking</span>
+                        <span>1</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-gray-600);">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
                         <div style="width: 6px; height: 6px; background: #3b82f6; border-radius: 50%;"></div>
-                        <span>2 bookings</span>
+                        <span>2</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-gray-600);">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
                         <div style="width: 6px; height: 6px; background: #f59e0b; border-radius: 50%;"></div>
-                        <span>3 bookings</span>
+                        <span>3</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-gray-600);">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
                         <div style="width: 6px; height: 6px; background: #dc2626; border-radius: 50%;"></div>
-                        <span>4+ bookings</span>
+                        <span>4+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Calendar - High Tea -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">High Tea</h2>
+            <span style="font-size: 14px; color: var(--color-gray-500);">Calendar</span>
+        </div>
+        <div class="card-body">
+            <div style="text-align: center; padding: 20px;">
+                <div style="font-size: 18px; font-weight: 600; margin-bottom: 20px;">
+                    <?= date('F Y') ?>
+                </div>
+                <?php
+                // Get high tea reservations for current month
+                $highTeaInMonth = $pdo->query("
+                    SELECT DATE(date) as reservation_date, COUNT(*) as count 
+                    FROM high_tea_reservations 
+                    WHERE DATE_FORMAT(date, '%Y-%m') = '$currentMonth'
+                    GROUP BY DATE(date)
+                ")->fetchAll(PDO::FETCH_KEY_PAIR);
+                ?>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 8px; font-size: 12px; color: var(--color-gray-500);">Su</th>
+                            <th style="padding: 8px; font-size: 12px; color: var(--color-gray-500);">Mo</th>
+                            <th style="padding: 8px; font-size: 12px; color: var(--color-gray-500);">Tu</th>
+                            <th style="padding: 8px; font-size: 12px; color: var(--color-gray-500);">We</th>
+                            <th style="padding: 8px; font-size: 12px; color: var(--color-gray-500);">Th</th>
+                            <th style="padding: 8px; font-size: 12px; color: var(--color-gray-500);">Fr</th>
+                            <th style="padding: 8px; font-size: 12px; color: var(--color-gray-500);">Sa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Generate calendar for high tea
+                        $day = 1;
+                        
+                        for ($week = 0; $week < 6; $week++) {
+                            echo '<tr>';
+                            for ($dayOfWeek = 0; $dayOfWeek < 7; $dayOfWeek++) {
+                                if (($week == 0 && $dayOfWeek < $firstDay) || $day > $daysInMonth) {
+                                    echo '<td style="padding: 8px;"></td>';
+                                } else {
+                                    $isToday = ($day == $today);
+                                    $dateKey = sprintf('%s-%02d', $currentMonth, $day);
+                                    $hasHighTea = isset($highTeaInMonth[$dateKey]);
+                                    $highTeaCount = $hasHighTea ? $highTeaInMonth[$dateKey] : 0;
+                                    
+                                    // Determine color based on high tea count
+                                    $circleColor = '';
+                                    $textColor = '';
+                                    if ($hasHighTea) {
+                                        if ($highTeaCount >= 4) {
+                                            $circleColor = '#dc2626'; // Red for 4+ bookings
+                                            $textColor = 'white';
+                                        } elseif ($highTeaCount == 3) {
+                                            $circleColor = '#f59e0b'; // Orange for 3 bookings
+                                            $textColor = 'white';
+                                        } elseif ($highTeaCount == 2) {
+                                            $circleColor = '#3b82f6'; // Blue for 2 bookings
+                                            $textColor = 'white';
+                                        } else {
+                                            $circleColor = '#10b981'; // Green for 1 booking
+                                            $textColor = 'white';
+                                        }
+                                    } elseif ($isToday) {
+                                        $circleColor = 'var(--color-primary)';
+                                        $textColor = 'white';
+                                    }
+                                    
+                                    // Styling
+                                    $cellStyle = 'padding: 8px; text-align: center;';
+                                    $dayStyle = 'display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%;';
+                                    
+                                    if ($circleColor) {
+                                        $dayStyle .= ' background: ' . $circleColor . '; color: ' . $textColor . ';';
+                                    }
+                                    
+                                    echo '<td style="' . $cellStyle . '">';
+                                    echo '<div style="' . $dayStyle . '">' . $day . '</div>';
+                                    echo '</td>';
+                                    $day++;
+                                }
+                            }
+                            echo '</tr>';
+                            if ($day > $daysInMonth) break;
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                
+                <!-- Legend -->
+                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
+                        <div style="width: 6px; height: 6px; background: #10b981; border-radius: 50%;"></div>
+                        <span>1</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
+                        <div style="width: 6px; height: 6px; background: #3b82f6; border-radius: 50%;"></div>
+                        <span>2</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
+                        <div style="width: 6px; height: 6px; background: #f59e0b; border-radius: 50%;"></div>
+                        <span>3</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
+                        <div style="width: 6px; height: 6px; background: #dc2626; border-radius: 50%;"></div>
+                        <span>4+</span>
                     </div>
                 </div>
             </div>
