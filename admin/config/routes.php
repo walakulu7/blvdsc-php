@@ -35,14 +35,22 @@ $router->post('/events/{id}/delete', 'EventController', 'delete', ['auth']);
 
 // Messages
 $router->get('/messages', 'MessageController', 'index', ['auth']);
-$router->get('/messages/{id}', 'MessageController', 'view', ['auth']);
-$router->post('/messages/{id}/read', 'MessageController', 'markRead', ['auth']);
-$router->post('/messages/{id}/delete', 'MessageController', 'delete', ['auth']);
+$router->get('/messages/{id}', 'MessageController', 'show', ['auth']);
+$router->post('/messages/{id}/reply', 'MessageController', 'reply', ['auth']);
+$router->post('/messages/{id}/delete', 'MessageController', 'destroy', ['auth']);
 
 // Reviews
 $router->get('/reviews', 'ReviewController', 'index', ['auth']);
 $router->post('/reviews/{id}/approve', 'ReviewController', 'approve', ['auth']);
 $router->post('/reviews/{id}/reject', 'ReviewController', 'reject', ['auth']);
+
+// User Management
+$router->get('/users', 'UserController', 'index', ['auth']);
+$router->get('/users/create', 'UserController', 'create', ['auth']);
+$router->post('/users', 'UserController', 'store', ['auth']);
+$router->get('/users/{id}/edit', 'UserController', 'edit', ['auth']);
+$router->post('/users/{id}', 'UserController', 'update', ['auth']);
+$router->post('/users/{id}/delete', 'UserController', 'delete', ['auth']);
 $router->post('/reviews/{id}/reply', 'ReviewController', 'reply', ['auth']);
 $router->post('/reviews/{id}/feature', 'ReviewController', 'toggleFeatured', ['auth']);
 

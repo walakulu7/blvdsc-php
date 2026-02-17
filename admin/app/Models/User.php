@@ -105,4 +105,45 @@ class User extends Model {
         
         return $stmt->fetchColumn() > 0;
     }
+    /**
+     * Get users with filters
+     */
+    public function getWithFilters($filters = []) {
+        $sql = "SELECT * FROM {$this->table} WHERE 1=1";
+        $params = [];
+
+        if (!empty($filters['search'])) {
+            $sql .= " AND (username LIKE ? OR email LIKE ?)";
+            $params[] = "%{$filters['search']}%";
+            $params[] = "%{$filters['search']}%";
+        }
+
+        if (!empty($filters['role'])) {
+            $sql .= " AND role = ?";
+            $params[] = $filters['role'];
+        }
+
+        if (isset($filters['status']) && $filters['status'] !== '') {
+            $sql .= " AND is_active = ?";
+            $params[] = $filters['status'];
+        }
+
+        $sql .= " ORDER BY created_at DESC";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Get user statistics
+     */
+    public function getStats() {
+        return [
+            'total' => $this->count(),
+            'active' => $this->count(['is_active' => 1]),
+            'admin' => $this->count(['role' => 'admin']),
+            'manager' => $this->count(['role' => 'manager'])
+        ];
+    }
 }

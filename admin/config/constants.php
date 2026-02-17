@@ -29,3 +29,8 @@ define('DISPLAY_DATETIME_FORMAT', 'M d, Y h:i A');
 // Application info
 define('APP_NAME', 'BLVD Coffee Admin');
 define('APP_VERSION', '1.0.0');
+
+// Email configuration
+define('EMAIL_FROM_NAME', 'BLVD Specialty Coffee');
+define('EMAIL_FROM_ADDRESS', 'lankawebnets@gmail.com');
+define('CONTACT_EMAIL', 'lankawebnets@gmail.com');
