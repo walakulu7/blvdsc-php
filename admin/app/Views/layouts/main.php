@@ -78,13 +78,30 @@
                         <span>Users</span>
                     </a>
                     <?php endif; ?>
-                    <a href="<?= BASE_PATH ?>/settings/site" class="nav-item <?= $current_page === 'settings' ? 'active' : '' ?>">
-                        <i data-lucide="settings" class="nav-item-icon"></i>
-                        <span>Settings</span>
+                    <a href="<?= BASE_PATH ?>/backups" class="nav-item <?= $current_page === 'backups' ? 'active' : '' ?>">
+                        <i data-lucide="database" class="nav-item-icon"></i>
+                        <span>Backup & Restore</span>
                     </a>
-                    <a href="<?= BASE_PATH ?>/special-days" class="nav-item <?= $current_page === 'special-days' ? 'active' : '' ?>">
-                        <i data-lucide="calendar-x" class="nav-item-icon"></i>
-                        <span>Special Days</span>
+                </div>
+                
+                <!-- Settings Section -->
+                <div class="nav-section">
+                    <div class="nav-section-title">Settings</div>
+                    <a href="<?= BASE_PATH ?>/settings/general" class="nav-item  <?= $current_page === 'settings-general' ? 'active' : '' ?>">
+                        <i data-lucide="sliders" class="nav-item-icon"></i>
+                        <span>General Settings</span>
+                    </a>
+                    <a href="<?= BASE_PATH ?>/settings/booking" class="nav-item <?= $current_page === 'settings-booking' ? 'active' : '' ?>">
+                        <i data-lucide="calendar-check" class="nav-item-icon"></i>
+                        <span>Booking Settings</span>
+                    </a>
+                    <a href="<?= BASE_PATH ?>/settings/notifications" class="nav-item <?= $current_page === 'settings-notifications' ? 'active' : '' ?>">
+                        <i data-lucide="bell" class="nav-item-icon"></i>
+                        <span>Notification Settings</span>
+                    </a>
+                    <a href="<?= BASE_PATH ?>/settings/security" class="nav-item <?= $current_page === 'settings-security' ? 'active' : '' ?>">
+                        <i data-lucide="key" class="nav-item-icon"></i>
+                        <span>Security Settings</span>
                     </a>
                 </div>
             </nav>
@@ -141,17 +158,37 @@
             
             <!-- Page Content -->
             <div class="admin-content">
-                <?php if (Session::flash('success')): ?>
-                <div class="alert alert-success" id="successAlert">
-                    <?= htmlspecialchars(Session::flash('success')) ?>
-                    <button onclick="this.parentElement.remove()" class="alert-close">&times;</button>
+                <?php 
+                $successMessage = Session::flash('success');
+                if ($successMessage): 
+                ?>
+                <div class="flash-messages">
+                    <div class="flash-message flash-success">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i data-lucide="check-circle"></i>
+                            <span><?= htmlspecialchars($successMessage) ?></span>
+                        </div>
+                        <button class="flash-close" onclick="this.closest('.flash-message').style.display='none'">
+                            <i data-lucide="x"></i>
+                        </button>
+                    </div>
                 </div>
                 <?php endif; ?>
                 
-                <?php if (Session::flash('error')): ?>
-                <div class="alert alert-error" id="errorAlert">
-                    <?= htmlspecialchars(Session::flash('error')) ?>
-                    <button onclick="this.parentElement.remove()" class="alert-close">&times;</button>
+                <?php 
+                $errorMessage = Session::flash('error');
+                if ($errorMessage): 
+                ?>
+                <div class="flash-messages">
+                    <div class="flash-message flash-error">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i data-lucide="alert-circle"></i>
+                            <span><?= htmlspecialchars($errorMessage) ?></span>
+                        </div>
+                        <button class="flash-close" onclick="this.closest('.flash-message').style.display='none'">
+                            <i data-lucide="x"></i>
+                        </button>
+                    </div>
                 </div>
                 <?php endif; ?>
                 
@@ -187,18 +224,11 @@
         
         // Auto-dismiss flash messages after 5 seconds
         setTimeout(function() {
-            const successAlert = document.getElementById('successAlert');
-            const errorAlert = document.getElementById('errorAlert');
-            
-            if (successAlert) {
-                successAlert.style.opacity = '0';
-                setTimeout(() => successAlert.remove(), 300);
-            }
-            
-            if (errorAlert) {
-                errorAlert.style.opacity = '0';
-                setTimeout(() => errorAlert.remove(), 300);
-            }
+            const messages = document.querySelectorAll('.flash-message');
+            messages.forEach(msg => {
+                msg.style.opacity = '0';
+                setTimeout(() => msg.remove(), 300);
+            });
         }, 5000);
     </script>
     
@@ -235,57 +265,6 @@
             margin: 8px 0;
             border: none;
             border-top: 1px solid var(--color-gray-200);
-        }
-        
-        /* Alert styles */
-        .alert {
-            position: relative;
-            padding: 16px 40px 16px 20px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            font-size: 14px;
-            transition: opacity 0.3s ease;
-        }
-        
-        .alert-close {
-            position: absolute;
-            top: 50%;
-            right: 12px;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            font-size: 24px;
-            line-height: 1;
-            cursor: pointer;
-            opacity: 0.5;
-            transition: opacity 0.2s;
-            padding: 0;
-            width: 24px;
-            height: 24px;
-        }
-        
-        .alert-close:hover {
-            opacity: 1;
-        }
-        
-        .alert-success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #6ee7b7;
-        }
-        
-        .alert-success .alert-close {
-            color: #065f46;
-        }
-        
-        .alert-error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
-        }
-        
-        .alert-error .alert-close {
-            color: #991b1b;
         }
     </style>
 </body>

@@ -70,6 +70,15 @@ $router->post('/users/{id}', 'UserController', 'update', ['auth']);
 $router->post('/users/{id}/delete', 'UserController', 'delete', ['auth']);
 $router->post('/users/{id}/toggle-active', 'UserController', 'toggleActive', ['auth']);
 
+// Backups (admin only)
+$router->get('/backups', 'BackupController', 'index', ['auth']);
+$router->post('/backups/create', 'BackupController', 'create', ['auth']);
+$router->get('/backups/download/{id}', 'BackupController', 'download', ['auth']);
+$router->post('/backups/delete/{id}', 'BackupController', 'delete', ['auth']);
+$router->post('/backups/restore/{id}', 'BackupController', 'restore', ['auth']);
+$router->post('/backups/upload', 'BackupController', 'upload', ['auth']);
+$router->post('/backups/settings', 'BackupController', 'updateSettings', ['auth']);
+
 // Settings
 $router->get('/settings/contact', 'SettingsController', 'contact', ['auth']);
 $router->post('/settings/contact', 'SettingsController', 'updateContact', ['auth']);
