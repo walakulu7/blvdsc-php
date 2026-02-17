@@ -67,7 +67,7 @@ class UserController extends Controller
             'email' => trim($_POST['email'] ?? ''),
             'password' => $_POST['password'] ?? '',
             'role' => $_POST['role'] ?? 'manager',
-            'is_active' => isset($_POST['is_active']) ? 1 : 0
+            'is_active' => (int)($_POST['is_active'] ?? 0)
         ];
 
         // Validation
@@ -139,7 +139,7 @@ class UserController extends Controller
             'username' => trim($_POST['username'] ?? ''),
             'email' => trim($_POST['email'] ?? ''),
             'role' => $_POST['role'] ?? 'manager',
-            'is_active' => isset($_POST['is_active']) ? 1 : 0
+            'is_active' => (int)($_POST['is_active'] ?? 0)
         ];
 
         // Validation

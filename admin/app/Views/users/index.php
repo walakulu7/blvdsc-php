@@ -33,17 +33,12 @@ if ($successMessage):
 <?php endif; ?>
 
 <!-- Users Header -->
-<div class="card-header">
-    <div class="header-content">
-        <h1 class="header-title">User Management</h1>
-        <p class="header-subtitle">Manage system administrators and staff access.</p>
-    </div>
-    <div class="header-actions">
-        <a href="<?= BASE_PATH ?>/users/create" class="btn btn-primary">
-            <i data-lucide="plus"></i>
-            Add New User
-        </a>
-    </div>
+<div class="card-header" style="margin-bottom: var(--spacing-xl); padding: var(--spacing-lg); border-bottom: none; background: #c9a870; border-radius: var(--border-radius-xl); box-shadow: var(--shadow-sm);">
+    <h1 class="header-title">Users</h1>
+    <a href="<?= BASE_PATH ?>/users/create" class="btn btn-primary" style="background: #3e2b22; border-color: #3e2b22;">
+        <i data-lucide="plus"></i>
+        Add New User
+    </a>
 </div>
 
 <!-- Stats Indicators -->
