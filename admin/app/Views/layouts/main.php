@@ -50,10 +50,6 @@
                         <i data-lucide="party-popper" class="nav-item-icon"></i>
                         <span>Events</span>
                     </a>
-                    <a href="<?= BASE_PATH ?>/gallery" class="nav-item <?= $current_page === 'gallery' ? 'active' : '' ?>">
-                        <i data-lucide="images" class="nav-item-icon"></i>
-                        <span>Gallery</span>
-                    </a>
                     <a href="<?= BASE_PATH ?>/menus" class="nav-item <?= $current_page === 'menus' ? 'active' : '' ?>">
                         <i data-lucide="book-open" class="nav-item-icon"></i>
                         <span>Menus</span>
