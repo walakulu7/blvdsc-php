@@ -196,6 +196,35 @@
     width: 16px;
     height: 16px;
 }
+
+/* Password Toggle */
+.password-wrapper {
+    position: relative;
+    max-width: 400px; /* Match the limited input width */
+}
+
+.password-toggle-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.password-toggle-btn:hover {
+    color: #6b7280;
+}
+
+.password-toggle-btn i {
+    width: 18px;
+    height: 18px;
+}
 </style>
 
 <!-- Flash Messages -->
@@ -271,7 +300,12 @@ if ($errorMessage):
                     <label for="password" class="user-form-label">
                         Password <span class="required">*</span>
                     </label>
-                    <input type="password" id="password" name="password" class="user-form-input user-form-input-limited" required>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" class="user-form-input user-form-input-limited" required>
+                        <button type="button" class="password-toggle-btn" onclick="toggleCreatePassword()" title="Show/Hide password">
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
                     <p class="user-help-text">Minimum 8 characters recommended</p>
                 </div>
                 
@@ -305,6 +339,25 @@ if ($errorMessage):
 </div>
 
 <script>
+// Toggle password visibility
+function toggleCreatePassword() {
+    const passwordField = document.getElementById('password');
+    const toggleBtn = document.querySelector('.password-toggle-btn');
+    
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        toggleBtn.innerHTML = '<i data-lucide="eye-off"></i>';
+        toggleBtn.title = 'Hide password';
+    } else {
+        passwordField.type = 'password';
+        toggleBtn.innerHTML = '<i data-lucide="eye"></i>';
+        toggleBtn.title = 'Show password';
+    }
+    
+    // Reinitialize Lucide icons
+    lucide.createIcons();
+}
+
 // Initialize Lucide icons
 setTimeout(() => {
     lucide.createIcons();

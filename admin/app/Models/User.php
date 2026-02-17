@@ -146,4 +146,51 @@ class User extends Model {
             'manager' => $this->count(['role' => 'manager'])
         ];
     }
+    
+    /**
+     * Verify user's password
+     */
+    public function verifyPassword($userId, $password) {
+        $user = $this->find($userId);
+        
+        if (!$user) {
+            return false;
+        }
+        
+        return password_verify($password, $user['password_hash']);
+    }
+    
+    /**
+     * Update user profile (username and email)
+     */
+    public function updateProfile($userId, $data) {
+        $updateData = [];
+        
+        if (isset($data['username'])) {
+            $updateData['username'] = $data['username'];
+        }
+        
+        if (isset($data['email'])) {
+            $updateData['email'] = $data['email'];
+        }
+        
+        return $this->update($userId, $updateData);
+    }
+    
+    /**
+     * Check if email exists
+     */
+    public function emailExists($email, $excludeId = null) {
+        if ($excludeId) {
+            $sql = "SELECT COUNT(*) FROM {$this->table} WHERE email = ? AND id != ?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([$email, $excludeId]);
+        } else {
+            $sql = "SELECT COUNT(*) FROM {$this->table} WHERE email = ?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([$email]);
+        }
+        
+        return $stmt->fetchColumn() > 0;
+    }
 }

@@ -182,6 +182,25 @@
             box-shadow: 0 0 0 4px rgba(201, 168, 112, 0.1);
         }
         
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #9ca3af;
+            font-size: 1.25rem;
+            padding: 0.25rem;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        
+        .password-toggle:hover {
+            color: #6b7280;
+        }
+        
         .form-footer {
             display: flex;
             align-items: center;
@@ -375,6 +394,14 @@
                             placeholder="Enter your password"
                             required
                         >
+                        <button 
+                            type="button" 
+                            class="password-toggle" 
+                            onclick="togglePassword()"
+                            title="Show/Hide password"
+                        >
+                            👁️
+                        </button>
                     </div>
                 </div>
                 
@@ -396,5 +423,22 @@
             </p>
         </div>
     </div>
+    
+    <script>
+    function togglePassword() {
+        const passwordField = document.getElementById('password');
+        const toggleButton = document.querySelector('.password-toggle');
+        
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggleButton.textContent = '🙈';
+            toggleButton.title = 'Hide password';
+        } else {
+            passwordField.type = 'password';
+            toggleButton.textContent = '👁️';
+            toggleButton.title = 'Show password';
+        }
+    }
+    </script>
 </body>
 </html>

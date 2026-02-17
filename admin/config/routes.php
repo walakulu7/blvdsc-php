@@ -79,13 +79,10 @@ $router->post('/backups/restore/{id}', 'BackupController', 'restore', ['auth']);
 $router->post('/backups/upload', 'BackupController', 'upload', ['auth']);
 $router->post('/backups/settings', 'BackupController', 'updateSettings', ['auth']);
 
-// Settings
-$router->get('/settings/contact', 'SettingsController', 'contact', ['auth']);
-$router->post('/settings/contact', 'SettingsController', 'updateContact', ['auth']);
-$router->get('/settings/site', 'SettingsController', 'site', ['auth']);
-$router->post('/settings/site', 'SettingsController', 'updateSite', ['auth']);
-$router->get('/settings/profile', 'SettingsController', 'profile', ['auth']);
-$router->post('/settings/profile', 'SettingsController', 'updateProfile', ['auth']);
+// Profile Management
+$router->get('/settings/profile', 'ProfileController', 'index', ['auth']);
+$router->post('/settings/profile', 'ProfileController', 'update', ['auth']);
+$router->post('/settings/profile/password', 'ProfileController', 'changePassword', ['auth']);
 
 // Special Days
 $router->get('/special-days', 'SpecialDayController', 'index', ['auth']);
