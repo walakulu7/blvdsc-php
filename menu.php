@@ -5,6 +5,14 @@ require_once 'includes/header.php';
 require_once 'includes/menu_schema.json.php';
 require_once 'includes/navbar.php';
 
+// Load database connection for menu model
+require_once 'config/database.php';
+
+// Load menu model to get published menus
+require_once 'admin/app/Models/MenuModel.php';
+$menuModel = new MenuModel();
+$menus = $menuModel->getPublishedMenus();
+
 $title = 'Our Menu';
 $subtitle = 'Discover our carefully crafted selection';
 //$backgroundImage = 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=2070&auto=format&fit=crop';
@@ -124,60 +132,49 @@ require_once 'includes/page-header.php';
     <section class="section-padding bg-white">
         <div class="blvd-container">
             <div style="max-width: 1200px; margin: 0 auto;">
-                <div class="menu-container">
-                    <!-- Left Sidebar -->
-                    <div class="menu-sidebar">
-                        <h2 style="font-family: 'Playfair Display', serif; font-size: 24px; color: #c9a870; margin-bottom: 24px;">Our Menu</h2>
-                        
-                        <button class="menu-tab active" data-target="coffee">COFFEE & TEA</button>
-                        <button class="menu-tab" data-target="beverages">OTHER BEVERAGES</button>
-                        <button class="menu-tab" data-target="breakfast">ALL DAY BREAKFAST & SPECIALTIES</button>
-                        <button class="menu-tab" data-target="kids">KIDS & SEASONAL</button>
+                <?php if (empty($menus)): ?>
+                    <div style="text-align: center; padding: 60px 20px; color: #6b7280;">
+                        <p style="font-size: 18px;">Our menus are being updated. Please check back soon!</p>
                     </div>
-
-                    <!-- Right Content -->
-                    <div style="flex: 1;">
-                        <!-- Coffee Menu -->
-                        <div id="coffee" class="menu-panel active">
-                            <div class="menu-image-container">
-                                <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; margin-bottom: 24px; color: #2d2d2d;">
-                                    Menu <span style="color: #c9a870;">BLVD Specialty Coffee</span>
-                                </h3>
-                                <img src="assets/images/menu-coffee-tea.webp" alt="Coffee & Tea Menu - Vegan milk alternatives & specialty drinks available at BLVD Canning Vale" onclick="openModal(this.src)">
-                            </div>
+                <?php else: ?>
+                    <div class="menu-container">
+                        <!-- Left Sidebar -->
+                        <div class="menu-sidebar">
+                            <h2 style="font-family: 'Playfair Display', serif; font-size: 24px; color: #c9a870; margin-bottom: 24px;">Our Menu</h2>
+                            
+                            <?php foreach ($menus as $index => $menu): ?>
+                                <button 
+                                    class="menu-tab <?= $index === 0 ? 'active' : '' ?>" 
+                                    data-target="menu-<?= $menu['id'] ?>"
+                                >
+                                    <?= htmlspecialchars($menu['title']) ?>
+                                </button>
+                            <?php endforeach; ?>
                         </div>
 
-                        <!-- Beverages Menu -->
-                        <div id="beverages" class="menu-panel">
-                            <div class="menu-image-container">
-                                <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; margin-bottom: 24px; color: #2d2d2d;">
-                                    Menu <span style="color: #c9a870;">BLVD Specialty Coffee</span>
-                                </h3>
-                                <img src="assets/images/menu-other-beverages.webp" alt="Other Beverages Menu - Vegan smoothies, shakes & specialty drinks" onclick="openModal(this.src)">
-                            </div>
-                        </div>
-
-                        <!-- Breakfast Menu -->
-                        <div id="breakfast" class="menu-panel">
-                            <div class="menu-image-container">
-                                <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; margin-bottom: 24px; color: #2d2d2d;">
-                                    Menu <span style="color: #c9a870;">BLVD Specialty Coffee</span>
-                                </h3>
-                                <img src="assets/images/menu-all-daybreakfast.webp" alt="All Day Breakfast Menu - Gluten-free, vegan & vegetarian options available" onclick="openModal(this.src)">
-                            </div>
-                        </div>
-
-                        <!-- Kids Menu -->
-                        <div id="kids" class="menu-panel">
-                            <div class="menu-image-container">
-                                <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; margin-bottom: 24px; color: #2d2d2d;">
-                                    Menu <span style="color: #c9a870;">BLVD Specialty Coffee</span>
-                                </h3>
-                                <img src="assets/images/menu-kids-seasonal.webp" alt="Kids & Seasonal Menu - Family-friendly options with dietary accommodations" onclick="openModal(this.src)">
-                            </div>
+                        <!-- Right Content -->
+                        <div style="flex: 1;">
+                            <?php foreach ($menus as $index => $menu): ?>
+                                <div id="menu-<?= $menu['id'] ?>" class="menu-panel <?= $index === 0 ? 'active' : '' ?>">
+                                    <div class="menu-image-container">
+                                        <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; margin-bottom: 24px; color: #2d2d2d;">
+                                            Menu <span style="color: #c9a870;">BLVD Specialty Coffee</span>
+                                        </h3>
+                                        <?php if (!empty($menu['image_url'])): ?>
+                                            <img 
+                                                src="<?= htmlspecialchars($menu['image_url']) ?>" 
+                                                alt="<?= htmlspecialchars($menu['title']) ?> - BLVD Specialty Coffee Menu" 
+                                                onclick="openModal(this.src)"
+                                            >
+                                        <?php else: ?>
+                                            <p style="text-align: center; color: #9ca3af; padding: 40px;">Menu image coming soon</p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
-                </div>
+                <?php endif; ?>
 
                 <!-- Footer Text -->
                 <div style="margin-top: 60px; text-align: center; color: #6b7280; font-size: 14px;">

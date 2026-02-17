@@ -195,11 +195,11 @@
 
 .event-btn-primary {
     color: #ffffff;
-    background-color: #3b82f6;
+    background-color: #6B5744;
 }
 
 .event-btn-primary:hover {
-    background-color: #2563eb;
+    background-color: #4a3728;
 }
 
 .event-btn-secondary {

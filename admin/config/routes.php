@@ -77,5 +77,8 @@ $router->post('/special-days/{id}/delete', 'SpecialDayController', 'delete', ['a
 
 // Menus
 $router->get('/menus', 'MenuController', 'index', ['auth']);
-$router->post('/menus/upload', 'MenuController', 'upload', ['auth']);
-$router->post('/menus/{id}/delete', 'MenuController', 'delete', ['auth']);
+$router->get('/menus/create', 'MenuController', 'create', ['auth']);
+$router->post('/menus', 'MenuController', 'store', ['auth']);
+$router->get('/menus/{id}/edit', 'MenuController', 'edit', ['auth']);
+$router->post('/menus/{id}', 'MenuController', 'update', ['auth']);
+$router->post('/menus/{id}/delete', 'MenuController', 'destroy', ['auth']);
