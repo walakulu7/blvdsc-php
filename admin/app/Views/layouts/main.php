@@ -13,7 +13,7 @@
         <!-- Sidebar -->
         <aside class="admin-sidebar" id="sidebar">
             <div class="sidebar-logo">
-                <img src="<?= BASE_PATH ?>/../assets/images/blvd-login-logo.png" alt="BLVD Logo" class="sidebar-logo-img">
+                <img src="<?= BASE_PATH ?>/../assets/images/blvd-logo-circle-white.png" alt="BLVD Logo" class="sidebar-logo-img">
                 <div class="sidebar-logo-text">
                     <h1>BLVD Specialty Coffee</h1>
                     <p>Admin Panel</p>
