@@ -410,8 +410,59 @@
     </div>
 </div>
 
-<!-- Row 5: Upcoming Reservations & Upcoming Events -->
-<div class="grid grid-cols-2">
+<!-- Row 5: Upcoming Events, Upcoming Reservations & Upcoming High Tea -->
+<div class="grid grid-cols-3">
+    <!-- Upcoming Events -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Upcoming Events</h2>
+            <a href="<?= BASE_PATH ?>/events" style="color: var(--color-primary); font-size: 14px; text-decoration: none;">View All →</a>
+        </div>
+        <div class="card-body">
+            <?php
+            // Get upcoming events
+            $upcomingEventsList = $pdo->query("
+                SELECT * FROM events 
+                WHERE event_date >= CURDATE() AND status = 'published'
+                ORDER BY event_date ASC 
+                LIMIT 4
+            ")->fetchAll();
+            
+            if (empty($upcomingEventsList)):
+            ?>
+                <div style="text-align: center; padding: 40px; color: var(--color-gray-400);">
+                    <i data-lucide="calendar-x" style="width: 48px; height: 48px; margin: 0 auto 16px;"></i>
+                    <p>No upcoming events</p>
+                </div>
+            <?php else: ?>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <?php foreach ($upcomingEventsList as $event): ?>
+                    <div style="padding: 12px; border: 1px solid var(--color-gray-200); border-radius: 8px;">
+                        <div style="display: flex; gap: 12px;">
+                            <div style="flex-shrink: 0; width: 50px; height: 50px; background: var(--color-gray-100); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                <div style="font-size: 18px; font-weight: 600; color: var(--color-gray-900);">
+                                    <?= date('d', strtotime($event['event_date'])) ?>
+                                </div>
+                                <div style="font-size: 11px; color: var(--color-gray-500);">
+                                    <?= date('M', strtotime($event['event_date'])) ?>
+                                </div>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; color: var(--color-gray-900); margin-bottom: 4px;">
+                                    <?= htmlspecialchars($event['title']) ?>
+                                </div>
+                                <div style="font-size: 13px; color: var(--color-gray-500);">
+                                    <?= htmlspecialchars(substr($event['description'], 0, 60)) ?>...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    
     <!-- Upcoming Reservations -->
     <div class="card">
         <div class="card-header">
@@ -425,7 +476,7 @@
                 SELECT * FROM reservations 
                 WHERE date >= CURDATE() 
                 ORDER BY date ASC, time ASC 
-                LIMIT 3
+                LIMIT 4
             ")->fetchAll();
             
             if (empty($upcomingReservations)):
@@ -462,49 +513,48 @@
         </div>
     </div>
     
-    <!-- Upcoming Events -->
+    <!-- Upcoming High Tea -->
     <div class="card">
         <div class="card-header">
-            <h2 class="card-title">Upcoming Events</h2>
-            <a href="<?= BASE_PATH ?>/events" style="color: var(--color-primary); font-size: 14px; text-decoration: none;">View All →</a>
+            <h2 class="card-title">Upcoming High Tea</h2>
+            <a href="<?= BASE_PATH ?>/hightea" style="color: var(--color-primary); font-size: 14px; text-decoration: none;">View All →</a>
         </div>
         <div class="card-body">
             <?php
-            // Get upcoming events
-            $upcomingEventsList = $pdo->query("
-                SELECT * FROM events 
-                WHERE event_date >= CURDATE() AND status = 'published'
-                ORDER BY event_date ASC 
-                LIMIT 3
+            // Get upcoming high tea reservations
+            $upcomingHighTea = $pdo->query("
+                SELECT * FROM high_tea_reservations 
+                WHERE date >= CURDATE() 
+                ORDER BY date ASC, time ASC 
+                LIMIT 4
             ")->fetchAll();
             
-            if (empty($upcomingEventsList)):
+            if (empty($upcomingHighTea)):
             ?>
                 <div style="text-align: center; padding: 40px; color: var(--color-gray-400);">
-                    <i data-lucide="calendar-x" style="width: 48px; height: 48px; margin: 0 auto 16px;"></i>
-                    <p>No upcoming events</p>
+                    <i data-lucide="cup-soda" style="width: 48px; height: 48px; margin: 0 auto 16px;"></i>
+                    <p>No upcoming high tea</p>
                 </div>
             <?php else: ?>
                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <?php foreach ($upcomingEventsList as $event): ?>
+                    <?php foreach ($upcomingHighTea as $hightea): ?>
                     <div style="padding: 12px; border: 1px solid var(--color-gray-200); border-radius: 8px;">
-                        <div style="display: flex; gap: 12px;">
-                            <div style="flex-shrink: 0; width: 50px; height: 50px; background: var(--color-gray-100); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                                <div style="font-size: 18px; font-weight: 600; color: var(--color-gray-900);">
-                                    <?= date('d', strtotime($event['event_date'])) ?>
-                                </div>
-                                <div style="font-size: 11px; color: var(--color-gray-500);">
-                                    <?= date('M', strtotime($event['event_date'])) ?>
-                                </div>
-                            </div>
-                            <div style="flex: 1;">
-                                <div style="font-weight: 600; color: var(--color-gray-900); margin-bottom: 4px;">
-                                    <?= htmlspecialchars($event['title']) ?>
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+                            <div>
+                                <div style="font-weight: 600; color: var(--color-gray-900);">
+                                    <?= htmlspecialchars($hightea['customer_name']) ?>
                                 </div>
                                 <div style="font-size: 13px; color: var(--color-gray-500);">
-                                    <?= htmlspecialchars(substr($event['description'], 0, 60)) ?>...
+                                    <?= $hightea['party_size'] ?> guests · <?= ucfirst($hightea['package_type']) ?>
                                 </div>
                             </div>
+                            <span class="badge badge-<?= $hightea['status'] === 'confirmed' ? 'success' : ($hightea['status'] === 'completed' ? 'info' : 'warning') ?>">
+                                <?= ucfirst($hightea['status']) ?>
+                            </span>
+                        </div>
+                        <div style="font-size: 13px; color: var(--color-gray-600);">
+                            <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                            <?= date('M d, Y', strtotime($hightea['date'])) ?> at <?= date('h:i A', strtotime($hightea['time'])) ?>
                         </div>
                     </div>
                     <?php endforeach; ?>
