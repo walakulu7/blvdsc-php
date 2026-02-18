@@ -1,13 +1,15 @@
 <!-- Row 1: First 4 Stat Cards -->
 <div class="stat-row">
-    <!-- Total Reservations -->
-    <div class="stat-row-item stat-success">
+    
+    <!-- High Tea in 2 Days -->
+    <div class="stat-row-item stat-warning">
         <div class="stat-content">
-            <h4>Total Reservations</h4>
-            <div class="value"><?= $totalReservations ?></div>
+            <h4>High Tea in 2 Days</h4>
+            <div class="value"><?= $highTeaIn2Days ?></div>
+            <div style="font-size: 12px; color: var(--color-gray-500); margin-top: 2px;"><?= $highTeaIn2DaysDate ?></div>
         </div>
         <div class="stat-icon">
-            <i data-lucide="calendar"></i>
+            <i data-lucide="chef-hat"></i>
         </div>
     </div>
     
@@ -33,14 +35,14 @@
         </div>
     </div>
     
-    <!-- Pending Reviews -->
-    <div class="stat-row-item stat-warning">
+    <!-- Total Reservations -->
+    <div class="stat-row-item stat-success">
         <div class="stat-content">
-            <h4>Pending Reviews</h4>
-            <div class="value"><?= $pendingReviews ?></div>
+            <h4>Total Reservations</h4>
+            <div class="value"><?= $totalReservations ?></div>
         </div>
         <div class="stat-icon">
-            <i data-lucide="star"></i>
+            <i data-lucide="calendar"></i>
         </div>
     </div>
 </div>

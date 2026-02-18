@@ -36,8 +36,9 @@ class DashboardController extends Controller {
         // Messages
         $unreadMessages = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE is_read = 0")->fetchColumn();
         
-        // Reviews
-        $pendingReviews = $pdo->query("SELECT COUNT(*) FROM customer_reviews WHERE status = 'pending'")->fetchColumn();
+        // High Tea in 2 days (for kitchen preparation)
+        $highTeaIn2Days = $pdo->query("SELECT COUNT(*) FROM high_tea_reservations WHERE DATE(date) = CURDATE() + INTERVAL 2 DAY")->fetchColumn();
+        $highTeaIn2DaysDate = date('M d', strtotime('+2 days'));
         
         // Today's reservations
         $todayReservations = $pdo->query("SELECT COUNT(*) FROM reservations WHERE DATE(date) = CURDATE()")->fetchColumn();
@@ -53,7 +54,8 @@ class DashboardController extends Controller {
             'pendingHighTea' => $pendingHighTea,
             'upcomingEvents' => $upcomingEvents,
             'unreadMessages' => $unreadMessages,
-            'pendingReviews' => $pendingReviews,
+            'highTeaIn2Days' => $highTeaIn2Days,
+            'highTeaIn2DaysDate' => $highTeaIn2DaysDate,
             'todayReservations' => $todayReservations
         ], 'main');
     }
