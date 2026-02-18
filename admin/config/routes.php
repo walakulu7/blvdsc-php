@@ -84,6 +84,10 @@ $router->get('/settings/profile', 'ProfileController', 'index', ['auth']);
 $router->post('/settings/profile', 'ProfileController', 'update', ['auth']);
 $router->post('/settings/profile/password', 'ProfileController', 'changePassword', ['auth']);
 
+// General Settings
+$router->get('/settings/general', 'GeneralSettingsController', 'index', ['auth']);
+$router->post('/settings/general', 'GeneralSettingsController', 'update', ['auth']);
+
 // Special Days
 $router->get('/special-days', 'SpecialDayController', 'index', ['auth']);
 $router->post('/special-days', 'SpecialDayController', 'store', ['auth']);

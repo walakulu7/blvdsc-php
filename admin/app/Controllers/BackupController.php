@@ -11,11 +11,6 @@ class BackupController extends Controller {
         // parent::__construct(); // Controller has no constructor
         $this->requireAuth();
         
-        // Ensure only admin can access backup functionality
-        if (!Auth::isAdmin()) {
-            $this->redirect('/dashboard');
-        }
-        
         $this->backupModel = new Backup();
         $this->settingModel = new BackupSetting();
     }
@@ -94,6 +89,11 @@ class BackupController extends Controller {
      * Delete backup
      */
     public function delete($id) {
+        if (!Auth::isAdmin()) {
+            Session::flash('error', 'Only administrators can delete backups.');
+            $this->redirect('/backups');
+            return;
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Verify CSRF token
             if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
@@ -115,6 +115,11 @@ class BackupController extends Controller {
      * Restore database from backup
      */
     public function restore($id) {
+        if (!Auth::isAdmin()) {
+            Session::flash('error', 'Only administrators can restore backups.');
+            $this->redirect('/backups');
+            return;
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Verify CSRF token
             if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {

@@ -85,6 +85,7 @@
                 </div>
                 
                 <!-- Settings Section -->
+                <?php if (Auth::isAdmin()): ?>
                 <div class="nav-section">
                     <div class="nav-section-title">Settings</div>
                     <a href="<?= BASE_PATH ?>/settings/general" class="nav-item  <?= $current_page === 'settings-general' ? 'active' : '' ?>">
@@ -104,6 +105,7 @@
                         <span>Security Settings</span>
                     </a>
                 </div>
+                <?php endif; ?>
             </nav>
         </aside>
         

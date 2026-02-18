@@ -71,6 +71,7 @@
                                     <a href="<?= BASE_PATH ?>/backups/download/<?= $backup['id'] ?>" class="btn btn-sm btn-secondary" title="Download">
                                         <i data-lucide="download" style="width: 14px; height: 14px;"></i>
                                     </a>
+                                    <?php if (Auth::isAdmin()): ?>
                                     <button type="button" class="btn btn-sm btn-warning" onclick="confirmRestore(<?= $backup['id'] ?>, '<?= htmlspecialchars($backup['created_at']) ?>')" title="Restore" style="color: white;">
                                         <i data-lucide="rotate-ccw" style="width: 14px; height: 14px;"></i>
                                     </button>
@@ -80,6 +81,7 @@
                                             <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
                                         </button>
                                     </form>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
