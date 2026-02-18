@@ -13,14 +13,14 @@
         </div>
     </div>
     
-    <!-- Unread Messages -->
-    <div class="stat-row-item stat-orange">
+    <!-- High Tea Pending -->
+    <div class="stat-row-item stat-primary">
         <div class="stat-content">
-            <h4>Unread Messages</h4>
-            <div class="value"><?= $unreadMessages ?></div>
+            <h4>High Tea Pending</h4>
+            <div class="value"><?= $pendingHighTea ?></div>
         </div>
         <div class="stat-icon">
-            <i data-lucide="message-square"></i>
+            <i data-lucide="coffee"></i>
         </div>
     </div>
     
@@ -35,14 +35,14 @@
         </div>
     </div>
     
-    <!-- Total Reservations -->
-    <div class="stat-row-item stat-success">
+    <!-- High Tea Total -->
+    <div class="stat-row-item stat-purple">
         <div class="stat-content">
-            <h4>Total Reservations</h4>
-            <div class="value"><?= $totalReservations ?></div>
+            <h4>High Tea Total</h4>
+            <div class="value"><?= $totalHighTea ?></div>
         </div>
         <div class="stat-icon">
-            <i data-lucide="calendar"></i>
+            <i data-lucide="cup-soda"></i>
         </div>
     </div>
 </div>
@@ -71,25 +71,25 @@
         </div>
     </div>
     
-    <!-- High Tea Pending -->
-    <div class="stat-row-item stat-primary">
+    <!-- Unread Messages -->
+    <div class="stat-row-item stat-orange">
         <div class="stat-content">
-            <h4>High Tea Pending</h4>
-            <div class="value"><?= $pendingHighTea ?></div>
+            <h4>Unread Messages</h4>
+            <div class="value"><?= $unreadMessages ?></div>
         </div>
         <div class="stat-icon">
-            <i data-lucide="coffee"></i>
+            <i data-lucide="message-square"></i>
         </div>
     </div>
     
-    <!-- Total High Tea -->
-    <div class="stat-row-item stat-purple">
+    <!-- Total Reservations -->
+    <div class="stat-row-item stat-success">
         <div class="stat-content">
-            <h4>High Tea Total</h4>
-            <div class="value"><?= $totalHighTea ?></div>
+            <h4>Total Reservations</h4>
+            <div class="value"><?= $totalReservations ?></div>
         </div>
         <div class="stat-icon">
-            <i data-lucide="cup-soda"></i>
+            <i data-lucide="calendar"></i>
         </div>
     </div>
 </div>
@@ -138,7 +138,7 @@
                 FROM admin_activity_log al 
                 LEFT JOIN admin_users au ON al.admin_id = au.id 
                 ORDER BY al.created_at DESC 
-                LIMIT 3
+                LIMIT 4
             ")->fetchAll();
             
             if (empty($recentActivity)):
@@ -273,21 +273,21 @@
                 </table>
                 
                 <!-- Legend -->
-                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
-                        <div style="width: 10px; height: 10px; background: #10b981; border-radius: 50%;"></div>
+                <div style="margin-top: 16px; padding-top: 26px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--color-gray-600);">
+                        <div style="width: 12px; height: 12px; background: #10b981; border-radius: 50%;"></div>
                         <span>1</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
-                        <div style="width: 10px; height: 10px; background: #3b82f6; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--color-gray-600);">
+                        <div style="width: 12px; height: 12px; background: #3b82f6; border-radius: 50%;"></div>
                         <span>2</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
-                        <div style="width: 10px; height: 10px; background: #f59e0b; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--color-gray-600);">
+                        <div style="width: 12px; height: 12px; background: #f59e0b; border-radius: 50%;"></div>
                         <span>3</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
-                        <div style="width: 10px; height: 10px; background: #dc2626; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--color-gray-600);">
+                        <div style="width: 12px; height: 12px; background: #dc2626; border-radius: 50%;"></div>
                         <span>4+</span>
                     </div>
                 </div>
@@ -387,21 +387,21 @@
                 </table>
                 
                 <!-- Legend -->
-                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
-                        <div style="width: 10px; height: 10px; background: #10b981; border-radius: 50%;"></div>
+                <div style="margin-top: 16px; padding-top: 26px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--color-gray-600);">
+                        <div style="width: 12px; height: 12px; background: #10b981; border-radius: 50%;"></div>
                         <span>1</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
-                        <div style="width: 10px; height: 10px; background: #3b82f6; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--color-gray-600);">
+                        <div style="width: 12px; height: 12px; background: #3b82f6; border-radius: 50%;"></div>
                         <span>2</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
-                        <div style="width: 10px; height: 10px; background: #f59e0b; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--color-gray-600);">
+                        <div style="width: 12px; height: 12px; background: #f59e0b; border-radius: 50%;"></div>
                         <span>3</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
-                        <div style="width: 10px; height: 10px; background: #dc2626; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--color-gray-600);">
+                        <div style="width: 12px; height: 12px; background: #dc2626; border-radius: 50%;"></div>
                         <span>4+</span>
                     </div>
                 </div>
