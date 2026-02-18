@@ -13,9 +13,9 @@
         <!-- Sidebar -->
         <aside class="admin-sidebar" id="sidebar">
             <div class="sidebar-logo">
-                <div class="sidebar-logo-icon">☕</div>
+                <img src="<?= BASE_PATH ?>/../assets/images/blvd-login-logo.png" alt="BLVD Logo" class="sidebar-logo-img">
                 <div class="sidebar-logo-text">
-                    <h1>BLVD Coffee</h1>
+                    <h1>BLVD Specialty Coffee</h1>
                     <p>Admin Panel</p>
                 </div>
             </div>
@@ -194,6 +194,12 @@
                 
                 <?= $content ?>
             </div>
+            
+            <!-- Footer -->
+            <footer class="admin-footer">
+                <span>&copy; <?= date('Y') ?> BLVD Specialty Coffee. All rights reserved.</span>
+                <span>Developed by <a href="https://myclassyweb.store" target="_blank" rel="noopener noreferrer">My Classy Web Store</a></span>
+            </footer>
         </main>
     </div>
     
