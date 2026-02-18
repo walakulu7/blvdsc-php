@@ -179,7 +179,7 @@
     <div class="card">
         <div class="card-header">
             <h2 class="card-title">Reservations</h2>
-            <span style="font-size: 14px; color: var(--color-gray-500);">Calendar</span>
+            <a href="<?= BASE_PATH ?>/reservations" style="color: var(--color-primary); font-size: 14px; text-decoration: none;">View All →</a>
         </div>
         <div class="card-body">
             <div style="text-align: center; padding: 20px;">
@@ -273,21 +273,21 @@
                 </table>
                 
                 <!-- Legend -->
-                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
-                        <div style="width: 6px; height: 6px; background: #10b981; border-radius: 50%;"></div>
+                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
+                        <div style="width: 10px; height: 10px; background: #10b981; border-radius: 50%;"></div>
                         <span>1</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
-                        <div style="width: 6px; height: 6px; background: #3b82f6; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
+                        <div style="width: 10px; height: 10px; background: #3b82f6; border-radius: 50%;"></div>
                         <span>2</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
-                        <div style="width: 6px; height: 6px; background: #f59e0b; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
+                        <div style="width: 10px; height: 10px; background: #f59e0b; border-radius: 50%;"></div>
                         <span>3</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
-                        <div style="width: 6px; height: 6px; background: #dc2626; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
+                        <div style="width: 10px; height: 10px; background: #dc2626; border-radius: 50%;"></div>
                         <span>4+</span>
                     </div>
                 </div>
@@ -299,7 +299,7 @@
     <div class="card">
         <div class="card-header">
             <h2 class="card-title">High Tea</h2>
-            <span style="font-size: 14px; color: var(--color-gray-500);">Calendar</span>
+            <a href="<?= BASE_PATH ?>/hightea" style="color: var(--color-primary); font-size: 14px; text-decoration: none;">View All →</a>
         </div>
         <div class="card-body">
             <div style="text-align: center; padding: 20px;">
@@ -387,21 +387,21 @@
                 </table>
                 
                 <!-- Legend -->
-                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
-                        <div style="width: 6px; height: 6px; background: #10b981; border-radius: 50%;"></div>
+                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
+                        <div style="width: 10px; height: 10px; background: #10b981; border-radius: 50%;"></div>
                         <span>1</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
-                        <div style="width: 6px; height: 6px; background: #3b82f6; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
+                        <div style="width: 10px; height: 10px; background: #3b82f6; border-radius: 50%;"></div>
                         <span>2</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
-                        <div style="width: 6px; height: 6px; background: #f59e0b; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
+                        <div style="width: 10px; height: 10px; background: #f59e0b; border-radius: 50%;"></div>
                         <span>3</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-gray-600);">
-                        <div style="width: 6px; height: 6px; background: #dc2626; border-radius: 50%;"></div>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-gray-600);">
+                        <div style="width: 10px; height: 10px; background: #dc2626; border-radius: 50%;"></div>
                         <span>4+</span>
                     </div>
                 </div>
@@ -425,7 +425,7 @@
                 SELECT * FROM events 
                 WHERE event_date >= CURDATE() AND status = 'published'
                 ORDER BY event_date ASC 
-                LIMIT 4
+                LIMIT 5
             ")->fetchAll();
             
             if (empty($upcomingEventsList)):
