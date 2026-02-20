@@ -30,7 +30,12 @@ require_once __DIR__ . '/app/Models/User.php';
 
 // Load all controllers
 foreach (glob(__DIR__ . '/app/Controllers/*.php') as $controller) {
-    require_once $controller;
+    // Basic safety check: if the class is already defined, don't include it again
+    // This helps avoid fatal errors from duplicate files or case-sensitivity issues
+    $filename = basename($controller, '.php');
+    if (!class_exists($filename)) {
+        require_once $controller;
+    }
 }
 
 // Create router instance

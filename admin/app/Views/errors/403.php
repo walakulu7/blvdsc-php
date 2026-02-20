@@ -52,7 +52,7 @@
         <h1>403</h1>
         <h2>Access Forbidden</h2>
         <p>You don't have permission to access this resource.</p>
-        <a href="/blvdsc-web-php/admin/dashboard">Go to Dashboard</a>
+        <a href="<?= defined('BASE_PATH') ? BASE_PATH : '/blvdsc-web-php/admin' ?>/dashboard">Go to Dashboard</a>
     </div>
 </body>
 </html>

@@ -52,7 +52,7 @@
         <h1>404</h1>
         <h2>Page Not Found</h2>
         <p>The page you're looking for doesn't exist or has been moved.</p>
-        <a href="/blvdsc-web-php/admin/dashboard">Go to Dashboard</a>
+        <a href="<?= defined('BASE_PATH') ? BASE_PATH : '/blvdsc-web-php/admin' ?>/dashboard">Go to Dashboard</a>
     </div>
 </body>
 </html>

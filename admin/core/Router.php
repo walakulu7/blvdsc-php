@@ -5,7 +5,11 @@
  */
 class Router {
     private $routes = [];
-    private $basePath = '/blvdsc-web-php/admin';
+    private $basePath;
+    
+    public function __construct() {
+        $this->basePath = defined('BASE_PATH') ? BASE_PATH : '/blvdsc-web-php/admin';
+    }
     
     /**
      * Register a GET route
@@ -60,9 +64,25 @@ class Router {
         }
         
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        $path = str_replace($this->basePath, '', $uri);
         
-        // Default to dashboard if accessing root
+        // Normalize URI and BasePath (remove trailing slashes for consistent matching)
+        $normalizedBasePath = rtrim($this->basePath, '/');
+        $normalizedUri = rtrim($uri, '/');
+        
+        // Get path relative to base path
+        $path = $normalizedUri;
+        if (!empty($normalizedBasePath) && strpos($normalizedUri, $normalizedBasePath) === 0) {
+            $path = substr($normalizedUri, strlen($normalizedBasePath));
+        }
+        
+        // Ensure path starts with /
+        if (empty($path)) {
+            $path = '/';
+        } elseif ($path[0] !== '/') {
+            $path = '/' . $path;
+        }
+        
+        // Default to dashboard if accessing root of admin
         if ($path === '' || $path === '/') {
             $path = '/dashboard';
         }

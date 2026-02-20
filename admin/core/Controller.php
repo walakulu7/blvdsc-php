@@ -52,7 +52,7 @@ class Controller {
      * Redirect to another route
      */
     protected function redirect($path) {
-        $basePath = '/blvdsc-web-php/admin';
+        $basePath = defined('BASE_PATH') ? BASE_PATH : '/blvdsc-web-php/admin';
         header("Location: $basePath$path");
         exit;
     }
@@ -65,7 +65,8 @@ class Controller {
             Session::flash($type, $message);
         }
         
-        $referer = $_SERVER['HTTP_REFERER'] ?? '/blvdsc-web-php/admin/dashboard';
+        $fallback = (defined('BASE_PATH') ? BASE_PATH : '/blvdsc-web-php/admin') . '/dashboard';
+        $referer = $_SERVER['HTTP_REFERER'] ?? $fallback;
         header("Location: $referer");
         exit;
     }

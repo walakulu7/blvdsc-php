@@ -1,16 +1,19 @@
 <?php
 
 require_once __DIR__ . '/../Models/MessageModel.php';
+require_once __DIR__ . '/../Models/MessageReply.php';
 require_once __DIR__ . '/../../core/Controller.php';
 require_once __DIR__ . '/../../core/Session.php';
 
 class MessageController extends Controller
 {
     private $messageModel;
+    private $messageReplyModel;
     
     public function __construct()
     {
         $this->messageModel = new MessageModel();
+        $this->messageReplyModel = new MessageReply();
     }
     
     /**
@@ -59,8 +62,13 @@ class MessageController extends Controller
             $message['is_read'] = 1; // Update local copy
         }
         
+        
+        // Get replies
+        $replies = $this->messageReplyModel->getByMessageId($id);
+        
         $this->view('messages/show', [
             'message' => $message,
+            'replies' => $replies,
             'current_page' => 'messages'
         ]);
     }
@@ -103,6 +111,13 @@ class MessageController extends Controller
         if ($emailSent) {
             // Mark as replied
             $this->messageModel->markAsReplied($id);
+            
+            // Save reply to database
+            $this->messageReplyModel->createReply([
+                'message_id' => $id,
+                'user_id' => Auth::id(),
+                'reply_content' => $replyContent
+            ]);
             
             Session::flash('success', 'Reply sent successfully');
         } else {
@@ -160,18 +175,18 @@ class MessageController extends Controller
         <head>
             <meta charset="UTF-8">
             <style>
-                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
                 .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-                .header { background-color: #6B5744; color: white; padding: 20px; text-align: center; }
-                .content { background-color: #f9f9f9; padding: 20px; margin: 20px 0; border-radius: 5px; }
-                .original-message { background-color: #e9e9e9; padding: 15px; margin-top: 20px; border-left: 4px solid #6B5744; }
-                .footer { text-align: center; color: #666; font-size: 12px; margin-top: 20px; }
+                .header { background-color: #6B5744; color: white; padding: 20px; text-align: center; border-radius: 5px 5px 0 0; }
+                .content { background-color: #f9f9f9; padding: 20px; margin: 0; border: 1px solid #eee; border-top: none; }
+                .original-message { background-color: #ebebeb; padding: 15px; margin-top: 20px; border-left: 4px solid #6B5744; color: #666; font-style: italic; }
+                .footer { text-align: center; color: #888; font-size: 12px; margin-top: 20px; padding: 10px; }
             </style>
         </head>
         <body>
             <div class="container">
                 <div class="header">
-                    <h2>BLVD Specialty Coffee</h2>
+                    <h2 style="margin: 0;">BLVD Specialty Coffee</h2>
                 </div>
                 
                 <div class="content">
@@ -181,7 +196,7 @@ class MessageController extends Controller
                     
                     <div class="original-message">
                         <strong>Your original message:</strong><br>
-                        <p>' . nl2br(htmlspecialchars($message['message'])) . '</p>
+                        <p style="margin-top: 5px;">' . nl2br(htmlspecialchars($message['message'])) . '</p>
                         <small>Sent on: ' . date('F j, Y g:i A', strtotime($message['created_at'])) . '</small>
                     </div>
                 </div>
@@ -191,7 +206,7 @@ class MessageController extends Controller
                         <strong>BLVD Specialty Coffee</strong><br>
                         96 Waratah Boulevard, Canning Vale WA 6155<br>
                         Phone: +61 401 201 536<br>
-                        Email: lankawebnets@gmail.com
+                        Email: ' . CONTACT_EMAIL . '
                     </p>
                 </div>
             </div>
@@ -199,31 +214,52 @@ class MessageController extends Controller
         </html>
         ';
         
-        // Email headers
-        $headers = [
-            'MIME-Version: 1.0',
-            'Content-Type: text/html; charset=UTF-8',
-            'From: ' . EMAIL_FROM_NAME . ' <' . EMAIL_FROM_ADDRESS . '>',
-            'Reply-To: ' . CONTACT_EMAIL,
-            'X-Mailer: PHP/' . phpversion()
-        ];
+        // Standardize line endings for headers
+        $eol = "\r\n";
         
-        // Send email
-        if ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.1') {
-            // Simulate email sending on localhost
-            $logFile = APP_ROOT . '/public/uploads/email_log.txt';
-            $logEntry = "--------------------------------------------------\n";
-            $logEntry .= "Date: " . date('Y-m-d H:i:s') . "\n";
-            $logEntry .= "To: $to\n";
-            $logEntry .= "Subject: $subject\n";
-            $logEntry .= "Headers: " . implode("\n", $headers) . "\n\n";
-            $logEntry .= "Body:\n$htmlMessage\n";
-            $logEntry .= "--------------------------------------------------\n\n";
-            
-            file_put_contents($logFile, $logEntry, FILE_APPEND);
-            return true;
+        // Email headers
+        $headers = "MIME-Version: 1.0" . $eol;
+        $headers .= "Content-Type: text/html; charset=UTF-8" . $eol;
+        $headers .= "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM_ADDRESS . ">" . $eol;
+        $headers .= "Reply-To: " . CONTACT_EMAIL . $eol;
+        $headers .= "Return-Path: " . EMAIL_FROM_ADDRESS . $eol;
+        $headers .= "X-Mailer: PHP/" . phpversion();
+        
+        // Environment detection (more robust than just HTTP_HOST)
+        $isLocalhost = false;
+        if (isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.1')) {
+            $isLocalhost = true;
+        } elseif (php_sapi_name() === 'cli' || empty($_SERVER['HTTP_HOST'])) {
+            $isLocalhost = true; // Assume local/dev if no host info
         }
 
-        return mail($to, $subject, $htmlMessage, implode("\r\n", $headers));
+        if ($isLocalhost) {
+            // Simulate email sending on localhost
+            $logDir = APP_ROOT . '/public/uploads';
+            if (!is_dir($logDir)) {
+                mkdir($logDir, 0777, true);
+            }
+            
+            $logFile = $logDir . '/email_log.txt';
+            $logEntry = "--------------------------------------------------" . PHP_EOL;
+            $logEntry .= "Date: " . date('Y-m-d H:i:s') . PHP_EOL;
+            $logEntry .= "To: $to" . PHP_EOL;
+            $logEntry .= "Subject: $subject" . PHP_EOL;
+            $logEntry .= "Headers: " . str_replace($eol, " | ", $headers) . PHP_EOL . PHP_EOL;
+            $logEntry .= "Body:" . PHP_EOL . $htmlMessage . PHP_EOL;
+            $logEntry .= "--------------------------------------------------" . PHP_EOL . PHP_EOL;
+            
+            error_log("Email simulation logged to $logFile");
+            return file_put_contents($logFile, $logEntry, FILE_APPEND) !== false;
+        }
+
+        // Send actual email on production
+        $sent = mail($to, $subject, $htmlMessage, $headers);
+        
+        if (!$sent) {
+            error_log("Failed to send reply email to $to. Mail function returned false.");
+        }
+        
+        return $sent;
     }
 }

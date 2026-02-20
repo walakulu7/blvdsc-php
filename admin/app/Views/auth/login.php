@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BLVD Specialty Coffee - Admin Panel">
+    <meta property="og:title" content="BLVD Specialty Coffee - Admin">
+    <meta property="og:description" content="Management Panel for BLVD Specialty Coffee">
+    <meta property="og:image" content="<?= BASE_URL ?>/../assets/images/blvd-logo-circle-white.png">
+    <meta property="og:type" content="website">
     <title>Login - BLVD Specialty Coffee Admin</title>
     <style>
         * {

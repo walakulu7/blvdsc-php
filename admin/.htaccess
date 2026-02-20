@@ -1,6 +1,9 @@
 # Enable URL Rewriting
 RewriteEngine On
 
+# Ensure index.php is used as directory index
+DirectoryIndex index.php
+
 # Set base directory (optional, comment out if causing issues)
 # RewriteBase /blvdsc-web-php/admin/
 

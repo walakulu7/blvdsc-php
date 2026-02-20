@@ -425,42 +425,63 @@ if ($successMessage):
         </div>
     </div>
 
-    <!-- Reply Section -->
-    <?php if ($message['replied_at']): ?>
-        <div class="replied-notice">
-            <i data-lucide="check-circle-2"></i>
-            <div class="replied-notice-content">
-                <p>✓ Reply sent on <?= date('F j, Y g:i A', strtotime($message['replied_at'])) ?></p>
-                <small>This message has already been replied to.</small>
+    <!-- Conversation History -->
+    <?php if (!empty($replies)): ?>
+        <h3 class="message-section-title" style="margin-top: 32px; margin-bottom: 16px;">Conversation History</h3>
+        <?php foreach ($replies as $reply): ?>
+            <div class="message-card" style="padding: 24px; border-left: 4px solid #10b981; margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="width: 32px; height: 32px; background: #e5e7eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #374151;">
+                            <i data-lucide="user" style="width: 16px; height: 16px;"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.875rem; color: #111827;">
+                                <?= htmlspecialchars($reply['replier_name'] ?? 'Admin') ?>
+                            </div>
+                            <div style="font-size: 0.75rem; color: #6b7280;">
+                                <?= ucfirst($reply['replier_role'] ?? 'Administrator') ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.8125rem; color: #6b7280; display: flex; align-items: center; gap: 6px;">
+                        <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+                        <?= date('M j, Y g:i A', strtotime($reply['created_at'])) ?>
+                    </div>
+                </div>
+                <div class="message-text" style="color: #374151; font-size: 0.9375rem;">
+                    <?= nl2br(htmlspecialchars($reply['reply_content'])) ?>
+                </div>
             </div>
-        </div>
-    <?php else: ?>
-        <div class="reply-section">
-            <h3 class="message-section-title">Send Reply</h3>
-            
-            <form method="POST" action="<?= BASE_PATH ?>/messages/<?= $message['id'] ?>/reply" id="replyForm">
-                <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
-                
-                <div class="reply-form-field">
-                    <label for="reply_message" class="reply-form-label">
-                        Reply Message <span style="color: #dc2626;">*</span>
-                    </label>
-                    <textarea id="reply_message" name="reply_message" class="reply-form-textarea" required 
-                              placeholder="Type your reply here..."></textarea>
-                    <p style="font-size: 0.8125rem; color: #6b7280; margin-top: 6px; margin-bottom: 0;">
-                        This reply will be sent to <strong><?= htmlspecialchars($message['email']) ?></strong>
-                    </p>
-                </div>
-                
-                <div style="display: flex; gap: 12px;">
-                    <button type="submit" class="message-btn message-btn-primary">
-                        <i data-lucide="send"></i>
-                        Send Reply
-                    </button>
-                </div>
-            </form>
-        </div>
+        <?php endforeach; ?>
     <?php endif; ?>
+
+    <!-- Reply Section -->
+    <div class="reply-section" style="margin-top: 32px;">
+        <h3 class="message-section-title">Send Reply</h3>
+        
+        <form method="POST" action="<?= BASE_PATH ?>/messages/<?= $message['id'] ?>/reply" id="replyForm">
+            <input type="hidden" name="_csrf_token" value="<?= Session::csrf() ?>">
+            
+            <div class="reply-form-field">
+                <label for="reply_message" class="reply-form-label">
+                    Reply Message <span style="color: #dc2626;">*</span>
+                </label>
+                <textarea id="reply_message" name="reply_message" class="reply-form-textarea" required 
+                          placeholder="Type your reply here..."></textarea>
+                <p style="font-size: 0.8125rem; color: #6b7280; margin-top: 6px; margin-bottom: 0;">
+                    This reply will be sent to <strong><?= htmlspecialchars($message['email']) ?></strong>
+                </p>
+            </div>
+            
+            <div style="display: flex; gap: 12px;">
+                <button type="submit" class="message-btn message-btn-primary">
+                    <i data-lucide="send"></i>
+                    Send Reply
+                </button>
+            </div>
+        </form>
+    </div>
     
     <!-- Delete Form (Hidden) -->
     <form method="POST" action="<?= BASE_PATH ?>/messages/<?= $message['id'] ?>/delete" id="deleteForm" 

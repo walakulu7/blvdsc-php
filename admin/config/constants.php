@@ -4,9 +4,20 @@
  */
 
 // Application paths
-define('APP_ROOT', __DIR__ . '/..');
-define('BASE_PATH', '/blvdsc-web-php/admin');
-define('BASE_URL', 'http://localhost/blvdsc-web-php/admin');
+// Application paths
+define('APP_ROOT', dirname(__DIR__));
+
+// Dynamic Base Path Detection
+$scriptName = $_SERVER['SCRIPT_NAME'];
+$publicPath = str_replace('/index.php', '', $scriptName);
+$basePath = (strpos($publicPath, '/admin') !== false) ? substr($publicPath, 0, strpos($publicPath, '/admin') + 6) : $publicPath;
+define('BASE_PATH', $basePath);
+
+// Dynamic Base URL Detection
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+$host = $_SERVER['HTTP_HOST'];
+define('BASE_URL', $protocol . $host . BASE_PATH);
+
 define('UPLOAD_PATH', APP_ROOT . '/public/uploads');
 
 // Session configuration
@@ -32,5 +43,5 @@ define('APP_VERSION', '1.0.0');
 
 // Email configuration
 define('EMAIL_FROM_NAME', 'BLVD Specialty Coffee');
-define('EMAIL_FROM_ADDRESS', 'lankawebnets@gmail.com');
+define('EMAIL_FROM_ADDRESS', 'noreply@blvdsc.com.au');
 define('CONTACT_EMAIL', 'lankawebnets@gmail.com');

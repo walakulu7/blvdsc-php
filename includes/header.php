@@ -24,14 +24,14 @@ $meta_description = isset($page_description) ? $page_description : SITE_DESCRIPT
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="<?php echo htmlspecialchars($page_title); ?>">
-    <meta property="og:description" content="Pet-friendly cafe with gluten-free, vegan & vegetarian options in Canning Vale">
+    <meta property="og:description" content="<?php echo htmlspecialchars($meta_description); ?>">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+    <meta property="og:image" content="<?php echo BASE_URL; ?>/assets/images/blvd-logo-circle-white.png">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@blvdcoffee">
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+    <meta name="twitter:image" content="<?php echo BASE_URL; ?>/assets/images/blvd-logo-circle-white.png">
     
     <!-- Schema.org Structured Data -->
     <?php include __DIR__ . '/schema.json.php'; ?>
