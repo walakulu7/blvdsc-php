@@ -39,6 +39,19 @@ class SiteSetting extends Model
     }
 
     /**
+     * Insert or update a setting (upsert)
+     */
+    public function upsert($key, $value)
+    {
+        $stmt = $this->db->prepare(
+            "INSERT INTO site_settings (setting_key, setting_value, created_at, updated_at)
+             VALUES (?, ?, NOW(), NOW())
+             ON DUPLICATE KEY UPDATE setting_value = ?, updated_at = NOW()"
+        );
+        return $stmt->execute([$key, $value, $value]);
+    }
+
+    /**
      * Bulk update multiple settings
      */
     public function updateMultiple($settings)

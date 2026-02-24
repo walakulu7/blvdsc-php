@@ -99,7 +99,25 @@ try {
     ]);
 
     if ($result) {
-        // Send confirmation email 
+        $lastId = $pdo->lastInsertId();
+        
+        // Prepare data for professional HTML email
+        require_once '../admin/app/Utilities/BookingMailer.php';
+        
+        $bookingData = [
+            'id'            => $lastId,
+            'customer_name' => $name,
+            'email'         => $email,
+            'phone'         => $phone,
+            'date'          => $date,
+            'time'          => $time,
+            'party_size'    => $people
+        ];
+
+        // Send professional HTML confirmation to customer
+        BookingMailer::sendBookingStatusEmail($bookingData, 'received', 'reservation');
+
+        // Notification email to admin (keep existing simple format for admin)
         $to = CONTACT_EMAIL;
         $subject = 'New Table Reservation';
         $message = "New reservation received:\n\n" .

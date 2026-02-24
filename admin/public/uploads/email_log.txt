@@ -51,3 +51,118 @@ Body:
         
 --------------------------------------------------
 
+=== Booking Status Email ===
+Time: 2026-02-20 10:25:24
+To: ictoncp@gmail.com
+Subject: Your High Tea Booking is Confirmed – BLVD Specialty Coffee
+Body:
+Dear Janaka Walakuluarachchi,
+
+We are happy to inform you that your booking at BLVD Specialty Coffee has been CONFIRMED.
+
+Booking Details:
+- Date: February 27, 2026
+- Time: 9:30 AM
+- Party Size: 2
+- Booking ID: #27
+
+We look forward to seeing you!
+
+Best regards,
+BLVD Specialty Coffee Team.
+------------------------------------------------------------
+=== Booking Status Email ===
+Time: 2026-02-20 10:32:33
+To: ictoncp@gmail.com
+Subject: Thank You for Visiting – BLVD Specialty Coffee
+Body:
+Dear Janaka Walakuluarachchi,
+
+Thank you for dining with us at BLVD Specialty Coffee!
+
+We hope you had a wonderful experience. We would love to see you again soon.
+
+Best regards,
+BLVD Specialty Coffee Team
+------------------------------------------------------------
+--------------------------------------------------
+Date: 2026-02-22 08:27:18
+To: ictoncp@gmail.com
+Subject: Re: Test Janaka
+Headers: MIME-Version: 1.0 | Content-Type: text/html; charset=UTF-8 | From: BLVD Specialty Coffee <noreply@blvdsc.com.au> | Reply-To: lankawebnets@gmail.com | Return-Path: noreply@blvdsc.com.au | X-Mailer: PHP/8.3.14
+
+Body:
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <style>
+                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+                .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+                .header { background-color: #6B5744; color: white; padding: 20px; text-align: center; border-radius: 5px 5px 0 0; }
+                .content { background-color: #f9f9f9; padding: 20px; margin: 0; border: 1px solid #eee; border-top: none; }
+                .original-message { background-color: #ebebeb; padding: 15px; margin-top: 20px; border-left: 4px solid #6B5744; color: #666; font-style: italic; }
+                .footer { text-align: center; color: #888; font-size: 12px; margin-top: 20px; padding: 10px; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h2 style="margin: 0;">BLVD Specialty Coffee</h2>
+                </div>
+                
+                <div class="content">
+                    <p>Hello Janaka Walakuluarachchi,</p>
+                    
+                    <p>I will call you</p>
+                    
+                    <div class="original-message">
+                        <strong>Your original message:</strong><br>
+                        <p style="margin-top: 5px;">aaaaaaaaaaaaaaaa</p>
+                        <small>Sent on: February 17, 2026 1:11 AM</small>
+                    </div>
+                </div>
+                
+                <div class="footer">
+                    <p>
+                        <strong>BLVD Specialty Coffee</strong><br>
+                        96 Waratah Boulevard, Canning Vale WA 6155<br>
+                        Phone: +61 401 201 536<br>
+                        Email: lankawebnets@gmail.com
+                    </p>
+                </div>
+            </div>
+        </body>
+        </html>
+        
+--------------------------------------------------
+
+=== Booking Status Email ===
+Time: 2026-02-23 18:23:14
+To: p_pearce@outlook.com
+Subject: Thank You for Visiting – BLVD Specialty Coffee
+Body:
+Dear Penny Pearce,
+
+Thank you for dining with us at BLVD Specialty Coffee!
+
+We hope you had a wonderful experience. We would love to see you again soon.
+
+Best regards,
+BLVD Specialty Coffee Team
+------------------------------------------------------------
+=== Booking Status Email ===
+Time: 2026-02-23 18:23:27
+To: ansenchoy@gmail.com
+Subject: Thank You for Visiting – BLVD Specialty Coffee
+Body:
+Dear Ansen,
+
+Thank you for dining with us at BLVD Specialty Coffee!
+
+We hope you had a wonderful experience. We would love to see you again soon.
+
+Best regards,
+BLVD Specialty Coffee Team
+------------------------------------------------------------

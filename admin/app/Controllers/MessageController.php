@@ -206,7 +206,8 @@ class MessageController extends Controller
                         <strong>BLVD Specialty Coffee</strong><br>
                         96 Waratah Boulevard, Canning Vale WA 6155<br>
                         Phone: +61 401 201 536<br>
-                        Email: ' . CONTACT_EMAIL . '
+                        Email: ' . CONTACT_EMAIL . '<br><br>
+                        <span style="font-size: 10px; opacity: 0.8;">Developed by <a href="https://myclassyweb.store/" style="color: #888; text-decoration: underline;">MyClassyWeb.Store</a></span>
                     </p>
                 </div>
             </div>

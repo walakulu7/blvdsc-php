@@ -356,15 +356,21 @@
                 <p class="welcome-subtitle">Please enter your details to sign in.</p>
             </div>
             
-            <?php if (Session::flash('error')): ?>
+            <?php 
+            $error = Session::flash('error');
+            if ($error): 
+            ?>
                 <div class="alert alert-error">
-                    <?= htmlspecialchars(Session::flash('error')) ?>
+                    <?= htmlspecialchars($error) ?>
                 </div>
             <?php endif; ?>
             
-            <?php if (Session::flash('success')): ?>
+            <?php 
+            $success = Session::flash('success');
+            if ($success): 
+            ?>
                 <div class="alert alert-success">
-                    <?= htmlspecialchars(Session::flash('success')) ?>
+                    <?= htmlspecialchars($success) ?>
                 </div>
             <?php endif; ?>
             

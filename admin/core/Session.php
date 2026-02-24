@@ -59,11 +59,33 @@ class Session {
             self::remove("flash_$key");
             return $message;
         }
-        
         // Set flash message
         self::set("flash_$key", $value);
     }
     
+    /**
+     * Set flash message
+     */
+    public static function setFlash($key, $value) {
+        self::set("flash_$key", $value);
+    }
+
+    /**
+     * Get flash message and remove it
+     */
+    public static function getFlash($key) {
+        $message = self::get("flash_$key");
+        self::remove("flash_$key");
+        return $message;
+    }
+
+    /**
+     * Check if flash message exists without consuming it
+     */
+    public static function hasFlash($key) {
+        return self::has("flash_$key");
+    }
+
     /**
      * Destroy session
      */

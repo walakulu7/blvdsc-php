@@ -113,29 +113,26 @@ try {
     ]);
 
     if ($result) {
-        // Send confirmation email to customer
-        $customerSubject = 'High Tea Reservation Confirmation - BLVD Specialty Coffee';
-        $customerMessage = "Dear {$name},\n\n" .
-                          "Thank you for booking High Tea at BLVD Specialty Coffee!\n\n" .
-                          "Your Reservation Details:\n" .
-                          "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" .
-                          "Date: {$date}\n" .
-                          "Time: {$time}\n" .
-                          "Guests: {$people}\n" .
-                          "Total: $" . number_format($totalPrice, 2) . "\n" .
-                          "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n" .
-                          "We look forward to serving you an unforgettable High Tea experience.\n\n" .
-                          "If you need to make any changes or have special requests, please contact us at " . CONTACT_PHONE . " or reply to this email.\n\n" .
-                          "Best regards,\n" .
-                          "BLVD Specialty Coffee Team\n" .
-                          CONTACT_ADDRESS . "\n" .
-                          CONTACT_PHONE;
+        $lastId = $pdo->lastInsertId();
 
-        $customerHeaders = "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM_ADDRESS . ">\r\n" .
-                           "Reply-To: " . CONTACT_EMAIL;
-        @mail($email, $customerSubject, $customerMessage, $customerHeaders);
+        // Prepare data for professional HTML email
+        require_once '../admin/app/Utilities/BookingMailer.php';
 
-        // Send notification email to admin
+        $bookingData = [
+            'id'            => $lastId,
+            'customer_name' => $name,
+            'email'         => $email,
+            'phone'         => $phone,
+            'date'          => $date,
+            'time'          => $time,
+            'party_size'    => $people,
+            'total_price'   => $totalPrice
+        ];
+
+        // Send professional HTML confirmation to customer
+        BookingMailer::sendBookingStatusEmail($bookingData, 'hightea_received', 'hightea');
+
+        // Send notification email to admin (keep existing format for admin)
         $adminSubject = 'New High Tea Reservation';
         $adminMessage = "New High Tea reservation received:\n\n" .
                        "Customer Details:\n" .

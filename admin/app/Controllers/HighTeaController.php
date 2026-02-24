@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../../core/Controller.php';
 require_once __DIR__ . '/../Models/HighTeaModel.php';
+require_once __DIR__ . '/../Models/SiteSetting.php';
+require_once __DIR__ . '/../Utilities/BookingMailer.php';
 
 /**
  * High Tea Controller
@@ -109,9 +111,16 @@ class HighTeaController extends Controller
             return;
         }
         
+        // Fetch booking data BEFORE updating so we have the customer details
+        $booking = $this->highTeaModel->findById($id);
+
         $result = $this->highTeaModel->updateStatus($id, $status);
         
         if ($result) {
+            // Send email notification to customer
+            if ($booking) {
+                BookingMailer::sendBookingStatusEmail($booking, $status, 'hightea');
+            }
             Session::flash('success', 'Booking status updated successfully');
         } else {
             Session::flash('error', 'Failed to update booking status');

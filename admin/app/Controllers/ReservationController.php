@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../../core/Controller.php';
 require_once __DIR__ . '/../Models/Reservation.php';
+require_once __DIR__ . '/../Models/SiteSetting.php';
+require_once __DIR__ . '/../Utilities/BookingMailer.php';
 
 /**
  * Reservation Controller
@@ -116,7 +118,10 @@ class ReservationController extends Controller {
         if ($success) {
             // Log activity
             $this->logActivity("updated reservation status", "Changed reservation #{$id} to {$status}");
-            
+
+            // Send email notification to customer
+            BookingMailer::sendBookingStatusEmail($reservation, $status, 'reservation');
+
             Session::flash('success', 'Reservation status updated successfully');
         } else {
             Session::flash('error', 'Failed to update reservation status');
