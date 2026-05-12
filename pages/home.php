@@ -169,13 +169,13 @@
         Join our community on Instagram and share your BLVD moments with us.
       </p>
       <a
-        href="https://instagram.com/blvdcoffee"
+        href="<?php echo SOCIAL_INSTAGRAM; ?>"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center text-yellow-600 hover:text-yellow-700 transition-colors"
       >
         <i data-lucide="instagram" class="mr-2" size="20"></i>
-        @blvdcoffee
+        @blvd.coffee_wa
       </a>
     </div>
     

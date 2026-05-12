@@ -39,41 +39,41 @@
       </div>
       
       <?php
-      $events = [
-        [
-          'title' => 'Coffee Cupping Workshop',
-          'date' => 'June 15, 2024',
-          'time' => '9:00 AM - 11:00 AM',
-          'description' => 'Join our master barista for an interactive coffee tasting experience. Learn how to identify flavor notes and appreciate different coffee origins.',
-          'image' => 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2070&auto=format&fit=crop',
-          'price' => '$35 per person'
-        ],
-        [
-          'title' => 'Latte Art Masterclass',
-          'date' => 'June 22, 2024',
-          'time' => '2:00 PM - 4:00 PM',
-          'description' => 'Learn the techniques behind creating beautiful latte art. This hands-on workshop will cover basic patterns and advanced designs.',
-          'image' => 'https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?q=80&w=1974&auto=format&fit=crop',
-          'price' => '$40 per person'
-        ],
-        [
-          'title' => 'Acoustic Music Night',
-          'date' => 'June 28, 2024',
-          'time' => '7:00 PM - 9:00 PM',
-          'description' => 'Enjoy the soulful sounds of local musicians in our cozy café environment. Light refreshments and full coffee menu available.',
-          'image' => 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2074&auto=format&fit=crop',
-          'price' => 'Free entry'
-        ],
-        [
-          'title' => 'Home Brewing Methods',
-          'date' => 'July 8, 2024',
-          'time' => '10:00 AM - 12:00 PM',
-          'description' => 'Discover how to brew café-quality coffee at home. We'll explore various brewing methods including pour-over, French press, AeroPress, and more.',
-          'image' => 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop',
-          'price' => '$30 per person'
-        ]
-      ];
-      ?>
+$events = [
+  [
+    'title' => 'Coffee Cupping Workshop',
+    'date' => 'June 15, 2024',
+    'time' => '9:00 AM - 11:00 AM',
+    'description' => 'Join our master barista for an interactive coffee tasting experience. Learn how to identify flavor notes and appreciate different coffee origins.',
+    'image' => 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2070&auto=format&fit=crop',
+    'price' => '$35 per person'
+  ],
+  [
+    'title' => 'Latte Art Masterclass',
+    'date' => 'June 22, 2024',
+    'time' => '2:00 PM - 4:00 PM',
+    'description' => 'Learn the techniques behind creating beautiful latte art. This hands-on workshop will cover basic patterns and advanced designs.',
+    'image' => 'https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?q=80&w=1974&auto=format&fit=crop',
+    'price' => '$40 per person'
+  ],
+  [
+    'title' => 'Acoustic Music Night',
+    'date' => 'June 28, 2024',
+    'time' => '7:00 PM - 9:00 PM',
+    'description' => 'Enjoy the soulful sounds of local musicians in our cozy café environment. Light refreshments and full coffee menu available.',
+    'image' => 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2074&auto=format&fit=crop',
+    'price' => 'Free entry'
+  ],
+  [
+    'title' => 'Home Brewing Methods',
+    'date' => 'July 8, 2024',
+    'time' => '10:00 AM - 12:00 PM',
+    'description' => 'Discover how to brew café-quality coffee at home. We\'ll explore various brewing methods including pour-over, French press, AeroPress, and more.',
+    'image' => 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop',
+    'price' => '$30 per person'
+  ]
+];
+?>
 
       <div class="space-y-12">
         <?php foreach ($events as $event): ?>
@@ -113,7 +113,8 @@
               </div>
             </div>
           </div>
-        <?php endforeach; ?>
+        <?php
+endforeach; ?>
       </div>
       
       <div class="mt-16">

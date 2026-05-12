@@ -105,7 +105,7 @@
                 <i data-lucide="calendar-plus"></i>
                 View Reservations
             </a>
-            <a href="<?= BASE_PATH ?>/high-tea" class="btn btn-primary" style="width: 100%;">
+            <a href="<?= BASE_PATH ?>/hightea" class="btn btn-primary" style="width: 100%;">
                 <i data-lucide="coffee"></i>
                 High Tea Bookings
             </a>

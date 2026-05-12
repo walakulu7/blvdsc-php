@@ -135,7 +135,7 @@ try {
         $headers = "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM_ADDRESS . ">\r\n" . "Reply-To: $email";
         @mail($to, $subject, $message, $headers);
 
-        echo json_encode(['success' => true, 'message' => 'Reservation submitted successfully! We will contact you to confirm.']);
+        echo json_encode(['success' => true, 'message' => 'Table reservation confirmed! Also a confirmation email has been sent. If it is not in your primary mailbox, please check in spambox.']);
     } else {
         throw new Exception('Failed to save reservation');
     }

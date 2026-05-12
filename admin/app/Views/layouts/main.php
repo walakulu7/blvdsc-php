@@ -15,8 +15,14 @@
 </head>
 <body>
     <div class="admin-wrapper">
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
         <!-- Sidebar -->
         <aside class="admin-sidebar" id="sidebar">
+            <button class="sidebar-close" onclick="toggleSidebar()">
+                <i data-lucide="x"></i>
+            </button>
             <div class="sidebar-logo">
                 <img src="<?= BASE_PATH ?>/../assets/images/blvd-logo-circle-white.png" alt="BLVD Logo" class="sidebar-logo-img">
                 <div class="sidebar-logo-text">
@@ -119,6 +125,9 @@
             <!-- Header -->
             <header class="admin-header">
                 <div class="header-left">
+                    <button class="mobile-toggle" onclick="toggleSidebar()">
+                        <i data-lucide="menu"></i>
+                    </button>
                     <h1 class="header-title"><?= $page_title ?? 'Dashboard' ?></h1>
                 </div>
                 
@@ -232,7 +241,18 @@
         
         // Mobile sidebar toggle
         function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('mobile-open');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.toggle('mobile-open');
+            overlay.classList.toggle('active');
+            
+            // Prevent scrolling on body when menu is open
+            if (sidebar.classList.contains('mobile-open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         }
         
         // Auto-dismiss flash messages after 5 seconds

@@ -30,7 +30,7 @@ $meta_description = isset($page_description) ? $page_description : SITE_DESCRIPT
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@blvdcoffee">
+    <meta name="twitter:site" content="#">
     <meta name="twitter:image" content="<?php echo BASE_URL; ?>/assets/images/blvd-logo-circle-white.png">
     
     <!-- Schema.org Structured Data -->

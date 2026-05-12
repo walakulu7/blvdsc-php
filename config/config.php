@@ -26,9 +26,9 @@ define('EMAIL_CAREERS', 'lankawebnets@gmail.com');
 define('EMAIL_MEDIA', 'lankawebnets@gmail.com');
 
 // Social Media
-define('SOCIAL_FACEBOOK', 'https://facebook.com/blvdcoffee');
-define('SOCIAL_INSTAGRAM', 'https://instagram.com/blvdcoffee');
-define('SOCIAL_TWITTER', 'https://twitter.com/blvdcoffee');
+define('SOCIAL_FACEBOOK', 'https://facebook.com/blvdspecialtycoffee');
+define('SOCIAL_INSTAGRAM', 'https://instagram.com/blvd.coffee_wa');
+define('SOCIAL_TWITTER', '#');
 
 // Opening Hours
 $opening_hours = [
