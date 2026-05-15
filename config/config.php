@@ -11,8 +11,8 @@ define('CONTACT_CITY', 'Canning Vale');
 define('CONTACT_STATE', 'WA');
 define('CONTACT_ZIP', '6155');
 define('CONTACT_COUNTRY', 'Australia');
-define('CONTACT_PHONE', '+61 401 201 536');
-define('CONTACT_EMAIL', 'lankawebnets@gmail.com');
+define('CONTACT_PHONE', '416 550 190');
+define('CONTACT_EMAIL', 'info@blvdcoffee.com');
 
 // Email Sender Configuration
 define('EMAIL_FROM_NAME', 'BLVD Specialty Coffee');

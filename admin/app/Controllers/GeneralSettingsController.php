@@ -70,6 +70,7 @@ class GeneralSettingsController extends Controller
         }
 
         if ($this->settingModel->updateMultiple($settings)) {
+            $this->updateConfigFile($settings);
             Session::flash('success', 'Settings updated successfully');
         } else {
             Session::flash('error', 'Failed to update settings');
@@ -100,5 +101,35 @@ class GeneralSettingsController extends Controller
         }
 
         return $errors;
+    }
+
+    /**
+     * Update config.php constants to match database settings
+     * This ensures the frontend (which uses config.php) stays in sync with admin settings
+     */
+    private function updateConfigFile($settings)
+    {
+        $configFile = __DIR__ . '/../../../config/config.php';
+        if (!file_exists($configFile)) {
+            return false;
+        }
+
+        $content = file_get_contents($configFile);
+
+        $replacements = [
+            'SITE_NAME' => $settings['site_name'] ?? '',
+            'CONTACT_EMAIL' => $settings['contact_email'] ?? '',
+            'CONTACT_PHONE' => $settings['contact_phone'] ?? ''
+        ];
+
+        foreach ($replacements as $key => $value) {
+            if (!empty($value)) {
+                $pattern = "/define\s*\(\s*['\"]" . preg_quote($key, '/') . "['\"]\s*,\s*['\"].*?['\"]\s*\)\s*;/i";
+                $replacement = "define('$key', '" . addslashes($value) . "');";
+                $content = preg_replace($pattern, $replacement, $content);
+            }
+        }
+
+        return file_put_contents($configFile, $content) !== false;
     }
 }
